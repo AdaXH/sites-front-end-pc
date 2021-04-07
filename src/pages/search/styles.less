@@ -1,0 +1,104 @@
+@COLOR: #ef8c81;
+@BORDER: #40c2f8;
+.seachBox {
+  max-width: 600px;
+  margin-right: 10px;
+  :global {
+    input {
+      background: none;
+      outline: none;
+      border: 1px solid @BORDER;
+      color: @COLOR;
+    }
+    input:focus {
+      box-shadow: none;
+    }
+  }
+}
+.resBox {
+  max-width: 1200px;
+  margin-top: 15px;
+  color: @BORDER;
+  letter-spacing: 1px;
+  .seachTitle {
+    margin-top: 15px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+}
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  // width: 800px;
+  margin: 0px auto;
+  justify-content: flex-start;
+  .item {
+    position: relative;
+    width: 300px;
+    padding: 10px;
+    min-height: 130px;
+    cursor: pointer;
+    border-top: 1px solid @BORDER;
+    // margin-bottom: 10px;
+    margin-right: 10px;
+    overflow: hidden;
+    .top {
+      display: flex;
+      .imgBox {
+        // display: inline-block;
+        width: 85px;
+        height: 85px;
+        border-radius: 50%;
+        overflow: hidden;
+        position: relative;
+        border: 1px dashed @BORDER;
+      }
+      .img {
+        margin-top: 1px;
+        margin-left: 1px;
+        width: 80px;
+        height: 80px;
+        border-radius: 40px;
+        overflow: hidden;
+        background-size: cover !important;
+        // opacity: 0.3;
+        transition: all 0.3s;
+      }
+      .siteName {
+        width: 200px;
+        margin-left: 10px;
+        font-size: 18px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        .mainName {
+          color: @BORDER;
+        }
+        a {
+          // color: white;
+          color: @COLOR;
+        }
+        .siteOpe {
+          display: flex;
+          align-items: center;
+          a {
+            font-size: 13px;
+            margin-right: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: rgba(109, 110, 111, 0.58);
+          }
+          a:hover {
+            color: @COLOR;
+          }
+        }
+      }
+    }
+    .siteDesc {
+      font-size: 13px;
+      line-height: 20px;
+      color: #fcbbb1;
+    }
+  }
+}

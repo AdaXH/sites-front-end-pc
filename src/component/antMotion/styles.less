@@ -1,0 +1,35 @@
+@COLOR: #ef8c81;
+@BORDER: #40c2f8;
+.codeShape {
+  background: @BORDER;
+  position: relative;
+  top: 20px;
+}
+.box {
+  width: 0;
+  height: 0;
+  border: 50px solid transparent;
+  border-left-color: @BORDER;
+  border-bottom-color: @BORDER;
+  position: relative;
+  .run {
+    width: 10px;
+    height: 10px;
+    // background: @BORDER;
+    background: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: run 5s infinite;
+    transform-origin: center;
+    transform: translate3d(-50px, -59px, 10px) rotate(45deg);
+  }
+}
+@keyframes run {
+  0% {
+    transform: translate3d(-50px, -59px, 10px) rotate(45deg);
+  }
+  25% {
+    transform: translate3d(45px, 36px, 10px) rotate(45deg);
+  }
+}

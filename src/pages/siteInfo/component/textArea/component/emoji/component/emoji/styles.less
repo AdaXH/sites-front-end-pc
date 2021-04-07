@@ -1,0 +1,47 @@
+.emojiContaienr {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-left: 2px;
+  .emojiItem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 53px;
+    height: 42px;
+    cursor: pointer;
+    // padding: 5px;
+    transition: all 0.1s;
+    position: relative;
+    .big {
+      position: absolute;
+      width: 80px;
+      bottom: 100%;
+      left: 50%;
+      padding: 10px;
+      background: #dedede;
+      transform: translateX(-50%);
+      display: none;
+      img {
+        width: 60%;
+        height: auto;
+        display: block;
+      }
+    }
+    .small {
+      max-width: 60%;
+      display: block;
+      transition: all 0.2s;
+    }
+  }
+  .emojiItem:hover {
+    // transform: scale(1.1);
+    background: #dedede;
+    .small {
+      max-width: 100%;
+    }
+    // .big {
+    //   display: block;
+    // }
+  }
+}

@@ -1,0 +1,44 @@
+@COLOR: #ef8c81;
+@BORDER: #40c2f8;
+.moreBox {
+  // width: 60px;
+  height: 100%;
+  .con {
+    position: absolute;
+    opacity: 0;
+    top: 34px;
+    padding-top: 30px;
+    float: left;
+    // animation: slidDown 0.3s forwards;
+    display: none;
+    .moreItem {
+      height: 32px;
+      line-height: 32px;
+      padding: 0;
+    }
+    a {
+      white-space: nowrap;
+    }
+  }
+}
+
+.a[data-current='true'] {
+  color: @BORDER;
+}
+.moreBox:hover {
+  .con {
+    display: block;
+    animation: slidDown 0.3s forwards;
+  }
+}
+
+@keyframes slidDown {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -20px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}

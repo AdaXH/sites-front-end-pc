@@ -1,0 +1,116 @@
+@COLOR: #ef8c81;
+@BORDER: #40c2f8;
+@TEXT_COLOR: rgba(255, 255, 255, 0.8);
+
+:global {
+  .ant-modal-content {
+    background-color: transparent;
+  }
+  .ant-modal-body {
+    padding: 0;
+  }
+}
+.message {
+  border-top: 1px solid white;
+  padding: 15px;
+  padding-right: 30px;
+  margin-top: 50px;
+  padding-left: 0;
+  .newMsg {
+    position: relative;
+    top: -13px;
+    padding: 3px 10px;
+    color: white;
+    background: @COLOR;
+    transition: all 0.3s;
+    opacity: 1;
+  }
+  .newMsg:hover {
+    opacity: 0.6;
+  }
+}
+.msgItem {
+  display: flex;
+  flex-direction: column;
+  // background: rgba(255, 255, 255, 0.41);
+  padding: 20px;
+  position: relative;
+  .reply {
+    position: absolute;
+    left: 25px;
+    top: 83px;
+    width: 50px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    background: @COLOR;
+    transition: all 0.3s;
+    color: white;
+    opacity: 1;
+  }
+  .reply:hover {
+    // background: @COLOR;
+    opacity: 0.6;
+  }
+  .msgContent {
+    margin-left: 67px;
+    white-space: pre-wrap;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.2);
+    p {
+      line-height: 30px;
+      color: @TEXT_COLOR;
+      margin-bottom: 5px;
+      img {
+        max-width: 70px;
+        max-height: 70px;
+        margin-right: 3px;
+      }
+    }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin-bottom: 5px;
+      color: @TEXT_COLOR;
+    }
+  }
+  .info {
+    display: flex;
+    align-items: center;
+    .infos {
+      margin-left: 7px;
+      .msgDate {
+        // color: @TEXT_COLOR;
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 13px;
+      }
+    }
+    .msgName {
+      font-weight: 550;
+      font-size: 15px;
+      display: flex;
+      letter-spacing: 1px;
+      .aite {
+        color: @TEXT_COLOR;
+        margin-left: 5px;
+      }
+      a:hover {
+        color: #fb7272;
+      }
+    }
+    .avatar {
+      width: 60px;
+      height: 60px;
+      border-radius: 30px;
+      overflow: hidden;
+      background-size: cover !important;
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+  }
+}

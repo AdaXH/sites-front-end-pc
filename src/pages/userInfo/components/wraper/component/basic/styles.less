@@ -1,0 +1,46 @@
+@BG: rgba(90, 81, 81, 0.18);
+// @COLOR: white;
+@COLOR: #ef8c81;
+@BORDER: #40c2f8;
+.item {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  .label {
+    width: 80px;
+    color: @BORDER;
+  }
+  .con {
+    display: block;
+    flex: 1;
+    max-width: 400px;
+    button {
+      margin-top: 5px;
+    }
+    :global {
+      .ant-radio-wrapper {
+        color: @COLOR;
+      }
+      textarea {
+        resize: none;
+        color: @COLOR;
+        border-color: @BORDER;
+        background: transparent;
+      }
+    }
+    input {
+      height: 30px;
+      padding-left: 10px;
+      color: @COLOR;
+      background: transparent;
+      border-color: @BORDER;
+    }
+  }
+}
+.updBtn {
+  margin-left: 80px;
+  margin-top: 10px;
+  // button {
+  //   color: white;
+  // }
+}

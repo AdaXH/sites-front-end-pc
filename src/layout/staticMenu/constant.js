@@ -1,0 +1,58 @@
+export const NAVS = [
+  // {
+  //   prefix: 'H',
+  //   title: 'ome',
+  //   desc: 'back to home',
+  //   path: '/',
+  //   icon: 'iconshouye1',
+  // },
+  {
+    prefix: 'T',
+    title: 'echnology',
+    desc: 'technology sites',
+    path: '/technology',
+    icon: 'iconjishu',
+  },
+  {
+    prefix: 'L',
+    title: 'ife',
+    desc: 'life sites',
+    path: '/life',
+    icon: 'iconshenghuo',
+  },
+  {
+    prefix: 'I',
+    title: 'nfo',
+    desc: 'info sites',
+    path: '/info',
+    icon: 'iconzixun',
+  },
+  {
+    prefix: 'O',
+    title: 'thers',
+    desc: 'others sites',
+    path: '/others',
+    icon: 'iconicon',
+  },
+  {
+    prefix: 'N',
+    title: 'ew',
+    desc: 'submit new site',
+    path: '/submit-site',
+    icon: 'iconaddcollection',
+  },
+  {
+    prefix: 'S',
+    title: 'earch',
+    desc: 'what you want',
+    path: '/search',
+    icon: 'iconcustom-search',
+  },
+  {
+    prefix: 'B',
+    title: 'ug',
+    desc: 'report and suggestion',
+    path: '/bug-report',
+    icon: 'iconbug',
+  },
+];

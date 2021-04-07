@@ -1,0 +1,111 @@
+@COLOR: #ef8c81;
+@BORDER: #40c2f8;
+
+.listBox {
+  position: fixed;
+  right: 60px;
+  top: 0;
+  width: 316px;
+  min-height: 200px;
+  background: rgba(255, 255, 255, 0.11);
+  padding: 10px;
+  letter-spacing: 1px;
+  color: white;
+  animation: shake 6s infinite;
+
+  .updIcon {
+    cursor: pointer;
+    position: relative;
+    top: 1px;
+  }
+  .list {
+    display: flex;
+    flex-wrap: wrap;
+    .listItem {
+      margin-bottom: 10px;
+      color: black;
+      width: 70px;
+      height: 96px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      opacity: 0.8;
+      transition: opacity 0.3s;
+      margin: 2px;
+      .siteIcon {
+        width: 60px;
+        height: 60px;
+        background-size: cover;
+        background-color: rgba(255, 255, 255, 0.3);
+        border-radius: 30px;
+      }
+      .siteName {
+        overflow: hidden;
+        width: 70px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: 13px;
+        text-align: center;
+        color: rgba(255, 255, 255, 0.6);
+        transition: color 0.3s;
+      }
+    }
+    .listItem:hover {
+      .siteName {
+        color: rgba(255, 255, 255, 1);
+      }
+      opacity: 1;
+    }
+  }
+  .loadingWrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    // background: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: 100%;
+    .loadinDot {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      //   background: white;
+      top: 50%;
+      left: 50%;
+      margin: -30px 0 0 -30px;
+      border-radius: 30px;
+      border: 1px solid white;
+      border-left-color: transparent;
+      border-top-color: transparent;
+      border-right-color: transparent;
+      animation: loading 3s infinite linear;
+    }
+  }
+}
+
+@keyframes shake {
+  from {
+    transform: translate3d(0, 0, 0) rotate(-1deg);
+  }
+  40% {
+    transform: translate3d(0, 0, 0) rotate(0);
+  }
+  to {
+    transform: translate3d(0, 0, 0) rotate(-1deg);
+  }
+}
+
+@keyframes loading {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .listBox {
+    display: none;
+  }
+}

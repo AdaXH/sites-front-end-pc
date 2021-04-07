@@ -1,0 +1,61 @@
+@BG: rgba(255, 255, 255, 0.8);
+@COLOR: white;
+@COLOR: #ef8c81;
+@BORDER: #40c2f8;
+.item {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  .label {
+    width: 90px;
+    text-align: right;
+    color: @COLOR;
+    display: flex;
+    justify-content: flex-end;
+    white-space: nowrap;
+  }
+}
+.siteItem {
+  display: flex;
+  margin-top: 15px;
+  border-bottom: 1px solid white;
+  padding-bottom: 10px;
+  .item {
+    display: flex;
+    margin-right: 15px;
+    // flex: 1;
+    width: 200px;
+    text-align: left;
+    .siteType {
+      color: rgba(109, 110, 111, 0.78);
+    }
+    .index {
+      font-size: 15px;
+      width: 20px;
+      height: 20px;
+      border-radius: 10px;
+      background: @COLOR;
+      color: white;
+      text-align: center;
+      line-height: 20px;
+      display: block;
+      margin-right: 5px;
+    }
+    .upvote {
+      color: #f54c53;
+      .upvoteNum {
+        // color: white;
+      }
+    }
+  }
+  .name {
+    cursor: pointer;
+  }
+  .name:hover,
+  a:hover {
+    color: #f54c53;
+  }
+  .item:nth-of-type(2) {
+    width: 70px;
+  }
+}

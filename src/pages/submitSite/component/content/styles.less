@@ -1,0 +1,122 @@
+@COLOR: #ef8c81;
+@BORDER: #40c2f8;
+.item {
+  display: flex;
+  margin-top: 10px;
+  align-items: center;
+  position: relative;
+  .name {
+    width: 60px;
+    text-align: right;
+    font-size: 15px;
+    color: @BORDER;
+    background: @BORDER;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    border-radius: 5px 0 0 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    i {
+      color: white;
+      font-size: 20px;
+    }
+  }
+  .name::before {
+    display: inline-block;
+    margin-right: 4px;
+    color: @COLOR;
+    font-size: 14px;
+    font-family: SimSun, sans-serif;
+    line-height: 1;
+    // content: '*';
+  }
+  .name[data-required='true']::before {
+    opacity: 0;
+    display: none;
+  }
+  .con {
+    flex: 1;
+    max-width: 500px;
+    font-size: 18px;
+    margin-left: 50px;
+    padding-left: 7px;
+    .textarea {
+      height: 100px;
+    }
+    :global {
+      .ant-radio-group {
+        span {
+          color: @COLOR;
+        }
+      }
+      .ant-input-group-addon,
+      .ant-select,
+      .ant-select-selection,
+      textarea,
+      .ant-select-selection--single {
+        background: transparent;
+        color: @COLOR;
+        i {
+          color: @BORDER;
+        }
+      }
+      .ant-input-group-addon {
+        border: 1px solid @BORDER;
+        border-right: none;
+      }
+      .ant-select-selection__rendered {
+        margin-left: 15px;
+      }
+      textarea {
+        resize: none;
+      }
+      textarea:focus,
+      textarea:hover,
+      .ant-select-selection,
+      textarea,
+      .ant-select-selection:hover,
+      .ant-select-selection:focus {
+        box-shadow: none;
+        border-color: @BORDER;
+      }
+    }
+    input {
+      background: none;
+      outline: none;
+      // border: none;
+      border: 1px solid @BORDER;
+      color: @COLOR;
+    }
+    input:focus,
+    textarea:focus {
+      box-shadow: none;
+    }
+  }
+  :global {
+    .defaultItem::before {
+      // content: ;
+      display: none;
+    }
+    .notRequired::before {
+      display: none;
+    }
+  }
+}
+.previewImg {
+  img {
+    display: block;
+    max-width: 400px;
+  }
+}
+.radio {
+  margin-top: 5px;
+  :global {
+    .ant-radio-wrapper {
+      color: @COLOR;
+    }
+  }
+}

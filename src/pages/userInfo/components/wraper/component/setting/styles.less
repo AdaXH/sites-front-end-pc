@@ -1,0 +1,36 @@
+@BG: rgba(255, 255, 255, 0.8);
+// @COLOR: rgba(0, 0, 0, 0.65);
+@BORDER: #40c2f8;
+
+.item {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  .label {
+    width: 100px;
+    text-align: right;
+    // color: @COLOR;
+    color: @BORDER;
+  }
+  .con {
+    display: block;
+    flex: 1;
+    max-width: 400px;
+    :global {
+      .ant-switch {
+        background: rgba(255, 255, 255, 0.48) !important;
+      }
+      .ant-switch-checked {
+        background: @BORDER !important;
+      }
+    }
+    input {
+      height: 30px;
+      padding-left: 10px;
+    }
+  }
+}
+.updBtn {
+  margin-left: 100px;
+  margin-top: 10px;
+}

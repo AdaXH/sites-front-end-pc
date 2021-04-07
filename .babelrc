@@ -1,0 +1,25 @@
+{
+  "presets": ["env", "react", "stage-3"],
+  "plugins": [
+    [
+      "import",
+      {
+        "libraryName": "antd",
+        "libraryDirectory": "es",
+        "style": true
+      }
+    ],
+    "react-hot-loader/babel",
+    "transform-decorators-legacy",
+    "transform-class-properties",
+    "transform-runtime",
+    "transform-async-generator-functions",
+    "transform-async-to-generator",
+    "syntax-dynamic-import"
+  ],
+  "env": {
+    "production": {
+      "plugins": ["transform-remove-console"]
+    }
+  }
+}

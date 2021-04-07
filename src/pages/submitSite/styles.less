@@ -1,0 +1,42 @@
+.footer {
+  margin-top: 20px;
+  margin-left: 90px;
+}
+
+// @media screen and (max-width: 750px) {
+//   .footerWrap {
+//     padding-bottom: 130px;
+//     .footer {
+//       margin-left: 80px;
+//     }
+//   }
+// }
+@COLOR: #ef8c81;
+@BORDER: #40c2f8;
+.submitTypeBox {
+  display: flex;
+  margin-bottom: 20px;
+  .submtiTypeItem {
+    padding: 5px 20px;
+    font-size: 15px;
+    color: @BORDER;
+    cursor: pointer;
+    transition: all 0.3s;
+    background: white;
+    color: @COLOR;
+  }
+  .submtiTypeItem[data-current='true'] {
+    background: @BORDER;
+    color: white;
+    cursor: not-allowed;
+  }
+}
+.tips {
+  color: @COLOR;
+  font-size: 15px;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+  .curTitle {
+    color: @BORDER;
+  }
+}

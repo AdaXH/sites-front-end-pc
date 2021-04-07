@@ -1,0 +1,142 @@
+@lightColor: #cecece;
+@lightBorder: rgba(255, 255, 255, 0.6);
+.dialogBox {
+  // position: fixed;
+  // width: 200%;
+  // height: 200%;
+  // top: 50%;
+  // left: 50%;
+  // z-index: 100;
+  // transform: translate3d(-50%, -50%, 0);
+  .bgWrap,
+  .container {
+    // position: absolute;
+    // top: 0;
+    // left: 0;
+    // z-index: 5;
+    // width: 100%;
+    // height: 100%;
+    // background: rgba(0, 0, 0, 0.31);
+  }
+  .bgWrap {
+    // animation: bgWrap 0.3s forwards;
+  }
+  .container {
+    width: 600px;
+    height: 620px;
+    // top: 50%;
+    // left: 50%;
+    // z-index: 10;
+    padding: 5px;
+    // animation: show 0.3s forwards;
+    .close {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 20px;
+      z-index: 10;
+      height: 20px;
+      i {
+        color: rgba(0, 0, 0, 0.85);
+      }
+    }
+  }
+}
+.content {
+  display: flex;
+  font-family: inherit;
+  flex-wrap: wrap;
+  background: white;
+  padding: 10px;
+  textarea {
+    display: block;
+    border: 1px solid rgba(115, 115, 115, 0.2);
+    margin: 0 auto;
+    padding: 10px;
+    width: 100%;
+    min-height: 160px;
+    max-height: 400px;
+    color: #424242;
+    font-size: 14px;
+    resize: none;
+    font-family: inherit;
+    background: transparent;
+  }
+  textarea:focus {
+    outline: none;
+  }
+  .footer {
+    position: relative;
+    width: 100%;
+    display: flex;
+    .item:nth-of-type(1) {
+      i {
+        font-size: 28px;
+      }
+    }
+    .item {
+      width: 30px;
+      height: 30px;
+      padding: 5px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.5s;
+      color: #888484;
+      cursor: pointer;
+      i {
+        font-size: 20px;
+      }
+    }
+    .item:nth-of-type(4) {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+    .item:nth-of-type(3) {
+      position: absolute;
+      top: 0;
+      right: 30px;
+    }
+    .item:active,
+    .item:hover {
+      background: #888484;
+      color: white;
+    }
+  }
+}
+.light {
+  textarea {
+    color: @lightColor;
+    border-color: @lightBorder;
+  }
+}
+
+@keyframes bgWrap {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes show {
+  from {
+    transform: scale(0.8) translate3d(-50%, -50%, 0);
+  }
+  to {
+    transform: scale(1) translate3d(-50%, -50%, 0);
+  }
+}
+// .dialogBox {
+//   width: 100%;
+//   .container {
+//     // width: 775px;
+//     // max-width: 600px;
+//     padding-right: 285px;
+//   }
+//   .bgWrap {
+//     width: 200%;
+//     height: 200%;
+//   }
+// }

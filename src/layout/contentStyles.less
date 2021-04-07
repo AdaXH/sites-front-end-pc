@@ -1,0 +1,73 @@
+@COLOR: #ef8c81;
+@BORDER: #40c2f8;
+.content {
+  position: relative;
+  display: flex;
+  animation: childrenBox 0.3s forwards;
+
+  flex-direction: column;
+  .pageTitle {
+    margin-top: 70px;
+  }
+  .title {
+    color: @BORDER;
+    font-size: 18px;
+    padding: 10px;
+    padding-left: 0px;
+    font-weight: 500;
+    // margin-top: 100px;
+    margin-bottom: 50px;
+    letter-spacing: 2px;
+  }
+  .filter {
+    height: 100%;
+    filter: blur(10px);
+  }
+  .slide {
+    overflow: hidden;
+    position: relative;
+  }
+  .children {
+    padding-bottom: 100px;
+    overflow: hidden;
+    overflow-y: auto;
+    width: 100%;
+    height: 100%;
+    animation: children 0.6s;
+    scrollbar-3dlight-color: transparent;
+    scrollbar-color: transparent;
+    scrollbar-face-color: transparent;
+    scrollbar-highlight-color: transparent;
+    scrollbar-shadow-color: transparent;
+    scrollbar-track-color: transparent;
+    scrollbar-width: 0;
+    .relative {
+      position: relative;
+      left: -70px;
+    }
+  }
+  .children::-webkit-scrollbar-track {
+    box-shadow: none;
+    border-radius: 0;
+    background-color: transparent;
+  }
+  .children::-webkit-scrollbar {
+    width: 0;
+    background-color: transparent;
+  }
+  .children::-webkit-scrollbar-thumb {
+    border-radius: 0;
+    box-shadow: transparent;
+    background-color: transparent;
+  }
+}
+@keyframes childrenBox {
+  from {
+    transform: translate3d(80px, 0, 0);
+    opacity: 0;
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}

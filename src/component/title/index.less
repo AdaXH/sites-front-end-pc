@@ -1,0 +1,58 @@
+.tips {
+  height: 50px;
+  animation: tips 0.6s;
+  position: relative;
+  // left: -25px;
+  z-index: -1;
+  font-size: 27px;
+  color: white;
+  .word {
+    color: #40c2f8;
+    position: relative;
+  }
+  .word::after {
+    content: '';
+    width: 40px;
+    height: 40px;
+    border: 3px solid #40c2f8;
+    border-radius: 20px;
+    position: absolute;
+    left: -5px;
+    top: -4px;
+  }
+  .tip {
+    position: relative;
+    padding: 0 10px;
+    color: #40c2f8;
+  }
+  .tip::before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    top: 1px;
+    left: 3px;
+    border-top: 2px solid #cbcbcb;
+    border-left: 2px solid #cbcbcb;
+  }
+  .tip::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    bottom: 31px;
+    right: -67px;
+    border-bottom: 2px solid #cbcbcb;
+    border-right: 2px solid #cbcbcb;
+  }
+}
+@keyframes tips {
+  from {
+    opacity: 0;
+    transform: translate3d(-50px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}

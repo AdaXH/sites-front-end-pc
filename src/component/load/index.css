@@ -1,0 +1,195 @@
+.indeContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.IndexVIew {
+  flex: 1;
+  -webkit-overflow-scrolling: touch;
+  overflow: hidden;
+  overflow-y: scroll;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+div.saerchContainer {
+  width: 3.5rem;
+  height: 0.3rem;
+  line-height: 0.3rem;
+  border-radius: 0.05rem;
+  margin: 0 auto;
+  opacity: 0;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  will-change: transform, opacity;
+  overflow: hidden;
+  margin-top: 1.82rem;
+}
+div.flyItem {
+  transition-property: all;
+}
+div.saerchContainer div.am-search-cancel {
+  font-size: 0.13rem;
+}
+div.saerchContainer .am-search div {
+  transition: all 0.3s !important;
+  background: none;
+  height: 0.3rem !important;
+  line-height: 0.3rem;
+}
+div.saerchContainer .am-search {
+  height: 0.3rem !important;
+}
+.flyContainer {
+  width: 3.5rem;
+  height: 2rem;
+  margin: 0.1rem auto;
+  /* margin-top: 0.6rem;
+     */
+  perspective: 10rem;
+  transform-style: preserve-3d;
+}
+.bannerCOntainer {
+  height: 1.72rem;
+  width: 100%;
+  /* background: #22282c;
+     */
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  margin-bottom: 0.1rem;
+}
+.bannerCOntainer p {
+  color: white;
+  left: 0.1rem;
+}
+.blog {
+  top: 0rem;
+  font-size: 0.2rem;
+}
+.bannerCOntainer p:nth-of-type(2) {
+  /* bottom:0.25rem;
+     */
+  font-size: 0.12rem;
+}
+p.rate3 {
+  left: 3rem;
+  bottom: 0rem;
+}
+.bannerCOntainer p:nth-of-type(3) {
+  bottom: 0.05rem;
+  font-size: 0.12rem;
+}
+.glitchContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.glitchContainer img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.flyContainer div {
+  float: left;
+  height: 0.23rem;
+  text-align: center;
+  line-height: 0.23rem;
+  width: 0.875rem;
+  height: 0.5rem;
+  opacity: 0;
+  transform-style: preserve-3d;
+  will-change: transform, opacity;
+  color: white;
+  position: relative;
+  font-size: 0.13rem;
+  background-size: 3.5rem 2rem;
+}
+.flyContainer div p {
+  position: absolute;
+  left: 0.18rem;
+  font-size: 0.12rem;
+}
+.flyContainer div:nth-of-type(1) {
+  background-position: 0 0;
+  line-height: 0.5rem;
+  /* font-weight: bold;
+     */
+  font-size: 0.18rem;
+  color: white;
+}
+.flyContainer div:nth-of-type(2) {
+  background-position: -0.875rem 0;
+}
+.flyContainer div:nth-of-type(3) {
+  background-position: -1.75rem 0;
+}
+.flyContainer div:nth-of-type(4) {
+  background-position: -2.625rem 0;
+}
+.flyContainer div:nth-of-type(5) {
+  background-position: 0 -0.5rem;
+}
+.flyContainer div:nth-of-type(6) {
+  background-position: -0.875rem -0.5rem;
+}
+.flyContainer div:nth-of-type(7) {
+  background-position: -1.75rem -0.5rem;
+}
+.flyContainer div:nth-of-type(8) {
+  background-position: -2.625rem -0.5rem;
+}
+.flyContainer div:nth-of-type(9) {
+  background-position: -0rem -1rem;
+}
+.flyContainer div:nth-of-type(10) {
+  background-position: -0.875rem -1rem;
+}
+.flyContainer div:nth-of-type(11) {
+  background-position: -1.75rem -1rem;
+}
+.flyContainer div:nth-of-type(12) {
+  background-position: -2.625rem -1rem;
+}
+.flyContainer div:nth-of-type(13) {
+  background-position: -0rem -1.5rem;
+}
+.flyContainer div:nth-of-type(14) {
+  background-position: -0.875rem -1.5rem;
+}
+.flyContainer div:nth-of-type(15) {
+  background-position: -1.75rem -1.5rem;
+}
+.flyContainer div:nth-of-type(16) {
+  background-position: -2.625rem -1.5rem;
+}
+.picContainer {
+  display: flex;
+  height: 5rem;
+  flex-direction: column;
+}
+.picContainer div.itemPic {
+  flex: 1;
+  margin: 0.1rem;
+  position: relative;
+}
+.imgContainer {
+  width: 100%;
+  height: 2.4rem;
+  position: absolute;
+  top: 0;
+  z-index: 0;
+  left: 0;
+}
+.handlePicInput {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0;
+  top: 0;
+  left: 0;
+}

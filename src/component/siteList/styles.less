@@ -1,0 +1,120 @@
+@BG: rgba(136, 136, 136, 0.5);
+@HOVER: #ef8c81;
+@COLOR: #fcbbb1;
+@BORDER: #40c2f8;
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  // width: 800px;
+  margin: 0px auto;
+  justify-content: flex-start;
+  .item {
+    position: relative;
+    width: 300px;
+    padding: 10px;
+    min-height: 130px;
+    cursor: pointer;
+    border-top: 1px solid @BORDER;
+    // margin-bottom: 10px;
+    margin-right: 10px;
+    overflow: hidden;
+    .top {
+      display: flex;
+      .imgBox {
+        // display: inline-block;
+        width: 85px;
+        height: 85px;
+        border-radius: 50%;
+        overflow: hidden;
+        position: relative;
+        border: 1px dashed @BORDER;
+      }
+      .img {
+        margin-top: 1px;
+        margin-left: 1px;
+        width: 80px;
+        height: 80px;
+        border-radius: 40px;
+        overflow: hidden;
+        background-size: cover !important;
+        // opacity: 0.3;
+        transition: all 0.3s;
+      }
+      .siteName {
+        width: 200px;
+        margin-left: 10px;
+        font-size: 18px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        .mainName {
+          color: @BORDER;
+        }
+        a {
+          // color: white;
+          color: @COLOR;
+        }
+        .siteOpe {
+          display: flex;
+          align-items: center;
+          a {
+            font-size: 13px;
+            margin-right: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            // color: rgba(109, 110, 111, 0.58);
+          }
+          a:hover {
+            color: @HOVER;
+          }
+        }
+      }
+    }
+    .siteDesc,
+    .date {
+      font-size: 13px;
+      line-height: 20px;
+      padding-left: 89px;
+      // color: @BORDER;
+      // color: rgba(109, 110, 111, 0.58);
+      color: @COLOR;
+    }
+    // .date {
+    //   color: @BORDER;
+    //   font-size: 14px;
+    // }
+    // .date {
+    //   position: absolute;
+    //   bottom: 10px;
+    //   left: 10px;
+    // }
+  }
+  // .item:hover {
+  //   .img {
+  //     opacity: 1;
+  //   }
+  // }
+}
+
+.info {
+  margin-top: 20px;
+  font-size: 15px;
+  color: @BORDER;
+}
+// @media screen and (max-width: 700px) {
+// .list {
+//   flex-wrap: wrap;
+//   width: unset;
+//   .item {
+//     width: 90%;
+//     margin: 0 auto;
+//     margin-bottom: 15px;
+//     .right {
+//       .name {
+//         font-size: 16px;
+//       }
+//     }
+//   }
+// }
+// }

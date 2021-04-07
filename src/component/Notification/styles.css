@@ -1,0 +1,191 @@
+@keyframes showRight {
+  form {
+    opacity: 0;
+    transform: translate3d(100px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes hideRight {
+  form {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(100px, 0, 0);
+  }
+}
+
+@keyframes showTop {
+  form {
+    opacity: 0;
+    transform: translate3d(0px, -100px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes hideTop {
+  form {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(0, -100px, 0);
+  }
+}
+
+@keyframes hideLeft {
+  form {
+    opacity: 1;
+    transform: translate3d(-100px, 0, 0);
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(-160px, 0, 0);
+  }
+}
+.con {
+  display: flex;
+  justify-content: center;
+}
+.toastMask {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  left: 0;
+  top: 0;
+}
+.toast {
+  display: flex;
+  justify-content: flex-start;
+  padding: 5px 20px 5px 10px;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  background: #fff;
+  position: relative;
+  margin-bottom: 16px;
+  overflow: hidden;
+  top: 20px;
+  white-space: nowrap;
+  animation-duration: 0.9s !important;
+  animation-fill-mode: forwards !important;
+  transform: translate3d(0, 0, 0);
+  text-align: center;
+  z-index: 1;
+}
+div.TW_UI_toastLeftShow {
+  transform: translate3d(-100px, 0, 0);
+  animation-name: showRight;
+}
+div.TW_UI_toastLeftHide {
+  transform: translate3d(0px, 0, 0);
+  animation-name: hideLeft;
+}
+div.TW_UI_toastRightShow {
+  transform: translate3d(100px, 0, 0);
+  animation-name: showRight;
+}
+div.TW_UI_toastRightHide {
+  transform: translate3d(0px, 0, 0);
+  animation-name: hideRight;
+}
+div.TW_UI_toastTopShow {
+  transform: translate3d(0px, -100px, 0);
+  animation-name: showTop;
+}
+div.TW_UI_toastTopHide {
+  transform: translate3d(0px, 0, 0);
+  animation-name: hideTop;
+}
+div.TW_UI_toastCenter {
+  left: 50% !important;
+  transform: translateX(-50%);
+  /* min-width: 150px; */
+}
+div.TW_UI_toastRight {
+  right: 20px;
+}
+div.TW_UI_toastLeft {
+  left: 20px;
+}
+.toast span {
+  /* font-size: 14px; */
+  margin-left: 10px;
+  align-self: center;
+}
+.toast i {
+  font-size: 27px;
+}
+.toastContainer {
+  position: fixed;
+  min-width: 10px;
+  z-index: 999;
+  top: 0;
+}
+.loadingContainer {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  background-size: cover;
+}
+.loadingWrap {
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+.loadingMask {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(74, 74, 74, 0.24);
+}
+.loadingDot {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto;
+  border: 1px solid transparent;
+  border-left-color: white;
+  border-radius: 50%;
+  z-index: 100001;
+}
+.loadingText {
+  width: 100px;
+  height: 20px;
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: 4px;
+  color: white;
+  position: relative;
+  left: -15px;
+  top: 15px;
+}
+.startLoading {
+  animation: spinner 1s linear infinite;
+}
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

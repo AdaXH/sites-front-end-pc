@@ -1,0 +1,27 @@
+.imgList {
+  display: flex;
+  flex-wrap: wrap;
+  .imgWrap {
+    padding: 2px;
+    border-radius: 50%;
+    margin: 5px;
+    overflow: hidden;
+    border: 1px solid white;
+  }
+  .imgWrap:hover {
+    .itemImg {
+      transform: scale(1.4);
+    }
+  }
+  .itemImg {
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    background-size: cover;
+    cursor: pointer;
+    // box-sizing: border-box;
+    text-align: center;
+    line-height: 50px;
+    transition: all 0.3s;
+  }
+}
