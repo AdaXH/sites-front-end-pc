@@ -1,8 +1,5 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
-webpack.config.prod.js
-src/pages/index/components/login/index.tsx
-
 # dependencies
 /node_modules
 
@@ -22,4 +19,3 @@ src/pages/index/components/login/index.tsx
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-webpack.config.prod.js
