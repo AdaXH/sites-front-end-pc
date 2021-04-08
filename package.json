@@ -2,13 +2,14 @@
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --config=webpack.config.dev.js",
-    "build": "cross-env ESLINT=none webpack --config=webpack.config.prod.js --mode production",
+    "build": "cross-env ESLINT=none webpack --config=webpack.config.prod.js --mode production && npm run oss-push",
     "lint": "eslint {src,mock,tests}/**/*.{ts,tsx}",
     "lint-fix": "eslint {src,mock,tests}/**/*.{ts,tsx} --fix",
     "precommit": "npm run lint",
     "format": "prettier --write \"./**/*.{ts,jsx,json,less,css}\" --ignore-path /dist",
     "tsc": "tsc -p tsconfig.json --noEmit",
-    "push": "node push"
+    "push": "node push",
+    "oss-push": "node pushFileToOss"
   },
   "dependencies": {
     "antd": "^3.19.5",
@@ -34,6 +35,7 @@
     "@types/react": "^16.8.7",
     "@types/react-dom": "^16.8.7",
     "@types/showdown": "^1.9.3",
+    "ali-oss": "^6.15.2",
     "awesome-typescript-loader": "^5.2.1",
     "babel-core": "^6.26.3",
     "babel-eslint": "^10.1.0",
