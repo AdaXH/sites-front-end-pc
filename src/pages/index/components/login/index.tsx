@@ -30,7 +30,7 @@ const Login: React.FC<{ dispatch: Function }> = ({ dispatch }) => {
     try {
       const body = {
         ...values,
-        password: `I don't tell youn how i make password, 嘻嘻`,
+        password: Base64.encode(hex(values.password || '')),
       };
       const api = isLogin ? 'user/login' : 'user/register';
       // 注册

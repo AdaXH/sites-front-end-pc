@@ -46,7 +46,7 @@ export default forwardRef(({ value: oldVal }: SiteIcon, ref) => {
             {iconType === 'url' ? (
               <Input
                 placeholder="图标链接 *"
-                value={String(value) || ''}
+                value={String(value || '')}
                 onChange={(e) => setValue(e.target.value)}
                 maxLength={150}
               />
