@@ -212,7 +212,8 @@ export default connect(({ user: userModel }: RootState) => ({ userModel }))(
               <div className={styles.con}>
                 <a
                   className={styles.con}
-                  data-disabled={!user}
+                  // @ts-ignore
+                  disabled={!user}
                   href={`/site-userInfo/${siteUserId}`}
                   target="_blank"
                   rel="noreferrer"
