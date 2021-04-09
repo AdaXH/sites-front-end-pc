@@ -4,9 +4,12 @@ import { User } from '@/models/user';
 // import classnames from 'classnames';
 import { routes, Route } from './constant';
 // import { FULL_SCREEN_PATH } from '@/utils/constant';
+import { SITE_BASIC_INFO } from '@/utils/constant';
 import Menu from './menu';
 import { getNavStyle } from './util';
 import styles from './styles.less';
+
+const { TITLE } = SITE_BASIC_INFO;
 
 interface Props {
   user?: User;
@@ -40,7 +43,7 @@ export const Header: React.FC<Props> = (props) => {
             return iItem.path === pathname;
           });
         }) || {};
-      document.title = pathname === '/' ? '站点聚合平台' : title || '站点聚合平台';
+      document.title = pathname === '/' ? TITLE : `${title} ${TITLE}` || TITLE;
     });
   }, []);
   function renderLinks(links: Array<Route>) {
