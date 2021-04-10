@@ -55,5 +55,5 @@ const { sina, qZone } = forUrl();
 export const SHARE_LIST = [
   { onClick: sina, text: '分享到微博', icon: 'iconsina' },
   { url: qZone, text: '分享QQ空间', icon: 'iconiconqzone' },
-  { url: 'https://github.com/AdaXH/sites-front-end-pc', text: 'GitHub', icon: 'icongithub' },
+  { url: 'https://github.com/AdaXH/sites-front-end-pc', text: 'GitHub', icon: 'icongithub1' },
 ];

@@ -1,6 +1,6 @@
 import dva from 'dva';
 import createHistory from 'history/createBrowserHistory';
-import './global.css';
+import './global.less';
 
 // 1. Initialize
 const app = dva({

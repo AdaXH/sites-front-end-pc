@@ -2,7 +2,8 @@
 .center {
   position: relative;
   width: 120px;
-  left: 0px;
+  left: 50px;
+  animation: aminWrap 0.3s;
   .effCircle {
     width: 120px;
     height: 120px;
@@ -104,5 +105,13 @@
   }
   100% {
     transform: rotate(0deg);
+  }
+}
+@keyframes aminWrap {
+  from {
+    transform: translate3d(-140px, 0, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
   }
 }

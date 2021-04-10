@@ -3,7 +3,7 @@
 
 .listBox {
   position: fixed;
-  right: 60px;
+  right: 50px;
   top: 0;
   width: 316px;
   min-height: 200px;
@@ -80,6 +80,19 @@
       border-right-color: transparent;
       animation: loading 3s infinite linear;
     }
+  }
+}
+
+.aminWrap {
+  animation: aminWrap 0.3s;
+}
+
+@keyframes aminWrap {
+  from {
+    transform: translate3d(40px, 0, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
   }
 }
 
