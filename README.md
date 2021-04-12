@@ -2,7 +2,7 @@
 ![截图](https://bucker-for-sae.oss-cn-hangzhou.aliyuncs.com/githubimg/QQ%E6%88%AA%E5%9B%BE20210407215111.jpg)
 
 ## 简介
-“<a target="_blank" href="https://sites.applinzi.com">站点聚合平台</a>，让更多的人知道您的网站”，小站正在处于初期阶，功能正在一步步完善中
+“<a target="_blank" href="https://sites.link">站点聚合平台</a>，让更多的人知道您的网站”，小站正在处于初期阶，功能正在一步步完善中
 如果您想协助小站，包括但不限于建议、交互、代码、服务器，您都可以直接与我联系
 或者发送至我的邮箱：adaxh@qq.com
 参与其中，您将会出现在开发人员列表中。
