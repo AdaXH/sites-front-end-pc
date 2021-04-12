@@ -24,7 +24,6 @@ export default ({ history }: { history?: any }) => {
     }
   }
   useDidMount(query);
-  console.log('SiteList', SiteList);
   return (
     <SiteList
       pagination={{

@@ -6,3 +6,23 @@ export const colors = [
   'rgb(93, 91, 89)',
   'rgb(66, 189, 226)',
 ];
+
+export const FILTER_TYPES = [
+  {
+    code: 'time',
+    text: '按时间',
+    icon: 'iconfont iconios-shijian',
+  },
+  {
+    code: 'hot',
+    text: '按热度',
+    icon: 'iconfont iconfire',
+  },
+  {
+    code: 'random',
+    text: '随机',
+    icon: 'iconfont iconsuiji',
+  },
+];
+
+export const SORTER_TYPE = ['up', 'down'];
