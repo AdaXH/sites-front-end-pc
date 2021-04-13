@@ -25,4 +25,5 @@ interface SiteModel {
   _id?: string;
   siteId?: string;
   originUrl?: string;
+  hot?: number;
 }

@@ -15,6 +15,7 @@ export const Filter: React.FC<{
   filterType?: SortType;
   changeFilterQuery: (arg: SortType) => void;
 }> = ({ changeFilterQuery, filterType }) => {
+  if (!filterType) return null;
   const { sortType } = filterType;
   const isUp = useMemo(() => sortType === 'up', [sortType]);
   const onChangeSortType = useCallback(() => {

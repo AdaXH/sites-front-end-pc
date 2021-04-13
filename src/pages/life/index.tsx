@@ -17,6 +17,7 @@ export default ({ history }: { history?: any }) => {
     const { data: resData, totalCount } = await querySites({
       page,
       siteType: 'life',
+      ...filterType,
     });
     if (resData) {
       setData(resData);

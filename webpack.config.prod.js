@@ -15,7 +15,7 @@ module.exports = {
   output: {
     filename: 'sites-pc.js',
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/',
+    publicPath: 'https://bucker-for-sae.oss-cn-hangzhou.aliyuncs.com/siteslib/pclib/',
     chunkFilename: 'sites-pc.[name].async.js',
   },
 

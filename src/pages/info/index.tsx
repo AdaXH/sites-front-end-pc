@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import SiteList from '@/component/siteList';
 import { SortType } from '@/component/siteList/filter';
 // import { useDidMount } from '@/utils/hooks';
@@ -18,6 +18,7 @@ export default ({ history }: { history?: any }) => {
     const { data: resData, totalCount } = await querySites({
       page,
       siteType: 'info',
+      ...filterType,
     });
     if (resData) {
       setData(resData);

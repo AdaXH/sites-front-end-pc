@@ -81,6 +81,10 @@ export default ({ history, title, data, pagination, changeFilterQuery, filterTyp
                               链接直达
                               <i className="iconfont iconlink" />
                             </a>
+                            <span className={styles.hot}>
+                              <i className="iconfont iconfire" />
+                              {item.hot}
+                            </span>
                           </div>
                         </div>
                       </div>
