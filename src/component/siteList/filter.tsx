@@ -1,33 +1,60 @@
-import React from 'react';
+import React, { useCallback, useState, useMemo, useEffect } from 'react';
 import { FILTER_TYPES, SORTER_TYPE } from './constant';
+import classnames from 'classnames';
+
+const { code } = FILTER_TYPES[0];
+
 import styles from './styles.less';
 
-interface SortType {
+export interface SortType {
   filterType: string;
   sortType?: string;
 }
 
 export const Filter: React.FC<{
-  value: SortType;
-  setFilter: (arg: SortType) => void;
-  filterType?: string;
-}> = ({ filterType, setFilter }) => {
+  filterType?: SortType;
+  changeFilterQuery: (arg: SortType) => void;
+}> = ({ changeFilterQuery, filterType }) => {
+  const { sortType } = filterType;
+  const isUp = useMemo(() => sortType === 'up', [sortType]);
+  const onChangeSortType = useCallback(() => {
+    changeFilterQuery({
+      ...filterType,
+      sortType: isUp ? 'down' : 'up',
+    });
+  }, [filterType, isUp]);
+  const onChangeFilter = useCallback(
+    (arg) => {
+      changeFilterQuery({
+        ...filterType,
+        ...arg,
+      });
+    },
+    [filterType],
+  );
   return (
     <div className={styles.con}>
       <i className="iconfont iconuser-filter" />
       <div className={styles.filter}>
         {FILTER_TYPES.map(({ code, text, icon }) => (
-          //   <div
-          //     data-current={value.type === code}
-          //     className={styles.filterItem}
-          //     key={code}
-          //     onClick={() => setFilter({type: code, sortType: })}
-          //   >
-          //     <i className={icon} />
-          //     <span>{text}</span>
-          //   </div>
-          <Item icon={icon} text={text} code={code} setFilter={setFilter} filterType={filterType} />
+          <Item
+            icon={icon}
+            text={text}
+            code={code}
+            key={code}
+            filterType={filterType.filterType}
+            onChangeFilter={onChangeFilter}
+          />
         ))}
+        <span
+          onClick={onChangeSortType}
+          className={classnames({
+            [styles.sort]: true,
+            [styles.downSort]: !isUp,
+          })}
+        >
+          <i className="iconfont iconshengxu" />
+        </span>
       </div>
     </div>
   );
@@ -37,17 +64,17 @@ interface ItemProps extends SortType {
   icon?: string;
   text: string;
   code?: string;
-  setFilter: (arg: SortType) => void;
+  onChangeFilter: (arg: SortType) => void;
   filterType: string;
 }
 
-const Item: React.FC<ItemProps> = ({ filterType, icon, text, code, setFilter }) => {
+const Item: React.FC<ItemProps> = ({ filterType, icon, text, code, onChangeFilter }) => {
   return (
     <div
       data-current={filterType === code}
       className={styles.filterItem}
       key={code}
-      onClick={() => setFilter({ filterType: code })}
+      onClick={() => onChangeFilter({ filterType: code })}
     >
       <i className={icon} />
       <span>{text}</span>

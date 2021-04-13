@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import SiteList from '@/component/siteList';
-import { useDidMount } from '@/utils/hooks';
+import { SortType } from '@/component/siteList/filter';
 import { querySites } from '@/utils/service';
 
 export default ({ history }: { history?: any }) => {
@@ -9,10 +9,16 @@ export default ({ history }: { history?: any }) => {
     total: 1,
   });
   const [data, setData] = useState([]);
+  const [filterType, setFilter] = useState<SortType>({
+    sortType: 'up',
+    filterType: 'submitDate',
+  });
+
   async function query(page = 1) {
     const { data: resData, totalCount } = await querySites({
       page,
       siteType: 'technology',
+      ...filterType,
     });
     if (resData) {
       setData(resData);
@@ -23,7 +29,11 @@ export default ({ history }: { history?: any }) => {
       });
     }
   }
-  useDidMount(query);
+  useEffect(() => {
+    if (filterType) {
+      query();
+    }
+  }, [filterType]);
   return (
     <SiteList
       pagination={{
@@ -33,6 +43,8 @@ export default ({ history }: { history?: any }) => {
       history={history}
       title="技术类站点"
       data={data}
+      filterType={filterType}
+      changeFilterQuery={setFilter}
     />
   );
 };

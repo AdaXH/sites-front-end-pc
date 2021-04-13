@@ -9,20 +9,20 @@ export const colors = [
 
 export const FILTER_TYPES = [
   {
-    code: 'time',
+    code: 'submitDate',
     text: '按时间',
-    icon: 'iconfont iconios-shijian',
+    icon: 'iconfont icontime1',
   },
   {
     code: 'hot',
     text: '按热度',
     icon: 'iconfont iconfire',
   },
-  {
-    code: 'random',
-    text: '随机',
-    icon: 'iconfont iconsuiji',
-  },
+  // {
+  //   code: 'random',
+  //   text: '随机',
+  //   icon: 'iconfont iconsuiji',
+  // },
 ];
 
 export const SORTER_TYPE = ['up', 'down'];
