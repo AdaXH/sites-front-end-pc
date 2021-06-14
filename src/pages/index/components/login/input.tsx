@@ -6,7 +6,7 @@ interface Props {
   name: string;
   onChange: Function;
   type: string;
-  onEnter: Function;
+  onEnter?: Function;
 }
 
 const Component: React.FC<Props> = ({ value, name, onChange, type = 'text', onEnter }) => {

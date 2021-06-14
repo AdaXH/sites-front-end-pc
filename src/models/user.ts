@@ -21,10 +21,9 @@ export interface User {
 export default {
   namespace: NAMESPACE,
   state: {
-    name: 'mockName',
+    name: '',
     isLogin: false,
-    avatar:
-      'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1825271931,3176680578&fm=26&gp=0.jpg',
+    avatar: 'https://bucker-for-sae.oss-cn-hangzhou.aliyuncs.com/sitesImages/82486042.jpg',
   },
   effects: {
     *register({ payload }, { call, put }) {
@@ -91,7 +90,7 @@ export default {
   },
 };
 
-function removeInfo() {
+export function removeInfo() {
   ['localhost', '.sites.applinzi.com', 'www.sites.applinzi.com', 'sites.link'].forEach((domain) => {
     Cookies.remove('siteToken', { domain });
   });

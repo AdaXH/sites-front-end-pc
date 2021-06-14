@@ -84,19 +84,19 @@ export default ({ data, setMsgList, siteUserId, isLogin }: MsgProps) => {
           <div className={styles.info}>
             <div
               className={styles.avatar}
-              style={{ backgroundImage: `url(${msgItem.fromUser.avatar})` }}
+              style={{ backgroundImage: `url(${msgItem?.fromUser?.avatar})` }}
             />
             <div className={styles.infos}>
               <div className={styles.msgName}>
                 <a href={`/site-userInfo/${msgItem.fromUserId}`} target="_blank" rel="noreferrer">
-                  {msgItem.fromUser.name}
+                  {msgItem?.fromUser?.name}
                 </a>
                 {msgItem.toUserId && msgItem.fromUserId !== msgItem.toUserId && (
                   <div>
                     {' '}
                     <span className={styles.aite}>@</span>{' '}
                     <a href={`/site-userInfo/${msgItem.toUserId}`} target="_blank" rel="noreferrer">
-                      {msgItem.toUser.name}
+                      {msgItem?.toUser?.name}
                     </a>
                   </div>
                 )}

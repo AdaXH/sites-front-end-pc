@@ -36,8 +36,8 @@ export default [
     component: () => import('@/pages/siteUser/index'),
   },
   {
-    path: '/user/*',
-    component: () => import('@/pages/userInfo/index'),
+    path: '/user-center/',
+    component: () => import('@/pages/userCenter/index'),
   },
   {
     path: '/super-admin',
@@ -50,5 +50,9 @@ export default [
   {
     path: '/more/about',
     component: () => import('@/pages/about/index'),
+  },
+  {
+    path: '/qq-login',
+    component: () => import('@/pages/qqLogin/index'),
   },
 ];

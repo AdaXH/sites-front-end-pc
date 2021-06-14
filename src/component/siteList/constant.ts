@@ -18,6 +18,11 @@ export const FILTER_TYPES = [
     text: '按热度',
     icon: 'iconfont iconfire',
   },
+  {
+    code: 'random',
+    text: '随机推荐',
+    icon: 'iconfont iconsuiji',
+  },
   // {
   //   code: 'random',
   //   text: '随机',

@@ -36,7 +36,7 @@ const Component: any = ({ email, onChange, registerEmailCode, onSetEmailCode, on
         start -= 1;
       }, 1000);
     }
-  }, [disabledStatus]);
+  }, [disabledStatus, email]);
   return (
     <React.Fragment>
       <div className={styles.email}>

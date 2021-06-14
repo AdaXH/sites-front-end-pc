@@ -9,6 +9,9 @@ declare module '*.svg' {
 
 interface Window {
   isMobile?: boolean;
+  QC?: {
+    Login?: any;
+  };
 }
 
 type RefCallback<T> = { bivarianceHack(instance: T | null): void }['bivarianceHack'];
@@ -20,4 +23,22 @@ interface BasicRef extends RefAttributes {
     [x?]: any;
     getValue?: Function;
   };
+}
+
+interface HistoryLocation {
+  pathname?: string;
+}
+
+interface History {
+  listen: any;
+  readonly length: number;
+  scrollRestoration: ScrollRestoration;
+  readonly state: any;
+  back(): void;
+  forward(): void;
+  go(delta?: number): void;
+  pushState(data: any, title: string, url?: string | null): void;
+  replaceState(data: any, title: string, url?: string | null): void;
+  location: HistoryLocation;
+  push?: any;
 }

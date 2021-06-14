@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import SiteList from '@/component/siteList';
 import { SortType } from '@/component/siteList/filter';
 import { querySites } from '@/utils/service';

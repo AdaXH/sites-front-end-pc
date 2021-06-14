@@ -75,14 +75,14 @@ export function resetObj(obj: any) {
   return obj;
 }
 
-// export function qqSign() {
-//   try {
-//     window.QC.Login.showPopup({
-//       appId: 'appid',
-//       redirectURI: '',
-//     });
-//   } catch (error) {}
-// }
+export function qqSign() {
+  try {
+    window.QC.Login.showPopup({
+      appId: '101946967',
+      redirectURI: 'https://sites.link/qq-login',
+    });
+  } catch (error) {}
+}
 
 export function getValueByRef(ref: Ref) {
   if (ref.current) {
@@ -109,11 +109,11 @@ function setTime(str: string) {
 export function formatTime(time: number | Date | string): string {
   const date = new Date(time);
   const year = date.getFullYear();
-  const month = date.getMonth() + '';
+  const month = `${date.getMonth() + 1}`;
   const day = date.getDate() + '';
   const hour = date.getHours() + '';
   const minu = date.getMinutes() + '';
-  return `${year}-${setTime(month + 1)}-${setTime(day)} ${setTime(hour)}:${setTime(minu)}`;
+  return `${year}-${setTime(month)}-${setTime(day)} ${setTime(hour)}:${setTime(minu)}`;
 }
 
 // export function parseHtml(str) {
@@ -147,7 +147,7 @@ export function getURL2Base64(url: string) {
 
 const { TITLE, DESC } = SITE_BASIC_INFO;
 
-export function updTitleDesc(title: string, desc: string) {
+export function updTitleDesc(title: string = '', desc: string) {
   document.title = `${title} ${TITLE}`;
   const {
     location: { pathname },

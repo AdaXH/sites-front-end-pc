@@ -1,8 +1,8 @@
-import React, { useCallback, useState, useMemo, useEffect } from 'react';
-import { FILTER_TYPES, SORTER_TYPE } from './constant';
+import React, { useCallback, useMemo } from 'react';
+import { FILTER_TYPES } from './constant';
 import classnames from 'classnames';
 
-const { code } = FILTER_TYPES[0];
+// const { code } = FILTER_TYPES[0];
 
 import styles from './styles.less';
 
@@ -18,12 +18,14 @@ export const Filter: React.FC<{
   if (!filterType) return null;
   const { sortType } = filterType;
   const isUp = useMemo(() => sortType === 'up', [sortType]);
+  const disabledSort = useMemo(() => filterType.filterType === 'random', [filterType]);
   const onChangeSortType = useCallback(() => {
+    if (disabledSort) return;
     changeFilterQuery({
       ...filterType,
       sortType: isUp ? 'down' : 'up',
     });
-  }, [filterType, isUp]);
+  }, [filterType, isUp, disabledSort]);
   const onChangeFilter = useCallback(
     (arg) => {
       changeFilterQuery({
@@ -35,7 +37,6 @@ export const Filter: React.FC<{
   );
   return (
     <div className={styles.con}>
-      <i className="iconfont iconuser-filter" />
       <div className={styles.filter}>
         {FILTER_TYPES.map(({ code, text, icon }) => (
           <Item
@@ -47,15 +48,17 @@ export const Filter: React.FC<{
             onChangeFilter={onChangeFilter}
           />
         ))}
-        <span
+        <div
           onClick={onChangeSortType}
           className={classnames({
             [styles.sort]: true,
             [styles.downSort]: !isUp,
+            [styles.disabled]: disabledSort,
           })}
         >
-          <i className="iconfont iconshengxu" />
-        </span>
+          <span />
+          <span />
+        </div>
       </div>
     </div>
   );

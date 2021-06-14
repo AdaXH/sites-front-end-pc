@@ -1,0 +1,100 @@
+@COLOR: rgb(255, 255, 255);
+@BORDER: rgba(255, 255, 255, 0.85);
+
+@keyframes container {
+  from {
+    transform: translateX(0) rotate(-1deg);
+  }
+  40% {
+    transform: translateX(0) rotate(0);
+  }
+  to {
+    transform: translateX(0) rotate(-1deg);
+  }
+}
+.box {
+  padding: 10px;
+  // border: 1px solid #839daa;
+  background: #497387;
+  border-radius: 5px;
+  animation: container 10s infinite;
+  width: 550px;
+  height: 260px;
+}
+.basic {
+  overflow: hidden;
+  display: flex;
+  .avatarBox {
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    .emailText {
+      margin-top: 10px;
+      letter-spacing: 1px;
+      color: @BORDER;
+      // font-weight: 550;
+      white-space: pre-wrap;
+      text-align: center;
+    }
+    .avatar {
+      width: 100px;
+      height: 100px;
+      background-color: white;
+      border-radius: 50%;
+      overflow: hidden;
+      background-size: cover;
+    }
+  }
+  .info {
+    flex: 1;
+    margin-left: 20px;
+  }
+}
+.item {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  .label {
+    width: 80px;
+    color: @BORDER;
+    text-align: right;
+  }
+  .con {
+    display: block;
+    flex: 1;
+    button {
+      margin-top: 5px;
+    }
+    :global {
+      .ant-radio-wrapper {
+        color: @COLOR;
+      }
+      textarea {
+        resize: none;
+        color: @COLOR;
+        border-color: @BORDER;
+        background: transparent;
+      }
+    }
+    input {
+      height: 30px;
+      padding-left: 10px;
+      color: @COLOR;
+      background: transparent;
+      border-color: @BORDER;
+    }
+  }
+}
+.updBtn {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+  .button {
+    width: 100px;
+    text-align: right;
+    cursor: pointer;
+    color: @COLOR;
+  }
+}

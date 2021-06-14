@@ -1,0 +1,42 @@
+@COLOR: rgba(4, 4, 4, 0.75);
+@BORDER: #40c2f8;
+.item {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  color: @COLOR;
+  a {
+    margin-right: 5px;
+  }
+}
+@keyframes container {
+  from {
+    transform: translateX(0) rotate(-1deg);
+  }
+  40% {
+    transform: translateX(0) rotate(0);
+  }
+  to {
+    transform: translateX(0) rotate(-1deg);
+  }
+}
+.table {
+  // width: 80%;
+  background: #497387;
+  animation: container 10s infinite;
+  padding: 10px;
+
+  table tr {
+    td {
+      max-width: 100px;
+      white-space: pre-wrap;
+    }
+    th {
+      // text-align: center;
+      background: rgba(255, 255, 255, 0.75);
+    }
+  }
+}
+.link {
+  color: @COLOR;
+}

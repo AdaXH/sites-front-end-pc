@@ -94,7 +94,7 @@ export default ({ history, title, data, pagination, changeFilterQuery, filterTyp
                   );
                 })}
               </div>
-              {pagination && (
+              {pagination && pagination.total > 12 && (
                 <span style={displayStyle}>
                   <Page pagination={pagination} />
                 </span>

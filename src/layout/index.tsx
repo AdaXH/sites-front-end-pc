@@ -1,4 +1,5 @@
 import React, { useCallback, useState, useEffect, Fragment } from 'react';
+import UserCenterLayout from './userCenterLayout';
 import { useDidMount } from '../utils/hooks';
 import { setCache, getCache } from '../utils/functions';
 import { DEFAULT_BG } from './constant';
@@ -37,6 +38,9 @@ export default ({ children, history }: Props) => {
   }, []);
   const { bgList } = config;
   if (pathname === '/super-admin') return <Fragment>{children}</Fragment>;
+  // if (/user\//.test(pathname)) {
+  //   return <UserCenterLayout history={history}>{children}</UserCenterLayout>;
+  // }
   return (
     <div className={styles.body}>
       <Header history={history} />

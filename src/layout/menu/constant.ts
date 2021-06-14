@@ -8,6 +8,7 @@ export interface Route {
   childRoutes?: [Route];
   hidden?: boolean;
   permission?: boolean;
+  needLogin?: boolean;
   type?: string;
 }
 
@@ -62,6 +63,12 @@ export const routes: Array<Route> = [
     icon: 'icon-search',
     bgColor: '#eadfc8',
     iconfont: 'icon-search1',
+  },
+  {
+    path: '/user-center',
+    title: '个人中心',
+    iconfont: 'iconuser1',
+    needLogin: true,
   },
   {
     path: '/more',

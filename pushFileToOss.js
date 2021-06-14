@@ -1,15 +1,12 @@
 const bucketName = 'bucker-for-sae';
-// //accesskey
-const accesskey = 'accesskey';
-// //accesskeySecret
-const accesskeysecret = 'accesskeysecret';
+const { accessKeyId, accessKeySecret } = require('./access');
 
 const fs = require('fs');
 const OSS = require('ali-oss');
 const client = new OSS({
   region: 'oss-cn-hangzhou',
-  accessKeyId: accesskey,
-  accessKeySecret: accesskeysecret,
+  accessKeyId,
+  accessKeySecret,
   bucket: bucketName,
 });
 

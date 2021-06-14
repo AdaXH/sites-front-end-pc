@@ -1,0 +1,48 @@
+@LABEL_COLOR: #40c2f8;
+
+.footerInfo {
+  position: absolute;
+  bottom: 140px;
+  white-space: nowrap;
+  left: 50%;
+  color: @LABEL_COLOR;
+  text-align: center;
+  transform: translate3d(-50%, 30px, 0);
+  opacity: 0;
+  animation: show 0.4s forwards;
+  span,
+  a {
+    color: #ef8c81;
+  }
+}
+.ba {
+  text-align: center;
+  a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: @LABEL_COLOR;
+  }
+  img {
+    display: inline-block;
+  }
+  p {
+    display: inline-block;
+    margin: 0;
+  }
+}
+@keyframes show {
+  from {
+    transform: translate3d(-50%, 30px, 0);
+    opacity: 0;
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+    opacity: 1;
+  }
+}
+@media screen and (max-height: 700px) {
+  .footerInfo {
+    display: none;
+  }
+}

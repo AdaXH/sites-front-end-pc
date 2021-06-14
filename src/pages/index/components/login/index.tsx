@@ -1,5 +1,6 @@
 import React, { useState, Fragment } from 'react';
 import Notification from '@/component/Notification';
+import { qqSign } from '@/utils/functions';
 import Input from './input';
 import Email from './email';
 import { Base64 } from 'js-base64';
@@ -49,7 +50,7 @@ const Login: React.FC<{ dispatch: Function }> = ({ dispatch }) => {
       if (!password) {
         throw '请输入密码';
       }
-      if (password.length < 6 || name.length > 20) {
+      if (password.length < 6 || password.length > 20) {
         throw '密码长度6-20位';
       }
       if (!isLogin && password !== submitPassword) {
@@ -80,6 +81,9 @@ const Login: React.FC<{ dispatch: Function }> = ({ dispatch }) => {
             </a>
             <a data-current="false" onClick={() => setModal(true)}>
               忘记密码
+            </a>
+            <a data-current="false" onClick={qqSign}>
+              QQ登录
             </a>
           </div>
           <Input

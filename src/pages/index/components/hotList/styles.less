@@ -6,7 +6,7 @@
   right: 50px;
   top: 0;
   width: 316px;
-  min-height: 200px;
+  height: 350px;
   background: rgba(255, 255, 255, 0.11);
   padding: 10px;
   letter-spacing: 1px;
@@ -21,6 +21,8 @@
   .list {
     display: flex;
     flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeIn 0.5s forwards;
     .listItem {
       margin-bottom: 10px;
       color: black;
@@ -117,7 +119,21 @@
   }
 }
 
-@media screen and (max-width: 800px) {
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .listBox {
+    display: none;
+  }
+}
+@media screen and (max-height: 700px) {
   .listBox {
     display: none;
   }

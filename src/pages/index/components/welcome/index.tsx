@@ -1,6 +1,7 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useCallback } from 'react';
 import Notification from '@/component/Notification';
 import { User } from '@/models/user';
+import { qqSign } from '@/utils/functions';
 import Fly from './fly';
 import Login from '../login';
 import styles from './styles.less';
@@ -20,7 +21,7 @@ export const Welcome: React.FC<WelProps> = ({ dispatch, user, history }) => {
   };
   const { isLogin, name, admin } = user;
   const onView = () => {
-    history.push('/user/basic-info');
+    history.push('/user-center');
   };
   const topTyle = useMemo(
     () => ({
@@ -35,6 +36,7 @@ export const Welcome: React.FC<WelProps> = ({ dispatch, user, history }) => {
     }
     window.open('/super-admin');
   };
+
   return (
     <div className={styles.homeContainer}>
       <div className={styles.welcomeContainer} style={topTyle}>
@@ -53,7 +55,8 @@ export const Welcome: React.FC<WelProps> = ({ dispatch, user, history }) => {
             </div>
             {!isLogin ? (
               <React.Fragment>
-                <a onClick={onSign}>登录</a>以解锁站点提交、收藏、留言等操作
+                <a onClick={onSign}>账号密码登录</a> | <a onClick={qqSign}>QQ快捷登录</a>
+                以解锁站点提交、收藏、留言等操作
                 <div>
                   不想注册？点击
                   <a onClick={() => history.push('/submit-site?submitType=quickSubmit')}>
