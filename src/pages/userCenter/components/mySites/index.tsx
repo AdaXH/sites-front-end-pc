@@ -22,19 +22,16 @@ export default ({ reLoad, history }) => {
       reLoad();
     }
   };
+  const renderOperation = ({ _id: siteId, siteType, userId }) => [
+    <a onClick={() => window.open(`/submit-site?siteId=${siteId}&siteType=${siteType}`)}>编辑</a>,
+    <Popconfirm title="确认删除？" onConfirm={() => onDelete(siteId, userId, siteType)}>
+      <a>删除</a>
+    </Popconfirm>,
+  ];
   return (
     <div className={styles.table}>
       {data.map((item) => (
-        <SiteItem
-          key={item._id}
-          data={item}
-          renderOperation={({ _id: siteId, siteType, userId }) => (
-            <Popconfirm title="确认删除？" onConfirm={() => onDelete(siteId, userId, siteType)}>
-              <a>删除</a>
-            </Popconfirm>
-          )}
-          history={history}
-        />
+        <SiteItem key={item._id} data={item} renderOperation={renderOperation} history={history} />
       ))}
     </div>
   );
