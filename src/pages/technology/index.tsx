@@ -25,7 +25,7 @@ export default ({ history }: { history?: any }) => {
       setPage({
         ...pagination,
         current: page,
-        total: totalCount,
+        total: totalCount * 20,
       });
     }
   }

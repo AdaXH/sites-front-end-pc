@@ -51,6 +51,11 @@ export default ({ history, title, data, pagination, changeFilterQuery, filterTyp
               <Filter filterType={filterType} changeFilterQuery={changeFilterQuery} />
             </span>
             <div className={styles.listCon}>
+              {pagination && pagination.total > 12 && (
+                <span style={displayStyle} className={styles.pageWrap}>
+                  <Page pagination={pagination} />
+                </span>
+              )}
               <div className={styles.list}>
                 {data.map((item) => {
                   return (
@@ -94,11 +99,6 @@ export default ({ history, title, data, pagination, changeFilterQuery, filterTyp
                   );
                 })}
               </div>
-              {pagination && pagination.total > 12 && (
-                <span style={displayStyle}>
-                  <Page pagination={pagination} />
-                </span>
-              )}
             </div>
           </Fragment>
         </Fragment>

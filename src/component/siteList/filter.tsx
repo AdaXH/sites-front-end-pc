@@ -58,6 +58,7 @@ export const Filter: React.FC<{
         >
           <span />
           <span />
+          <div className={styles.sortWayText}>{isUp ? '升序' : '降序'}</div>
         </div>
       </div>
     </div>

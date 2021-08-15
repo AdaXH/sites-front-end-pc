@@ -2,7 +2,7 @@
 @BORDER: #40c2f8;
 .defaultPag {
   display: inline-block;
-  width: 30px;
+  // width: 30px;
   height: 30px;
   border-radius: 15px;
   cursor: pointer;
@@ -22,6 +22,13 @@
   position: relative;
   // left: -50px;
   :global {
+    .ant-pagination-jump-prev .ant-pagination-item-container .ant-pagination-item-link-icon,
+    .ant-pagination-jump-next .ant-pagination-item-container .ant-pagination-item-link-icon {
+      position: relative;
+      left: 5px;
+      transform-origin: center;
+      transform: rotate(90deg);
+    }
     .ant-pagination-item {
       span {
         width: 10px;
@@ -55,6 +62,11 @@
       transition: none;
       background: transparent;
       border: none;
+    }
+    .ant-pagination-prev,
+    .ant-pagination-next {
+      transform-origin: center;
+      transform: rotate(90deg);
     }
     .ant-pagination-next a,
     .ant-pagination-prev a {

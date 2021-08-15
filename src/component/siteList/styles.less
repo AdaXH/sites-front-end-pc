@@ -2,11 +2,18 @@
 @HOVER: #ef8c81;
 @COLOR: #fcbbb1;
 @BORDER: #40c2f8;
+.listCon {
+  display: flex;
+  .pageWrap {
+    width: 50px;
+  }
+}
 .list {
   display: flex;
   flex-wrap: wrap;
   margin: 0px auto;
   justify-content: flex-start;
+  flex: 1;
   .item {
     position: relative;
     width: 300px;
@@ -132,11 +139,7 @@
     .filterItem[data-current='true'] {
       opacity: 1;
     }
-    // .filterItem:last-of-type {
-    //   margin-left: 20px;
-    // }
     .filterItem:last-of-type::before {
-      // border: none;
       display: none;
     }
     .sort {
@@ -144,11 +147,17 @@
       transform-origin: center;
       cursor: pointer;
       position: relative;
-      margin-left: 50px;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      position: relative;
+      .sortWayText {
+        position: absolute;
+        left: 15px;
+        top: 4px;
+        white-space: nowrap;
+      }
       span {
         display: block;
         width: 0;
