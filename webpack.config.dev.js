@@ -40,7 +40,7 @@ module.exports = {
     alias: {
       '@': path.resolve(__dirname, 'src/'),
     },
-    extensions: ['.js', '.jsx', '.css', '.less', '.ts', '.tsx'],
+    extensions: ['.js', '.jsx', '.css', '.less', '.ts', '.tsx', '.png'],
   },
   stats: {
     children: false,
@@ -49,6 +49,10 @@ module.exports = {
 
   module: {
     rules: [
+      {
+        test: /.png/,
+        use: ['url-loader'],
+      },
       {
         test: /\.js|jsx$/,
         include: [path.resolve(__dirname, 'src')],

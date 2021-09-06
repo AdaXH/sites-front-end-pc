@@ -19,7 +19,7 @@ export default memo(() => {
         className={styles.codeShape}
       />
       <svg width="200" height="200">
-        <path d={path} fill="none" stroke="#40c2f8" />
+        <path d={path} fill="none" stroke="white" />
       </svg>
     </div>
   );

@@ -1,5 +1,5 @@
 import React, { useCallback, useState, useEffect, Fragment } from 'react';
-import UserCenterLayout from './userCenterLayout';
+// import UserCenterLayout from './userCenterLayout';
 import { useDidMount } from '../utils/hooks';
 import { setCache, getCache } from '../utils/functions';
 import { DEFAULT_BG } from './constant';
@@ -7,6 +7,7 @@ import { Header } from './menu';
 import ViewBox from './viewBox';
 import { CACHE_BG_KEY } from './constant';
 import { getConfig } from './service';
+import bg from '../assetes/gray.png';
 // import bg from './asset/bg.jpg';
 
 import styles from './styles.less';
@@ -44,8 +45,7 @@ export default ({ children, history }: Props) => {
   return (
     <div className={styles.body}>
       <Header history={history} />
-      <div className={styles.bg} style={{ backgroundImage: `url(${curBg})` }} />
-      <div className={styles.bgWrap}></div>
+      <div className={styles.bg} />
       <div className={styles.childrenBox}>
         <div className={styles.viewBox}>
           <ViewBox onChangeBg={onChangeBg} data={{ bgList }} />

@@ -67,6 +67,10 @@ export const Header: React.FC<Props> = connect(({ user }) => ({ user }))((props)
   }
   return (
     <header className={styles.header}>
+      <h1 className={styles.logo}>
+        <span>site|ink</span>
+        <span className={styles.bottom}>sites.link</span>
+      </h1>
       <ul>
         {renderLinks(routes)}
         <div className={styles.navLine} style={style} />
