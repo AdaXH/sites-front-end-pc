@@ -60,9 +60,9 @@ export default function Api(
             if (noError) {
               return;
             }
-            Notification.fail({
-              msg: parseError((result && result.errorMsg) || result),
-            });
+            // Notification.fail({
+            //   msg: parseError((result && result.errorMsg) || result),
+            // });
           }
         })
         .catch((err) => {})

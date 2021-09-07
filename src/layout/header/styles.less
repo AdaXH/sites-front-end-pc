@@ -1,17 +1,15 @@
-@COLOR: #ef8c81;
-@BORDER: white;
+@import '../../common/styles/constant.less';
 @keyframes nav {
   from {
     opacity: 0;
-    transform: translate3d(0, -30px, 0);
+    margin-top: -30px;
   }
   to {
     opacity: 1;
-    transform: translate3d(0, 0, 0);
+    margin-top: 0;
   }
 }
 
-@themeColor: #f54c53;
 .header {
   width: 100%;
   height: 80px;
@@ -22,7 +20,6 @@
   position: fixed;
   top: 0;
   left: 0;
-  animation: nav 1s;
   padding: 0 40px;
   display: flex;
   justify-content: space-between;
@@ -66,9 +63,9 @@
       position: absolute;
       bottom: 20px;
       width: 36px;
-      transform: translateX(30px);
+      transform: translateX(14px);
       transition: all 0.4s;
-      border: 1px solid @BORDER;
+      border: 1px solid @FONTCOLOR;
       border-left-color: transparent;
       border-right-color: transparent;
       z-index: -1;
@@ -78,7 +75,10 @@
     }
     li {
       display: inline-block;
-      margin-left: 10px;
+      margin-left: 4px;
+      animation: nav 0.3s forwards;
+      opacity: 0;
+      margin-top: -30px;
       a {
         display: block;
         padding: 0 0 0 20px;
@@ -88,10 +88,10 @@
         white-space: nowrap;
       }
       a:hover {
-        color: @BORDER;
+        color: @HOVERCOLOR;
       }
       a[data-current='true'] {
-        color: @BORDER;
+        color: @FONTCOLOR;
       }
     }
     .search {
@@ -102,29 +102,7 @@
     }
   }
 }
-header.morefriendship,
-header.moreadmin {
-  transform: translateY(0px);
-  z-index: 200;
-  animation-delay: 1s;
-  * {
-    color: #2d2c2cd6;
-  }
-  a:hover {
-    color: #f54c53;
-  }
-}
-header.morenetease {
-  transform: translateY(0px);
-  z-index: 200;
-  animation-delay: 1s;
-  * {
-    color: white;
-  }
-  a:hover {
-    color: #f54c53;
-  }
-}
+
 @keyframes bgWhite {
   from {
     background: transparent;

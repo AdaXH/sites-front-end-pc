@@ -15,6 +15,7 @@
     "antd": "^3.19.5",
     "classnames": "^2.2.6",
     "dva": "^2.4.1",
+    "jquery": "^3.6.0",
     "js-base64": "^2.4.8",
     "js-cookie": "^2.2.1",
     "js-md5": "^0.7.3",
@@ -22,7 +23,8 @@
     "react": "^16.8.7",
     "react-dom": "^16.8.7",
     "react-use": "^17.1.1",
-    "showdown": "^1.9.1"
+    "showdown": "^1.9.1",
+    "sine-waves": "^0.3.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.4",

@@ -1,13 +1,14 @@
 import React, { useCallback, useState, useEffect, Fragment } from 'react';
 // import UserCenterLayout from './userCenterLayout';
+import Shake from './shake';
+import Wave from './canvas';
+import Design from './design';
 import { useDidMount } from '../utils/hooks';
 import { setCache, getCache } from '../utils/functions';
 import { DEFAULT_BG } from './constant';
-import { Header } from './menu';
-import ViewBox from './viewBox';
+import { Header } from './header';
 import { CACHE_BG_KEY } from './constant';
 import { getConfig } from './service';
-import bg from '../assetes/gray.png';
 // import bg from './asset/bg.jpg';
 
 import styles from './styles.less';
@@ -34,10 +35,6 @@ export default ({ children, history }: Props) => {
       setCfg(data);
     }
   });
-  const onChangeBg = useCallback((newBgUrl) => {
-    setBg(newBgUrl === 'default' ? DEFAULT_BG : newBgUrl);
-  }, []);
-  const { bgList } = config;
   if (pathname === '/super-admin') return <Fragment>{children}</Fragment>;
   // if (/user\//.test(pathname)) {
   //   return <UserCenterLayout history={history}>{children}</UserCenterLayout>;
@@ -45,15 +42,17 @@ export default ({ children, history }: Props) => {
   return (
     <div className={styles.body}>
       <Header history={history} />
-      <div className={styles.bg} />
-      <div className={styles.childrenBox}>
-        <div className={styles.viewBox}>
-          <ViewBox onChangeBg={onChangeBg} data={{ bgList }} />
+      <div className={styles.bg}>
+        <Wave />
+      </div>
+      <Shake>
+        <div className={styles.childrenBox}>
           <div className={styles.animate} key={/user/.test(pathname) ? 'default' : pathname}>
             {children}
           </div>
         </div>
-      </div>
+      </Shake>
+      <Design />
     </div>
   );
 };

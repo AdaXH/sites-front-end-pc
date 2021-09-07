@@ -1,3 +1,4 @@
+@import './common/styles/constant.less';
 html,
 body,
 #root {
@@ -17,15 +18,19 @@ body {
 a[data-disabled='true'] {
   cursor: not-allowed;
 }
-@COLOR: #ef8c81;
-@BORDER: white;
 :global {
   div.ant-message-notice-content {
-    background: @BORDER;
+    background: @FONTCOLOR;
     span {
       color: white;
       font-size: 16px;
       letter-spacing: 1px;
     }
   }
+}
+a {
+  color: #dedede;
+}
+a:hover {
+  color: @HOVERCOLOR !important;
 }

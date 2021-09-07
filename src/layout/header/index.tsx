@@ -40,7 +40,7 @@ export const Header: React.FC<Props> = connect(({ user }) => ({ user }))((props)
     });
   }, [user.isLogin]);
   function renderLinks(links: Array<Route>) {
-    return links.map((item) => {
+    return links.map((item, index) => {
       const { hidden, permission, type, childRoutes, path, title, iconfont, needLogin } = item;
       if (hidden || (permission && !user.admin)) return null;
       if (needLogin && !user.isLogin) return null;
@@ -62,7 +62,11 @@ export const Header: React.FC<Props> = connect(({ user }) => ({ user }))((props)
           />
         );
       }
-      return <li key={path}>{content}</li>;
+      return (
+        <li style={{ animationDelay: `${index * 0.05}s` }} key={path}>
+          {content}
+        </li>
+      );
     });
   }
   return (
