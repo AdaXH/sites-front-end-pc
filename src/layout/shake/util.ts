@@ -573,9 +573,9 @@ export function init(dom) {
     })();
   
     $(dom).parallax({
-      invertX: true,
-      invertY: true,
-      scalarX: 5,
+      // invertX: true,
+      // invertY: true,
+      scalarX: 3,
       frictionY: 0.1,
       // enable: true,
     });

@@ -18,6 +18,9 @@ body {
 a[data-disabled='true'] {
   cursor: not-allowed;
 }
+p {
+  margin: 0;
+}
 :global {
   div.ant-message-notice-content {
     background: @FONTCOLOR;
@@ -29,7 +32,7 @@ a[data-disabled='true'] {
   }
 }
 a {
-  color: #dedede;
+  color: rgba(255, 255, 255, 0.9);
 }
 a:hover {
   color: @HOVERCOLOR !important;

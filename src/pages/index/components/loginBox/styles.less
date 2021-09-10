@@ -1,0 +1,34 @@
+@import '../../../../common/styles/constant.less';
+@import '../../../../common/styles/base.less';
+
+.loginBox {
+  min-width: 500px;
+  width: 40vw;
+  height: 300px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  margin: 20vh auto;
+  display: flex;
+  flex-direction: column;
+  // justify-content: center;
+  align-items: center;
+  color: @FONTCOLOR;
+  padding: 30px;
+  // background-color: @COMMONBG;
+  overflow: hidden;
+  .transform {
+    will-change: transform;
+    transform-style: preserve-3d;
+    transition: all 0.4s;
+  }
+}
+
+.item {
+  .flex(column);
+  justify-content: flex-start;
+  height: 300px;
+  .title {
+    letter-spacing: 5px;
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+}
