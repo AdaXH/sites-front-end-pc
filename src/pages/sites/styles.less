@@ -1,0 +1,36 @@
+@import '../../common/styles/constant.less';
+.sites {
+  position: relative;
+  margin: 0 auto;
+  margin-top: 100px;
+  max-width: 800px;
+  width: 80vw;
+  min-width: 600px;
+  .pageBox {
+    position: fixed;
+    top: calc(50% - 80px);
+    transform: translateY(-50%);
+    left: 50px;
+  }
+  .menus {
+    display: flex;
+    padding: 10px 0;
+    border-bottom: 1px solid @FONTCOLOR;
+    &Item {
+      margin-right: 10px;
+      cursor: pointer;
+      color: @FONTCOLOR;
+      font-size: 16px;
+    }
+  }
+  &Con {
+    margin-top: 20px;
+    min-height: 80vh;
+    &Title {
+      letter-spacing: 1px;
+      color: @FONTCOLOR;
+      font-weight: 600;
+      margin: 0;
+    }
+  }
+}
