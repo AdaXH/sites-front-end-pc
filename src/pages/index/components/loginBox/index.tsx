@@ -4,12 +4,17 @@ import { COMPONENT_LIST } from './constant';
 
 import styles from './styles.less';
 
-export const LoginBox: React.FC<{ current: number }> = ({ current }) => {
+export type changeFn = (page: number) => void;
+
+export const LoginBox: React.FC<{ current: number; onChangePage: changeFn }> = ({
+  current,
+  onChangePage,
+}) => {
   // const [Component, setCom] = useState();
   //   const { Element } = COMPONENT_LIST[current - 1] || {};
   const style = useMemo(() => {
     return {
-      transform: `translate3d(0, -${(current - 1) * 300}px, 0)`,
+      transform: `translate3d(0, -${(current - 1) * 350}px, 0)`,
     };
   }, [current]);
   return (
@@ -20,7 +25,7 @@ export const LoginBox: React.FC<{ current: number }> = ({ current }) => {
             <div key={title} className={styles.item}>
               <div className={styles.title}>{title}</div>
               <section>
-                <Element />
+                <Element onChangePage={onChangePage} />
               </section>
             </div>
           );

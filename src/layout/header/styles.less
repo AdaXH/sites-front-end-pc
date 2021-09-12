@@ -65,7 +65,7 @@
       width: 36px;
       transform: translateX(14px);
       transition: all 0.4s;
-      border: 1px solid @FONTCOLOR;
+      border-bottom: 1px solid @FONTCOLOR;
       border-left-color: transparent;
       border-right-color: transparent;
       z-index: -1;
@@ -75,23 +75,32 @@
     }
     li {
       display: inline-block;
-      margin-left: 4px;
       animation: nav 0.3s forwards;
       opacity: 0;
+      margin-left: 20px;
       margin-top: -30px;
       a {
         display: block;
-        padding: 0 0 0 20px;
         color: @FONTCOLOR;
         transition: all 0.4s;
         letter-spacing: 2px;
         white-space: nowrap;
+        border-bottom: 1px solid transparent;
+        i {
+          font-size: 18px;
+        }
+        :global {
+          .icon-search1 {
+            font-size: 16px;
+          }
+        }
       }
       a:hover {
         color: @HOVERCOLOR;
       }
       a[data-current='true'] {
         color: @FONTCOLOR;
+        border-bottom: 1px solid white;
       }
     }
     .search {

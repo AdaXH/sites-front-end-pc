@@ -39,7 +39,7 @@ export default ({ history, title, data, pagination, changeFilterQuery, filterTyp
   );
   return (
     <Fragment>
-      <Content title={title}>
+      <Content>
         <Fragment>
           {data.length === 0 && (
             <div className={styles.info}>

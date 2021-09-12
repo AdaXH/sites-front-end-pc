@@ -4,7 +4,6 @@ import { connect } from 'dva';
 import { routes, Route } from './constant';
 import { SITE_BASIC_INFO } from '@/utils/constant';
 import Menu from './menu';
-import { getNavStyle } from './util';
 import styles from './styles.less';
 
 const { TITLE } = SITE_BASIC_INFO;
@@ -16,17 +15,17 @@ interface Props {
 
 export const Header: React.FC<Props> = connect(({ user }) => ({ user }))((props) => {
   const { history, user } = props;
-  const [style, setStyle] = useState({});
   const {
     location: { pathname },
     push,
   } = history;
+  const [activePath, setPath] = useState<String>(pathname);
+
   useEffect(() => {
     history.listen(() => {
       const {
         location: { pathname },
       } = history;
-      setStyle(getNavStyle(pathname, styles));
       const { title } =
         routes.find((item: Route) => {
           if (!item.childRoutes) {
@@ -36,6 +35,7 @@ export const Header: React.FC<Props> = connect(({ user }) => ({ user }))((props)
             return iItem.path === pathname;
           });
         }) || {};
+      setPath(pathname);
       document.title = pathname === '/' ? TITLE : `${title || ''} ${TITLE}` || TITLE;
     });
   }, [user.isLogin]);
@@ -46,7 +46,7 @@ export const Header: React.FC<Props> = connect(({ user }) => ({ user }))((props)
       if (needLogin && !user.isLogin) return null;
       const renderTitle = iconfont ? <i className={`iconfont ${iconfont}`} /> : title;
       let content = (
-        <a key={path} onClick={() => push(path)} data-url={path} data-current={pathname === path}>
+        <a key={path} onClick={() => push(path)} data-url={path} data-current={activePath === path}>
           {renderTitle}
         </a>
       );
@@ -63,7 +63,11 @@ export const Header: React.FC<Props> = connect(({ user }) => ({ user }))((props)
         );
       }
       return (
-        <li style={{ animationDelay: `${index * 0.05}s` }} key={path}>
+        <li
+          style={{ animationDelay: `${index * 0.05}s` }}
+          key={path}
+          data-current={pathname === path}
+        >
           {content}
         </li>
       );
@@ -75,10 +79,7 @@ export const Header: React.FC<Props> = connect(({ user }) => ({ user }))((props)
         <span>site|ink</span>
         <span className={styles.bottom}>sites.link</span>
       </h1>
-      <ul>
-        {renderLinks(routes)}
-        <div className={styles.navLine} style={style} />
-      </ul>
+      <ul>{renderLinks(routes)}</ul>
     </header>
   );
 });

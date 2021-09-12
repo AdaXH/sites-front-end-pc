@@ -27,21 +27,22 @@ const Component: React.FC<Props> = ({ value, name, onChange, type = 'text', onEn
   };
   return (
     <div className={styles.inputItem}>
-      <span className={styles.name} style={nameStyle}>
+      {/* <span className={styles.name} style={nameStyle}>
         {name}
-      </span>
-      <div className={styles.inputWrap}>
-        <input
-          onFocus={() => setFoucus(true)}
-          onBlur={() => setFoucus(!!value)}
-          value={value}
-          onKeyDown={(e: any) => onKeyDown(e)}
-          onChange={(e: ChangeEvent<HTMLInputElement>) => onInsert(e)}
-          type={type}
-          // autoComplete="off"
-          // autocomplete="new-password"
-        />
-      </div>
+      </span> */}
+      {/* <div className={styles.inputWrap}> */}
+      <input
+        onFocus={() => setFoucus(true)}
+        onBlur={() => setFoucus(!!value)}
+        value={value}
+        onKeyDown={(e: any) => onKeyDown(e)}
+        onChange={(e: ChangeEvent<HTMLInputElement>) => onInsert(e)}
+        type={type}
+        placeholder={name}
+        // autoComplete="off"
+        // autocomplete="new-password"
+      />
+      {/* </div> */}
     </div>
   );
 };

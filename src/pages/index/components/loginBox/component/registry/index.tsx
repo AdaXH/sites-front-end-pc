@@ -16,7 +16,7 @@ interface ValState {
   password?: string;
 }
 
-export const Login: React.FC<{ dispatch: Function; onChangePage: changeFn }> = ({
+export const Registry: React.FC<{ dispatch: Function; onChangePage: changeFn }> = ({
   dispatch,
   onChangePage,
 }) => {
@@ -35,7 +35,7 @@ export const Login: React.FC<{ dispatch: Function; onChangePage: changeFn }> = (
         ...values,
         password: Base64.encode(hex(values.password || '')),
       };
-      const api = isLogin ? 'user/login' : 'user/register';
+      const api = 'user/register';
       // 注册
       if (!name) {
         throw '请输入用户名';
@@ -72,9 +72,25 @@ export const Login: React.FC<{ dispatch: Function; onChangePage: changeFn }> = (
     <div className={styles.container}>
       <Input
         // name="User name or E-mail"
-        name="用户名或邮箱"
+        name="用户名"
         value={name}
         onChange={(val: string) => setNewVal('name', val)}
+        onEnter={onSubmit}
+        type="text"
+      />
+      <Input
+        // name="User name or E-mail"
+        name="邮箱"
+        value={email}
+        onChange={(val: string) => setNewVal('email', val)}
+        onEnter={onSubmit}
+        type="text"
+      />
+      <Input
+        // name="User name or E-mail"
+        name="验证码"
+        value={email}
+        onChange={(val: string) => setNewVal('registerEmailCode', val)}
         onEnter={onSubmit}
         type="text"
       />
@@ -86,20 +102,23 @@ export const Login: React.FC<{ dispatch: Function; onChangePage: changeFn }> = (
         onChange={(val: string) => setNewVal('password', val)}
         onEnter={onSubmit}
       />
+      <Input
+        // name="Password"
+        name="密码确认"
+        value={submitPassword}
+        type="password"
+        onChange={(val: string) => setNewVal('submitPassword', val)}
+        onEnter={onSubmit}
+      />
       <a data-line className={styles.footer} onClick={onSubmit}>
         GO
         <i className="iconfont iconqianjin" />
       </a>
       <div className={styles.or}>
-        没有账号？前往{' '}
-        <a data-line onClick={() => onChangePage(3)}>
-          注册
+        已有账号？前往{' '}
+        <a data-line onClick={() => onChangePage(2)}>
+          登录
         </a>
-        ，或使用{' '}
-        <a data-line onClick={qqSign}>
-          QQ
-        </a>{' '}
-        快速登陆
       </div>
     </div>
   );

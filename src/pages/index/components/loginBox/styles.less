@@ -2,10 +2,8 @@
 @import '../../../../common/styles/base.less';
 
 .loginBox {
-  min-width: 500px;
-  width: 40vw;
-  height: 300px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  width: 500px;
+  height: 340px;
   margin: 20vh auto;
   display: flex;
   flex-direction: column;
@@ -25,10 +23,16 @@
 .item {
   .flex(column);
   justify-content: flex-start;
-  height: 300px;
+  height: 340px;
+  width: 90%;
+  margin: 0 auto;
+  section {
+    width: 100%;
+  }
   .title {
     letter-spacing: 5px;
     font-size: 18px;
     margin-bottom: 20px;
+    font-weight: 600;
   }
 }

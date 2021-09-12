@@ -1,4 +1,6 @@
 @import './common/styles/constant.less';
+@import 'https://at.alicdn.com/t/font_2343536_23gin8tpwcy.css';
+
 html,
 body,
 #root {
@@ -36,4 +38,11 @@ a {
 }
 a:hover {
   color: @HOVERCOLOR !important;
+}
+a[data-line] {
+  text-decoration: underline;
+  color: inherit;
+  &:hover {
+    text-decoration: underline;
+  }
 }

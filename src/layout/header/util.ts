@@ -16,7 +16,7 @@ export function getNavStyle(pathname: string, styles?: any, ans?: any): object {
       continue;
     }
     if (url && pathname.includes(url)) {
-      const MARGIN_LEFT = -30;
+      const MARGIN_LEFT = 0;
       const width = anchor.offsetWidth;
       const offsetLeft = !ans ? anchor.offsetLeft : anchor.parentNode.parentNode.offsetLeft;
       const left = offsetLeft + MARGIN_LEFT;

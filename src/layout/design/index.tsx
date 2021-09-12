@@ -7,6 +7,7 @@ export default memo(() => {
       Copyright (c) Sites Group All Rights Reserved.{' '}
       <a
         target="blank"
+        data-line
         href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010602011734"
       >
         NO : 33010602011734

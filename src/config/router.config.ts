@@ -8,28 +8,9 @@ export default [
     component: () => import('@/pages/index/index'),
   },
   {
-    path: '/technology',
-    component: () => import('@/pages/technology'),
-  },
-  {
-    path: '/info',
-    component: () => import('@/pages/info/index'),
-  },
-  {
-    path: '/life',
-    component: () => import('@/pages/life/index'),
-  },
-  {
-    path: '/others',
-    component: () => import('@/pages/others/index'),
-  },
-  {
-    path: '/site-info',
-    component: () => import('@/pages/siteInfo/index'),
-  },
-  {
-    path: '/submit-site',
-    component: () => import('@/pages/submitSite/index'),
+    path: '/sites',
+    component: () => import('@/pages/sites/index'),
+    exact: false,
   },
   {
     path: '/site-userInfo/*',
@@ -54,5 +35,9 @@ export default [
   {
     path: '/qq-login',
     component: () => import('@/pages/qqLogin/index'),
+  },
+  {
+    path: '/site-info',
+    component: () => import('@/pages/siteInfo/index'),
   },
 ];

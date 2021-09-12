@@ -24,7 +24,7 @@ export default connect(({ user }: RootState) => ({
       <div className={styles.pageBox}>
         <PageSlide {...page} onChange={onChangePage} />
       </div>
-      <LoginBox current={current} />
+      <LoginBox {...props} onChangePage={onChangePage} current={current} />
     </React.Fragment>
   );
 });
