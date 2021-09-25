@@ -5,6 +5,7 @@ export const SITES_ROUTES = [
     title: '技术',
     mainTitle: 'Technology',
     shouMenu: true,
+    desc: '技术类站点，技术宅，拯救世界。',
   },
   {
     path: '/sites/life',
@@ -12,6 +13,7 @@ export const SITES_ROUTES = [
     mainTitle: 'Life',
     shouMenu: true,
     title: '生活',
+    desc: '生活类站点，记录生活，分享美好的瞬间。',
   },
   {
     path: '/sites/info',
@@ -19,6 +21,7 @@ export const SITES_ROUTES = [
     shouMenu: true,
     mainTitle: 'Info',
     title: '资讯',
+    desc: '资讯类站点，你想知道的，我这都有。',
   },
   {
     path: '/sites/others',
@@ -26,10 +29,13 @@ export const SITES_ROUTES = [
     shouMenu: true,
     mainTitle: 'Others',
     title: '其它',
+    desc: '其它类站点，我的站点很神秘。',
   },
   {
-    path: '/submit-site',
+    path: '/sites/submit-site',
     component: () => import('@/pages/submitSite/index'),
     shouMenu: true,
+    mainTitle: 'Join us',
+    desc: '站点提交，加入我们。',
   },
 ];

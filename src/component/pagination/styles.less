@@ -1,5 +1,5 @@
 @COLOR: #ef8c81;
-@BORDER: white;
+@BORDER: #222426;
 .defaultPag {
   display: inline-block;
   // width: 30px;
@@ -15,12 +15,14 @@
   transition: all 0.3s;
 }
 .pageCon {
-  opacity: 0;
-  transform: translate3d(-100px, 0, 0);
-  animation: fromLeft 0.6s;
-  animation-fill-mode: forwards;
+  // opacity: 0;
+  // transform: translate3d(-100px, 0, 0);
+  // animation: fromLeft 0.6s;
+  // animation-fill-mode: forwards;
   position: relative;
   // left: -50px;
+  display: flex;
+  justify-content: center;
   :global {
     .ant-pagination-jump-prev .ant-pagination-item-container .ant-pagination-item-link-icon,
     .ant-pagination-jump-next .ant-pagination-item-container .ant-pagination-item-link-icon {
@@ -66,7 +68,7 @@
     .ant-pagination-prev,
     .ant-pagination-next {
       transform-origin: center;
-      transform: rotate(90deg);
+      // transform: rotate(90deg);
     }
     .ant-pagination-next a,
     .ant-pagination-prev a {

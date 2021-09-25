@@ -2,10 +2,15 @@
 .sites {
   position: relative;
   margin: 0 auto;
-  margin-top: 100px;
-  max-width: 800px;
-  width: 80vw;
   min-width: 600px;
+  width: 80vw;
+  background: url('../../assetes/light.png') repeat center;
+  background-size: 40px;
+  min-height: 100vh;
+  .routeContainer {
+    position: relative;
+    margin-top: -100px;
+  }
   .pageBox {
     position: fixed;
     top: calc(50% - 80px);
@@ -15,22 +20,48 @@
   .menus {
     display: flex;
     padding: 10px 0;
-    border-bottom: 1px solid @FONTCOLOR;
+    border-bottom: 1px solid #222426;
     &Item {
       margin-right: 10px;
       cursor: pointer;
-      color: @FONTCOLOR;
-      font-size: 16px;
+      color: #222426;
+      font-size: 15px;
     }
   }
   &Con {
     margin-top: 20px;
-    min-height: 80vh;
     &Title {
       letter-spacing: 1px;
-      color: @FONTCOLOR;
       font-weight: 600;
       margin: 0;
+    }
+  }
+}
+.siteBigTitle {
+  height: 400px;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .center {
+    background: white;
+    height: 200px;
+    width: 60%;
+  }
+  .title {
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    .sitesConTitle {
+      color: white;
+      font-size: 30px;
+      font-weight: bold;
+      letter-spacing: 4px;
+    }
+    .desc {
+      color: white;
     }
   }
 }

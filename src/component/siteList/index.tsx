@@ -1,4 +1,4 @@
-import React, { useCallback, Fragment, useMemo } from 'react';
+import React, { useCallback, Fragment, useMemo, ReactNode } from 'react';
 import Content from '@/layout/content';
 // import Component from '@/common/component';
 import { formatTime } from '@/utils/functions';
@@ -8,6 +8,7 @@ import { Pagenation } from '../pagination';
 import { Filter, SortType } from './filter';
 // import { randomColor } from './util';
 import styles from './styles.less';
+import classNames from 'classnames';
 
 interface PageProps {
   history: any;
@@ -16,9 +17,18 @@ interface PageProps {
   pagination?: Pagenation;
   changeFilterQuery?: (arg: SortType) => void;
   filterType?: SortType;
+  topContent?: ReactNode;
 }
 
-export default ({ history, title, data, pagination, changeFilterQuery, filterType }: PageProps) => {
+export default ({
+  history,
+  title,
+  topContent,
+  data,
+  pagination,
+  changeFilterQuery,
+  filterType,
+}: PageProps) => {
   const {
     location: { pathname },
     push,
@@ -47,20 +57,20 @@ export default ({ history, title, data, pagination, changeFilterQuery, filterTyp
             </div>
           )}
           <Fragment>
-            <span style={displayStyle}>
-              <Filter filterType={filterType} changeFilterQuery={changeFilterQuery} />
-            </span>
             <div className={styles.listCon}>
+              <span style={displayStyle}>
+                <Filter filterType={filterType} changeFilterQuery={changeFilterQuery} />
+              </span>
               {pagination && pagination.total > 12 && (
                 <span style={displayStyle} className={styles.pageWrap}>
                   <Page pagination={pagination} />
                 </span>
               )}
               <div className={styles.list}>
-                {data.map((item) => {
+                {data.map((item, index) => {
                   return (
                     <div
-                      className={styles.item}
+                      className={classNames(styles.item, { [styles.odd]: (index + 1) % 2 === 0 })}
                       key={item._id}
                       onClick={() => {
                         window.open(
@@ -70,31 +80,16 @@ export default ({ history, title, data, pagination, changeFilterQuery, filterTyp
                         );
                       }}
                     >
-                      <div className={styles.top}>
-                        <div className={styles.imgBox}>
-                          <div
-                            className={styles.img}
-                            style={{
-                              background: `url(${item.siteIcon}) no-repeat`,
-                            }}
-                          />
-                        </div>
-                        <div className={styles.siteName}>
-                          <span className={styles.mainName}>{item.siteName}</span>
-                          <div className={styles.siteOpe}>
-                            <a onClick={(e) => turn2Link(e, item)}>
-                              链接直达
-                              <i className="iconfont iconlink" />
-                            </a>
-                            <span className={styles.hot}>
-                              <i className="iconfont iconfire" />
-                              {item.hot}
-                            </span>
-                          </div>
-                        </div>
+                      <div className={styles.mask} />
+                      <div
+                        className={styles.top}
+                        style={{ backgroundImage: `url(${item.siteImgs?.[0].src})` }}
+                      ></div>
+                      <div className={styles.bottom}>
+                        <div className={styles.siteName}>{item.siteName}</div>
+                        <div className={styles.siteDesc}>{item.siteDesc}</div>
+                        <div className={styles.date}>{formatTime(item.submitDate)}</div>
                       </div>
-                      <div className={styles.siteDesc}>{item.siteDesc}</div>
-                      <div className={styles.date}>{formatTime(item.submitDate)}</div>
                     </div>
                   );
                 })}

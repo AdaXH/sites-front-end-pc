@@ -13,11 +13,11 @@ export const FILTER_TYPES = [
     text: '按时间',
     icon: 'iconfont icontime1',
   },
-  {
-    code: 'hot',
-    text: '按热度',
-    icon: 'iconfont iconfire',
-  },
+  // {
+  //   code: 'hot',
+  //   text: '按热度',
+  //   icon: 'iconfont iconfire',
+  // },
   {
     code: 'random',
     text: '随机推荐',

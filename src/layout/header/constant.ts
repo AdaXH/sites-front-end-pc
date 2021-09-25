@@ -22,7 +22,7 @@ export const routes: Array<Route> = [
     iconfont: 'iconhome-line',
   },
   {
-    path: '/sites',
+    path: '/sites/technology',
     iconfont: 'iconweb',
   },
   // {

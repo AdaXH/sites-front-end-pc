@@ -40,7 +40,7 @@ module.exports = {
     alias: {
       '@': path.resolve(__dirname, 'src/'),
     },
-    extensions: ['.js', '.jsx', '.css', '.less', '.ts', '.tsx', '.png'],
+    extensions: ['.js', '.jsx', '.css', '.less', '.ts', '.tsx', '.png', '.json'],
   },
   stats: {
     children: false,

@@ -15,7 +15,7 @@ export const PageSlide: React.FC<SlideType> = (props) => {
     let nextPage;
     if (method === '-') {
       if (current === 1) {
-        nextPage = total;
+        // nextPage = total;
         return;
       }
       nextPage = current - 1;

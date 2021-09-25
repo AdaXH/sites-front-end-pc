@@ -17,7 +17,7 @@ function parseError(error) {
   return error instanceof Object ? JSON.stringify(error) : error.toString() || '出错啦：' + error;
 }
 
-const isBuild = /5050+|sites/.test(window.location.href);
+const isBuild = /5050+|link/.test(window.location.href);
 export default function Api(
   url,
   method?: string = 'GET',

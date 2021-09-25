@@ -1,15 +1,8 @@
-import React, { useCallback, useState, useEffect, Fragment } from 'react';
-// import UserCenterLayout from './userCenterLayout';
+import React, { Fragment } from 'react';
 import Shake from './shake';
 import Wave from './canvas';
 import Design from './design';
-import { useDidMount } from '../utils/hooks';
-import { setCache, getCache } from '../utils/functions';
-import { DEFAULT_BG } from './constant';
 import { Header } from './header';
-import { CACHE_BG_KEY } from './constant';
-import { getConfig } from './service';
-// import bg from './asset/bg.jpg';
 
 import styles from './styles.less';
 
@@ -22,23 +15,8 @@ export default ({ children, history }: Props) => {
   const {
     location: { pathname },
   } = history;
-  const [curBg, setBg] = useState(getCache(CACHE_BG_KEY) || DEFAULT_BG);
-  useEffect(() => {
-    if (curBg) {
-      setCache(CACHE_BG_KEY, curBg);
-    }
-  }, [curBg]);
-  const [config, setCfg] = useState<{ bgList?: Array<string> }>({});
-  useDidMount(async () => {
-    const { success, data } = await getConfig();
-    if (success && data) {
-      setCfg(data);
-    }
-  });
   if (pathname === '/super-admin') return <Fragment>{children}</Fragment>;
-  // if (/user\//.test(pathname)) {
-  //   return <UserCenterLayout history={history}>{children}</UserCenterLayout>;
-  // }
+
   return (
     <div className={styles.body}>
       <Header history={history} />
@@ -47,9 +25,7 @@ export default ({ children, history }: Props) => {
       </div>
       <Shake>
         <div className={styles.childrenBox}>
-          <div className={styles.animate} key={/user/.test(pathname) ? 'default' : pathname}>
-            {children}
-          </div>
+          <div className={styles.animate}>{children}</div>
         </div>
       </Shake>
       <Design />

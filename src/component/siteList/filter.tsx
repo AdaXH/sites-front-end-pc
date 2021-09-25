@@ -2,8 +2,6 @@ import React, { useCallback, useMemo } from 'react';
 import { FILTER_TYPES } from './constant';
 import classnames from 'classnames';
 
-// const { code } = FILTER_TYPES[0];
-
 import styles from './styles.less';
 
 export interface SortType {
