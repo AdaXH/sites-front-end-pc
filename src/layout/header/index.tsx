@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { User } from 'state-typings';
 import { connect } from 'dva';
-import { routes, Route } from './constant';
+import { routes, Route, MAX_TOP_HEIGHT } from './constant';
 import { SITE_BASIC_INFO } from '@/utils/constant';
 import Menu from './menu';
 import styles from './styles.less';
+import { simpleThrole } from '@/utils/functions';
+import classNames from 'classnames';
 
 const { TITLE } = SITE_BASIC_INFO;
 
 interface Props {
   user?: User;
-  history: any;
+  history: History;
 }
 
 export const Header: React.FC<Props> = connect(({ user }) => ({ user }))((props) => {
@@ -37,6 +39,7 @@ export const Header: React.FC<Props> = connect(({ user }) => ({ user }))((props)
         }) || {};
       setPath(pathname);
       document.title = pathname === '/' ? TITLE : `${title || ''} ${TITLE}` || TITLE;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }, [user.isLogin]);
   function renderLinks(links: Array<Route>) {
@@ -73,13 +76,42 @@ export const Header: React.FC<Props> = connect(({ user }) => ({ user }))((props)
       );
     });
   }
+
+  const [visible, setVisible] = useState<boolean>(false);
+  useEffect(() => {
+    function listenScroll(e: Event) {
+      const top = document.scrollingElement.scrollTop;
+      setVisible(top >= MAX_TOP_HEIGHT);
+    }
+    window.addEventListener(
+      'scroll',
+      simpleThrole((e: Event) => listenScroll(e)),
+    );
+    return () =>
+      window.removeEventListener(
+        'scroll',
+        simpleThrole((e: Event) => listenScroll(e)),
+      );
+  }, []);
+
+  const toTop = () => window.scrollTo({ top: 0 });
+
   return (
-    <header className={styles.header}>
-      <h1 className={styles.logo}>
-        <span>site|ink</span>
-        <span className={styles.bottom}>sites.link</span>
-      </h1>
-      <ul>{renderLinks(routes)}</ul>
-    </header>
+    <>
+      <div className={classNames(styles.wrap, { [styles.dark]: visible })}></div>
+      <header className={classNames(styles.header, { [styles.dark]: visible })}>
+        <h1 className={styles.logo} onClick={() => history.push('/')}>
+          <span>site|ink</span>
+          <span className={styles.bottom}>sites.link</span>
+        </h1>
+        <ul>{renderLinks(routes)}</ul>
+      </header>
+
+      {visible && (
+        <div className={styles.toTop} onClick={toTop}>
+          <i className="iconqianjin1 iconfont" />
+        </div>
+      )}
+    </>
   );
 });

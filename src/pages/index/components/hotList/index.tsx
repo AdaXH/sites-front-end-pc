@@ -1,8 +1,7 @@
 import React, { useCallback, useState } from 'react';
-import { Tooltip } from 'antd';
 import { useDidMount } from '@/utils/hooks';
-import { stringify } from '@/utils/functions';
-import { getHotList } from './service';
+import { formatTime, stringify } from '@/utils/functions';
+import { queryRandom } from './service';
 
 import styles from './styles.less';
 
@@ -22,7 +21,7 @@ export default () => {
     });
     let data = [];
     try {
-      const { data: resData } = await getHotList();
+      const { data: resData } = await queryRandom();
       data = resData;
     } finally {
       setState({
@@ -47,31 +46,41 @@ export default () => {
             <div className={styles.loadinDot} />
           </div>
         )}
-        <div className={styles.title}>
-          最近活跃站点：
+        <h1 className={styles.title}>
+          随机推荐：
           <span className={styles.updIcon} onClick={onFresh}>
             <i className="iconfont iconshuaxin" />
           </span>
-        </div>
+        </h1>
         {list.length !== 0 && (
           <div className={styles.list} key={loading.toString()}>
-            {list.map(({ siteIcon, siteName, siteId, siteType }) => (
-              <a
-                key={siteId}
-                className={styles.listItem}
-                href={`/site-info?${stringify({ siteType, siteId })}`}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <Tooltip title={siteName}>
-                  <div
-                    className={styles.siteIcon}
-                    style={{ backgroundImage: `url(${siteIcon})` }}
-                  ></div>
-                  <div className={styles.siteName}>{siteName}</div>
-                </Tooltip>
-              </a>
-            ))}
+            {list.map(
+              ({ siteIcon, siteName, _id: siteId, siteType, siteImgs, siteDesc, submitDate }) => (
+                <div key={siteId} className={styles.listItem}>
+                  <div className={styles.siteIconWrap}>
+                    <div
+                      className={styles.siteIcon}
+                      style={{ backgroundImage: `url(${siteImgs?.[0]?.src || siteIcon})` }}
+                    />
+                  </div>
+                  <div className={styles.right}>
+                    <div className={styles.top}>
+                      <h1 className={styles.siteName}>{siteName}</h1>
+                      <a
+                        className={styles.btn}
+                        href={`/site-info?${stringify({ siteType, siteId })}`}
+                      >
+                        Link
+                      </a>
+                    </div>
+                    <div className={styles.bottom}>
+                      <p className={styles.desc}>{siteDesc}</p>
+                      <p className={styles.date}>{formatTime(submitDate)}</p>
+                    </div>
+                  </div>
+                </div>
+              ),
+            )}
           </div>
         )}
       </div>

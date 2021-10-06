@@ -1,12 +1,7 @@
-import React, { useCallback, Fragment, useMemo, ReactNode } from 'react';
-import Content from '@/layout/content';
-// import Component from '@/common/component';
-import { formatTime } from '@/utils/functions';
-import { forceHot } from './service';
-import Page from '../pagination';
+import React, { useMemo, ReactNode } from 'react';
+import { formatTime, sliceNumber, stringify } from '@/utils/functions';
 import { Pagenation } from '../pagination';
 import { Filter, SortType } from './filter';
-// import { randomColor } from './util';
 import styles from './styles.less';
 import classNames from 'classnames';
 
@@ -18,16 +13,23 @@ interface PageProps {
   changeFilterQuery?: (arg: SortType) => void;
   filterType?: SortType;
   topContent?: ReactNode;
+  viewDetail?: (arg: Record<string, any>) => void;
+  extraTitle?: ReactNode;
+  extraDesc?: ReactNode;
+  extracFn?: any;
 }
 
 export default ({
   history,
-  title,
-  topContent,
+  // title,
+  // topContent,
   data,
   pagination,
   changeFilterQuery,
   filterType,
+  extraTitle,
+  extraDesc,
+  extracFn,
 }: PageProps) => {
   const {
     location: { pathname },
@@ -36,68 +38,122 @@ export default ({
   const onNew = () => {
     push('/submit-site?siteType=' + pathname.slice(1));
   };
-  const turn2Link = useCallback(async (e, { siteLink, siteId, siteType }) => {
-    e.stopPropagation();
-    window.open(siteLink);
-    await forceHot({ siteId, siteType });
-  }, []);
+
   const displayStyle = useMemo(
     () => ({
-      display: data.length === 0 && 'none',
+      display: data.length === 0 ? 'none' : 'flex',
     }),
     [data.length],
   );
+  const { onChange, current, total } = pagination || {};
+  const goUserInfo = (userId) => {
+    if (userId === 'qucikSubmitUser') return;
+    push(`/site-userInfo?userId=${userId}`);
+  };
   return (
-    <Fragment>
-      <Content>
-        <Fragment>
-          {data.length === 0 && (
-            <div className={styles.info}>
-              该分类还没有站点，赶快<a onClick={onNew}>提交</a>，成为第一个叭~
-            </div>
-          )}
-          <Fragment>
-            <div className={styles.listCon}>
-              <span style={displayStyle}>
-                <Filter filterType={filterType} changeFilterQuery={changeFilterQuery} />
-              </span>
-              {pagination && pagination.total > 12 && (
-                <span style={displayStyle} className={styles.pageWrap}>
-                  <Page pagination={pagination} />
-                </span>
-              )}
-              <div className={styles.list}>
-                {data.map((item, index) => {
-                  return (
+    <>
+      {data.length === 0 && (
+        <div className={styles.info}>
+          该分类还没有站点，赶快
+          <a data-line onClick={onNew}>
+            提交
+          </a>
+          ，成为第一个叭~
+        </div>
+      )}
+      {pagination && (
+        <span style={displayStyle} className={styles.filterWrap}>
+          <Filter filterType={filterType} changeFilterQuery={changeFilterQuery} />
+        </span>
+      )}
+
+      <div className={styles.list}>
+        {data.map((item, index) => {
+          return (
+            <div
+              className={classNames(styles.item, { [styles.odd]: (index + 1) % 2 === 0 })}
+              key={item._id}
+            >
+              <div className={styles.siteInfo}>
+                <div className={styles.siteImg}>
+                  <div className={styles.siteNo}>
+                    <span>number.</span>
+                    <span>{sliceNumber(index + 1)}</span>
+                  </div>
+                  <div className={styles.imgWrap}>
                     <div
-                      className={classNames(styles.item, { [styles.odd]: (index + 1) % 2 === 0 })}
-                      key={item._id}
-                      onClick={() => {
-                        window.open(
-                          `/site-info?siteId=${item._id}&siteType=${
-                            item.siteType || pathname.replace(/\//, '')
-                          }`,
-                        );
-                      }}
+                      className={styles.img}
+                      style={{ backgroundImage: `url(${item.siteImgs?.[0]?.src})` }}
+                    ></div>
+                  </div>
+                </div>
+                <div className={styles.siteInfoText}>
+                  <div className={styles.basic}>
+                    <h1>{item.siteName}</h1>
+                    <p>{item.siteDesc}</p>
+                  </div>
+                  <div className={styles.basicBottom}>
+                    <h1>关于</h1>
+                    <p>
+                      于{formatTime(item.submitDate)}提交，热度：{item.hot}.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div className={styles.siteOperation}>
+                <div className={styles.link}>
+                  <h1>
+                    <a
+                      onClick={() =>
+                        push(
+                          `/site-info?${stringify({ siteType: item.siteType, siteId: item._id })}`,
+                        )
+                      }
                     >
-                      <div className={styles.mask} />
-                      <div
-                        className={styles.top}
-                        style={{ backgroundImage: `url(${item.siteImgs?.[0].src})` }}
-                      ></div>
-                      <div className={styles.bottom}>
-                        <div className={styles.siteName}>{item.siteName}</div>
-                        <div className={styles.siteDesc}>{item.siteDesc}</div>
-                        <div className={styles.date}>{formatTime(item.submitDate)}</div>
-                      </div>
+                      Link
+                      <i className="iconqianjin iconfont" />
+                    </a>
+                  </h1>
+                  <p>点击查看网站详情</p>
+                </div>
+                <div className={styles.user} onClick={() => goUserInfo(item.userId)}>
+                  <h1>
+                    <a>
+                      User
+                      <i className="iconqianjin iconfont" />
+                    </a>
+                  </h1>
+                  <p>
+                    {item.userId !== 'qucikSubmitUser'
+                      ? '点击查看站长信息'
+                      : '网站类型为快速提交，没有站长信息'}
+                  </p>
+                </div>
+                {
+                  extraTitle && (
+                    <div className={styles.user} onClick={() => extracFn(item._id, item.siteType)}>
+                      <h1>
+                        <a>
+                          {extraTitle}
+                          <i className="iconqianjin iconfont" />
+                        </a>
+                      </h1>
+                      <p>{extraDesc}</p>
                     </div>
-                  );
-                })}
+                  )
+                  // extraDesc,
+                  // extracFn,
+                }
               </div>
             </div>
-          </Fragment>
-        </Fragment>
-      </Content>
-    </Fragment>
+          );
+        })}
+        {data.length < total && (
+          <div className={styles.more} onClick={() => onChange(current + 1)}>
+            - 查看更多 -
+          </div>
+        )}
+      </div>
+    </>
   );
 };

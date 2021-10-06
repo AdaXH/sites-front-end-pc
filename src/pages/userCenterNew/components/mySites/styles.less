@@ -1,0 +1,29 @@
+@COLOR: rgba(4, 4, 4, 0.75);
+@BORDER: white;
+.item {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  color: @COLOR;
+  a {
+    margin-right: 5px;
+  }
+}
+@keyframes container {
+  from {
+    transform: translateX(0) rotate(-1deg);
+  }
+  40% {
+    transform: translateX(0) rotate(0);
+  }
+  to {
+    transform: translateX(0) rotate(-1deg);
+  }
+}
+.table {
+  animation: container 10s infinite;
+  padding: 10px;
+}
+.link {
+  color: @COLOR;
+}

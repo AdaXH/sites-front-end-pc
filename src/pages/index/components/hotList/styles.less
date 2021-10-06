@@ -1,140 +1,63 @@
-@COLOR: #ef8c81;
-@BORDER: white;
-
+@import '../../../../common/styles/constant.less';
 .listBox {
-  position: fixed;
-  right: 50px;
-  top: 0;
-  width: 316px;
-  height: 350px;
-  background: rgba(255, 255, 255, 0.11);
-  padding: 10px;
-  letter-spacing: 1px;
-  color: white;
-  animation: shake 6s infinite;
-
-  .updIcon {
+  letter-spacing: 2px;
+  .title {
+    font-size: 16px;
+    color: @FONTCOLOR;
+    margin-bottom: 30px;
     cursor: pointer;
-    position: relative;
-    top: 1px;
   }
   .list {
-    display: flex;
-    flex-wrap: wrap;
-    opacity: 0;
-    animation: fadeIn 0.5s forwards;
     .listItem {
-      margin-bottom: 10px;
-      color: black;
-      width: 70px;
-      height: 96px;
       display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      opacity: 0.8;
-      transition: opacity 0.3s;
-      margin: 2px;
-      .siteIcon {
-        width: 60px;
-        height: 60px;
-        background-size: cover;
-        background-color: rgba(255, 255, 255, 0.3);
-        border-radius: 30px;
+      margin-bottom: 50px;
+      height: 300px;
+      .siteIconWrap {
+        background-color: #f5f5f5;
+        width: 300px;
+        margin-right: 50px;
+        padding: 5px;
+        .siteIcon {
+          background-size: cover;
+          background-repeat: no-repeat;
+          height: 100%;
+        }
       }
-      .siteName {
-        overflow: hidden;
-        width: 70px;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        font-size: 13px;
-        text-align: center;
-        color: rgba(255, 255, 255, 0.6);
-        transition: color 0.3s;
+      .right {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        .bottom {
+          height: 50%;
+          border-top: 1px solid #f3f3f3;
+          padding-top: 40px;
+          display: flex;
+          justify-content: space-between;
+          .desc {
+            max-width: 460px;
+          }
+          .date {
+            font-size: 12px;
+          }
+        }
+        .top {
+          display: flex;
+          justify-content: space-between;
+          .btn {
+            cursor: pointer;
+            background-color: @FONTCOLOR;
+            color: white;
+            height: 40px;
+            width: 250px;
+            line-height: 40px;
+            text-align: center;
+          }
+        }
+        h1 {
+          font-size: 18px;
+        }
       }
     }
-    .listItem:hover {
-      .siteName {
-        color: rgba(255, 255, 255, 1);
-      }
-      opacity: 1;
-    }
-  }
-  .loadingWrap {
-    position: absolute;
-    top: 0;
-    left: 0;
-    // background: rgba(0, 0, 0, 0.6);
-    width: 100%;
-    height: 100%;
-    .loadinDot {
-      position: absolute;
-      width: 60px;
-      height: 60px;
-      //   background: white;
-      top: 50%;
-      left: 50%;
-      margin: -30px 0 0 -30px;
-      border-radius: 30px;
-      border: 1px solid white;
-      border-left-color: transparent;
-      border-top-color: transparent;
-      border-right-color: transparent;
-      animation: loading 3s infinite linear;
-    }
-  }
-}
-
-.aminWrap {
-  animation: aminWrap 0.3s;
-}
-
-@keyframes aminWrap {
-  from {
-    transform: translate3d(40px, 0, 0);
-  }
-  to {
-    transform: translate3d(0, 0, 0);
-  }
-}
-
-@keyframes shake {
-  from {
-    transform: translate3d(0, 0, 0) rotate(-1deg);
-  }
-  40% {
-    transform: translate3d(0, 0, 0) rotate(0);
-  }
-  to {
-    transform: translate3d(0, 0, 0) rotate(-1deg);
-  }
-}
-
-@keyframes loading {
-  from {
-    transform: rotate(0);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@media screen and (max-width: 1000px) {
-  .listBox {
-    display: none;
-  }
-}
-@media screen and (max-height: 700px) {
-  .listBox {
-    display: none;
   }
 }

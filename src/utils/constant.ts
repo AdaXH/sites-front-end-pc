@@ -1,7 +1,15 @@
 // 不需要loading的接口
-export const NO_LOADING_API = ['/getUserInfo', '/getHotList'];
+export const NO_LOADING_API = [
+  '/getUserInfo',
+  '/getHotList',
+  '/createSrc',
+  '/querySrc',
+  '/queryRandom',
+  '/updateSrc',
+  '/parseRss',
+];
 
-export const NOERROR_API = ['/getUserInfo'];
+export const NOERROR_API = ['/getUserInfo', '/login', '/register', '/parseRss'];
 
 export const EMOJI_CACHE_KEY = '__emoji__list';
 

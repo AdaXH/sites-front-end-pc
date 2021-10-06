@@ -19,8 +19,6 @@ export default ({ history }) => {
           await getOpenid({ access_token });
         }
       }
-    } catch (error) {
-      console.log('error', error);
     } finally {
       setStatus(true);
     }

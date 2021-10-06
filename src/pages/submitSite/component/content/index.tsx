@@ -6,7 +6,7 @@ import React, {
   useEffect,
   useMemo,
 } from 'react';
-import { Input, Select } from 'antd';
+import { Select } from 'antd';
 import { getValueByRef } from '@/utils/functions';
 import { SITE_TYPE } from '@/utils/constant';
 import { SITETYPE } from 'site-type';
@@ -42,7 +42,6 @@ export default forwardRef(({ value, siteType: preType, isEdit, submitType }: Sit
   }, [preType]);
   const {
     siteLink,
-    linkPrefix = 'https://',
     siteName,
     siteDesc,
     siteType = 'technology',
@@ -59,27 +58,27 @@ export default forwardRef(({ value, siteType: preType, isEdit, submitType }: Sit
       [key]: value,
     });
   };
-  const selectBefore = (
-    <Select
-      value={linkPrefix}
-      onChange={(val: string) => onSetVal('linkPrefix', val)}
-      style={{ width: 90 }}
-    >
-      <Select.Option value="https://">https://</Select.Option>
-      <Select.Option value="http://">http://</Select.Option>
-    </Select>
-  );
+  // const selectBefore = (
+  //   <Select
+  //     value={linkPrefix}
+  //     onChange={(val: string) => onSetVal('linkPrefix', val)}
+  //     style={{ width: 90 }}
+  //   >
+  //     <Select.Option value="https://">https://</Select.Option>
+  //     <Select.Option value="http://">http://</Select.Option>
+  //   </Select>
+  // );
 
   useImperativeHandle(ref, () => {
     return {
       getValue: () => {
-        const siteLinkUrl = linkPrefix + siteLink;
+        // const siteLinkUrl = linkPrefix + siteLink;
         return {
           siteType: 'technology',
           ...state,
           siteIcon: getValueByRef(iconRef),
           siteImgs: getValueByRef(siteImgsRef),
-          siteLink: siteLinkUrl,
+          siteLink: siteLink,
           originUrl: siteLink,
         };
       },
@@ -89,24 +88,26 @@ export default forwardRef(({ value, siteType: preType, isEdit, submitType }: Sit
   return (
     <div className={styles.content}>
       <div className={styles.item}>
-        <div className={styles.name}>
-          <i className="iconfont iconlink1" />
+        <div className={styles.label}>
+          <h1>
+            Link <i className="iconfont iconlink1" />
+          </h1>
+          <p>站点链接，http、https开头</p>
         </div>
+
         <div className={styles.con}>
-          <Input
-            addonBefore={selectBefore}
+          <input
             value={siteLink}
             onChange={(e) => onSetVal('siteLink', e.target.value)}
-            // autoFocus
             maxLength={50}
-            placeholder="站点链接 *"
           />
         </div>
       </div>
       <div className={styles.item}>
-        <div className={styles.name}>
-          <i className="iconfont icontype" />
-        </div>
+        <h1>
+          SiteType <i className="iconfont icontype" />
+        </h1>
+        <p>站点类型</p>
         <div className={styles.con}>
           <Select
             value={siteType}
@@ -124,59 +125,54 @@ export default forwardRef(({ value, siteType: preType, isEdit, submitType }: Sit
       </div>
 
       <div className={styles.item}>
-        <div className={styles.name}>
-          <i className="iconfont iconicon--" />
-        </div>
+        <h1>
+          Name <i className="iconfont iconicon--" />
+        </h1>
+        <p>站点名称</p>
         <div className={styles.con}>
-          <Input
+          <input
             value={siteName}
             onChange={(e) => onSetVal('siteName', e.target.value)}
             maxLength={15}
-            placeholder="站点名称 *"
           />
         </div>
       </div>
       <SiteIcon value={siteIcon} ref={iconRef} />
       <div className={styles.item}>
-        <div className={styles.name}>
-          <i className="iconfont iconicon--" />
-        </div>
+        <h1>
+          Description <i className="iconfont iconicon--" />
+        </h1>
+        <p>站点描述</p>
         <div className={styles.con}>
-          <Input.TextArea
+          <textarea
             value={siteDesc}
             onChange={(e) => onSetVal('siteDesc', e.target.value)}
             maxLength={100}
             className={styles.textarea}
-            placeholder="站点描述 *"
           />
         </div>
       </div>
       <SitesImg isQuickSubmit={isQuickSubmit} value={siteImgs} ref={siteImgsRef} />
-
       <div className={styles.item}>
-        <div className={`${styles.name} defaultItem`}>
-          <i className="iconfont iconrss1" />
-        </div>
+        <h1>
+          Rss <i className="iconfont iconrss1" />
+        </h1>
+        <p>rss链接，提供订阅</p>
         <div className={styles.con}>
-          <Input
-            value={rss}
-            onChange={(e) => onSetVal('rss', e.target.value)}
-            maxLength={200}
-            placeholder="提供rss订阅"
-          />
+          <input value={rss} onChange={(e) => onSetVal('rss', e.target.value)} maxLength={200} />
         </div>
       </div>
       {isQuickSubmit && (
         <div className={styles.item}>
-          <div className={`${styles.name} notRequired`}>
-            <i className="iconfont iconemailFilled" />
-          </div>
+          <h1>
+            Notification <i className="iconfont iconemailFilled" />
+          </h1>
+          <p>选填，审核通过后邮件通知</p>
           <div className={styles.con}>
-            <Input
+            <input
               value={notiEmail}
               onChange={(e) => onSetVal('notiEmail', e.target.value)}
               maxLength={200}
-              placeholder="选填，审核通过后邮件通知"
             />
           </div>
         </div>

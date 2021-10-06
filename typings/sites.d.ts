@@ -9,6 +9,7 @@ interface AnyCommonObj {
 }
 
 interface SiteModel {
+  userId?: string;
   siteName?: string;
   siteLink?: string;
   linkPrefix?: string;

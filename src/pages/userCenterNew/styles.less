@@ -1,0 +1,45 @@
+.indexContainer {
+  position: relative;
+  top: -188px;
+  letter-spacing: 2px;
+  .menus {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 48px;
+    padding: 40px;
+    background-color: #efefef;
+    justify-content: space-between;
+    .menuItem {
+      width: 48%;
+      margin-bottom: 30px;
+      padding: 30px;
+      background: white;
+      .menuTitle {
+        font-weight: bold;
+      }
+    }
+    .menuItem:nth-of-type(3),
+    .menuItem:nth-of-type(4) {
+      width: 100%;
+      background-color: transparent;
+      padding: 0;
+    }
+    :global {
+      input,
+      button,
+      textarea {
+        border-radius: 0;
+      }
+    }
+  }
+}
+.smallImg {
+  background: #efefef;
+  padding: 20px;
+  height: 140px;
+  div {
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+  }
+}

@@ -1,5 +1,6 @@
 @COLOR: #ef8c81;
-@BORDER: #222426;
+@BORDER: @FONTCOLOR;
+@import url('../../common/styles/constant.less');
 .defaultPag {
   display: inline-block;
   // width: 30px;
@@ -15,12 +16,7 @@
   transition: all 0.3s;
 }
 .pageCon {
-  // opacity: 0;
-  // transform: translate3d(-100px, 0, 0);
-  // animation: fromLeft 0.6s;
-  // animation-fill-mode: forwards;
   position: relative;
-  // left: -50px;
   display: flex;
   justify-content: center;
   :global {
@@ -30,6 +26,7 @@
       left: 5px;
       transform-origin: center;
       transform: rotate(90deg);
+      color: @BORDER;
     }
     .ant-pagination-item {
       span {
@@ -75,6 +72,9 @@
       background: transparent;
       color: @BORDER;
       font-size: 15px;
+    }
+    .ant-pagination-item-ellipsis {
+      color: @BORDER !important;
     }
   }
 }

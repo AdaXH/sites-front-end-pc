@@ -1,14 +1,13 @@
 import React, { useState, createRef, useMemo, useCallback } from 'react';
 import { Button } from 'antd';
 import { connect } from 'dva';
-import Content from '@/layout/content';
 import { RootState, User } from 'state-typings';
 import { useDidMount } from '@/utils/hooks';
 import { getValueByRef, getParam } from '@/utils/functions';
 import Notification from '@/component/Notification';
 import { querySite } from '@/utils/service';
 import SubmitContent from './component/content';
-import { SUBMIT_TYPES, QUICK_SUBMIT_STYPE } from './constant';
+import { SUBMIT_TYPES, QUICK_SUBMIT_STYPE } from './constant.tsx';
 import { checkVal } from './util';
 import { submitSite, updateSite, quickSubmitApi } from './service';
 
@@ -43,8 +42,6 @@ export default connect(({ user }: RootState) => ({ user }))((props: SubmitProps)
           setData(result.data || {});
         }
       }
-    } catch (error) {
-      // console.log('error', error);
     } finally {
       // Loading.hide();
     }
@@ -78,36 +75,25 @@ export default connect(({ user }: RootState) => ({ user }))((props: SubmitProps)
     }
   }, [comRef, submitType]);
 
-  const curTitle = useMemo(() => {
-    const { title } = SUBMIT_TYPES.find((item) => item.key === submitType) || {};
-    return title;
-  }, [submitType]);
   return (
-    <Content title={isEdit ? `编辑 ${data.siteName}` : '站点提交'}>
-      {!siteId && (
-        <React.Fragment>
-          <div className={styles.submitTypeBox}>
-            {SUBMIT_TYPES.map(({ title, key }) => (
-              <div
-                onClick={() => setType(key)}
-                data-current={submitType === key}
-                className={styles.submtiTypeItem}
-                key={key}
-              >
+    <div className={styles.container}>
+      {!siteId && !hasLogin && (
+        <div className={styles.submitTypeBox}>
+          {SUBMIT_TYPES.map(({ title, key, desc }) => (
+            <div
+              onClick={() => setType(key)}
+              data-current={submitType === key}
+              className={styles.submtiTypeItem}
+              key={key}
+            >
+              <h1>
+                <i className="iconqianjin iconfont" />
                 {title}
-              </div>
-            ))}
-          </div>
-          <div className={styles.tips}>
-            注：当前选择 <span className={styles.curTitle}>[ {curTitle} ]</span>
-            {` `}，
-            <React.Fragment>
-              {submitType === QUICK_SUBMIT_STYPE
-                ? `跳过登录，不会有站点留言、收藏、点赞、留言等通知，提交之后不能通过自己更改，谨慎！！！`
-                : `需要登录才能提交`}
-            </React.Fragment>
-          </div>
-        </React.Fragment>
+              </h1>
+              <p>{desc(props)}</p>
+            </div>
+          ))}
+        </div>
       )}
 
       <SubmitContent
@@ -129,6 +115,6 @@ export default connect(({ user }: RootState) => ({ user }))((props: SubmitProps)
           </Button>
         )}
       </div>
-    </Content>
+    </div>
   );
 });

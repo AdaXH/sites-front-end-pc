@@ -20,7 +20,7 @@ export default ({ history }: { history?: any }) => {
       ...filterType,
     });
     if (resData) {
-      setData(resData);
+      setData(page === 1 ? resData : [...data, ...resData]);
       setPage({
         ...pagination,
         current: page,
@@ -30,7 +30,7 @@ export default ({ history }: { history?: any }) => {
   }
   useEffect(() => {
     if (filterType) {
-      query();
+      query(1);
     }
   }, [filterType]);
   return (
@@ -40,7 +40,6 @@ export default ({ history }: { history?: any }) => {
         onChange: (pageNo) => query(pageNo),
       }}
       history={history}
-      title="生活类站点"
       filterType={filterType}
       data={data}
       changeFilterQuery={setFilter}

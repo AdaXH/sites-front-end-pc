@@ -1,5 +1,4 @@
-import React, { useState, useMemo } from 'react';
-// import { BasicInfo } from './component/baseInfo';
+import React, { useMemo } from 'react';
 import { COMPONENT_LIST } from './constant';
 
 import styles from './styles.less';
@@ -10,8 +9,6 @@ export const LoginBox: React.FC<{ current: number; onChangePage: changeFn }> = (
   current,
   onChangePage,
 }) => {
-  // const [Component, setCom] = useState();
-  //   const { Element } = COMPONENT_LIST[current - 1] || {};
   const style = useMemo(() => {
     return {
       transform: `translate3d(0, -${(current - 1) * 350}px, 0)`,

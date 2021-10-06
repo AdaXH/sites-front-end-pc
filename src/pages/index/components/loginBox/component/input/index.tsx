@@ -1,4 +1,4 @@
-import React, { useState, useMemo, ChangeEvent } from 'react';
+import React, { useState, ChangeEvent } from 'react';
 import styles from './styles.less';
 
 interface Props {
@@ -10,12 +10,8 @@ interface Props {
 }
 
 const Component: React.FC<Props> = ({ value, name, onChange, type = 'text', onEnter }) => {
-  const [isFocus, setFoucus] = useState(!!value);
-  const nameStyle = useMemo(() => {
-    const style: any = {};
-    style.transform = `translate3d(${isFocus ? '0px' : '10px'}, ${isFocus ? '-18px' : '0'}, 0)`;
-    return style;
-  }, [isFocus]);
+  const [_, setFoucus] = useState(!!value);
+
   const onInsert = (e: ChangeEvent<HTMLInputElement>) => {
     onChange(e.target.value);
   };

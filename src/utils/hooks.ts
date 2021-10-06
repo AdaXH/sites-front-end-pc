@@ -61,3 +61,29 @@ export function useDebounce(value, delay: number) {
   }, [value, delay]);
   return debouncedValue;
 }
+
+export function useLoading<T extends (...args: any[]) => any>(cb: T): any {
+  const [loading, setLoading] = useState<Boolean>(false);
+  const arg = useRef<any[]>();
+  useEffect(() => {
+    async function work() {
+      try {
+        await cb(...arg.current);
+      } catch (error) {
+        // ingore
+      } finally {
+        setLoading(false);
+      }
+    }
+    if (loading) {
+      work();
+    }
+  }, [loading]);
+  return [
+    loading,
+    (...args) => {
+      arg.current = args;
+      setLoading(true);
+    },
+  ];
+}

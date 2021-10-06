@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState } from 'react';
 import Notification from '@/component/Notification';
 import { qqSign } from '@/utils/functions';
 import Input from '../input';
@@ -21,7 +21,6 @@ export const Login: React.FC<{ dispatch: Function; onChangePage: changeFn }> = (
   onChangePage,
 }) => {
   const [values, setVal] = useState<ValState>({});
-  const [isLogin, setLogin] = useState(true);
   const { name, email, registerEmailCode, submitPassword, password } = values;
   const setNewVal = (code: string, val: string) => {
     setVal({
@@ -35,7 +34,7 @@ export const Login: React.FC<{ dispatch: Function; onChangePage: changeFn }> = (
         ...values,
         password: Base64.encode(hex(values.password || '')),
       };
-      const api = isLogin ? 'user/login' : 'user/register';
+      const api = 'user/register';
       // 注册
       if (!name) {
         throw '请输入用户名';
@@ -43,10 +42,10 @@ export const Login: React.FC<{ dispatch: Function; onChangePage: changeFn }> = (
       if (name.length < 3 || name.length > 30) {
         throw '用户名长度3-30位';
       }
-      if (!isLogin && !email) {
+      if (!email) {
         throw '请输入邮箱';
       }
-      if (!isLogin && !registerEmailCode) {
+      if (!registerEmailCode) {
         throw '请输入验证码';
       }
       if (!password) {
@@ -55,7 +54,7 @@ export const Login: React.FC<{ dispatch: Function; onChangePage: changeFn }> = (
       if (password.length < 6 || password.length > 20) {
         throw '密码长度6-20位';
       }
-      if (!isLogin && password !== submitPassword) {
+      if (password !== submitPassword) {
         throw '两次密码不一致';
       }
       // }
@@ -67,7 +66,6 @@ export const Login: React.FC<{ dispatch: Function; onChangePage: changeFn }> = (
       Notification.fail({ msg: error });
     }
   };
-  const [modalVisible, setModal] = useState(false);
   return (
     <div className={styles.container}>
       <Input

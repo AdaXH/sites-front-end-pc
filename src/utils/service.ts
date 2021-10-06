@@ -21,10 +21,9 @@ export async function queryFriends() {
 export function querySite(param) {
   return Api(`api/querySite?${stringify(param)}`);
 }
-import mock from './mock';
+
 export function querySites(body) {
-  // return Api('api/querySites', 'POST', body);
-  return mock;
+  return Api('api/querySites', 'POST', body);
 }
 
 export function querySitesv2(body) {

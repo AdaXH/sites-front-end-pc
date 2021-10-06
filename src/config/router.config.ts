@@ -13,16 +13,28 @@ export default [
     exact: false,
   },
   {
-    path: '/site-userInfo/*',
+    path: '/site-userInfo',
     component: () => import('@/pages/siteUser/index'),
   },
   {
     path: '/user-center/',
-    component: () => import('@/pages/userCenter/index'),
+    component: () => import('@/pages/userCenterNew/index'),
   },
   {
-    path: '/super-admin',
-    component: () => import('@/pages/admin/index'),
+    path: '/super-admin/user-list',
+    component: () => import('@/pages/admin/userList'),
+  },
+  {
+    path: '/super-admin/web/page-src/create',
+    component: () => import('@/pages/admin/web/createSrc'),
+  },
+  {
+    path: '/super-admin/web/page-src/list',
+    component: () => import('@/pages/admin/web/srcList'),
+  },
+  {
+    path: '/super-admin/siteslist/:siteType',
+    component: () => import('@/pages/admin/siteList'),
   },
   {
     path: '/search',

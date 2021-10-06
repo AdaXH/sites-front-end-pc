@@ -3,26 +3,6 @@ export default {
   data: [
     {
       siteVerify: true,
-      rss: 'http://www.lzy20021010.com/feed',
-      hot: 6,
-      siteType: 'technology',
-      _id: '6147176cbc02f600a9fefaeb',
-      siteIcon: 'https://www.lzy20021010.com/usr/themes/lanstar/assets/img/favicon.ico',
-      siteLink: 'https://www.lzy20021010.com',
-      siteName: "Lzy's Hobby",
-      submitDate: '2021-09-19T10:56:44.746Z',
-      userId: '6131ad81bc02f600a9feeabf',
-      siteDesc: '一个关注IT科技的个人独立博客',
-      siteImgs: [
-        {
-          _id: '6147176cbc02f600a9fefaec',
-          src:
-            'http://bucker-for-sae.oss-cn-hangzhou.aliyuncs.com/siteImagesBucket/2d35e1b3-dc46-4b7e-a568-092a20654bc71632049004520.png',
-        },
-      ],
-    },
-    {
-      siteVerify: true,
       rss: '',
       hot: 8,
       siteType: 'technology',
@@ -249,6 +229,6 @@ export default {
       ],
     },
   ],
-  totalCount: 53,
+  totalCount: 153,
   traceId: 'b4c1774e-f469-453e-93fe-6fa49fa8b848',
 };

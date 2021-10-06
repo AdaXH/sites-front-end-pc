@@ -1,0 +1,35 @@
+@import url(../../../../common/styles/constant.less);
+
+.item {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  .label {
+    width: 120px;
+    text-align: right;
+    color: #979797;
+  }
+  .con {
+    display: block;
+    flex: 1;
+    max-width: 400px;
+    :global {
+      .ant-switch {
+        background: rgb(239 239 239) !important;
+      }
+      .ant-switch-checked {
+        background: @FONTCOLOR !important;
+      }
+    }
+    input {
+      height: 30px;
+      padding-left: 10px;
+    }
+  }
+}
+.updBtn {
+  margin-left: 120px;
+  margin-top: 10px;
+}
+.basic {
+}

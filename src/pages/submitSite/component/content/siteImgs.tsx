@@ -8,8 +8,8 @@ export default forwardRef(
   (
     {
       value,
-      isQuickSubmit,
-    }: {
+    }: // isQuickSubmit,
+    {
       value: Array<{ src: string }>;
       isQuickSubmit?: boolean;
     },
@@ -29,9 +29,11 @@ export default forwardRef(
     }));
     return (
       <div className={styles.item}>
-        <div className={styles.name}>
+        <h1>
+          Screenshot
           <i className="iconjietu iconfont" />
-        </div>
+        </h1>
+        <p>站点截图， 建议pc端截图</p>
         <div className={styles.con}>
           <div className={styles.box}>
             <Upload text="站点截图" ref={uploadRefOne} value={value && value[0]} />

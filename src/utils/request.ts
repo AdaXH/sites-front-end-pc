@@ -4,6 +4,7 @@ import Cookies from 'js-cookie';
 import Loading from '@/component/loading';
 import Notification from '@/component/Notification';
 import { NO_LOADING_API, NOERROR_API } from './constant';
+import LoginModal from '@/component/loginModal';
 
 /**
  * Requests a URL, returning a promise.
@@ -57,15 +58,19 @@ export default function Api(
           if ((typeof result === 'boolean' && result) || result.success) {
             resolve(result);
           } else {
+            reject(result);
             if (noError) {
               return;
             }
-            // Notification.fail({
-            //   msg: parseError((result && result.errorMsg) || result),
-            // });
+            Notification.fail({
+              msg: parseError((result && result.errorMsg) || result),
+            });
+            if (result?.openLogin) {
+              LoginModal.show({}, true);
+            }
           }
         })
-        .catch((err) => {})
+        .catch((err) => reject(err))
         .finally(() => {
           Loading.hide();
         });

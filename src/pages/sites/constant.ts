@@ -5,7 +5,8 @@ export const SITES_ROUTES = [
     title: '技术',
     mainTitle: 'Technology',
     shouMenu: true,
-    desc: '技术类站点，技术宅，拯救世界。',
+    desc:
+      '技术细节型：为了解决某个技术问题而写，此类文章要具备一定深度。 实践总结性：在做了一些工作后，针对工作中出现的实操问题，进行总结，此类文章要针对实践中痛点。 杂谈型：作为个人的总结文章，此类文章主要针对自我提升以及未来规划提出。',
   },
   {
     path: '/sites/life',
@@ -39,3 +40,5 @@ export const SITES_ROUTES = [
     desc: '站点提交，加入我们。',
   },
 ];
+
+export const HIDDEN_HREF_URLS = ['/sites/submit-site'];

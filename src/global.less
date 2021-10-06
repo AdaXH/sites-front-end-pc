@@ -1,12 +1,12 @@
 @import './common/styles/constant.less';
-@import 'https://at.alicdn.com/t/font_2343536_23gin8tpwcy.css';
+@import 'https://at.alicdn.com/t/font_2343536_csjsgxsewej.css';
 
 html,
 body,
 #root {
   min-height: 100%;
   scroll-behavior: smooth;
-  overflow: hidden;
+  background-color: #2f3237 !important;
 }
 body {
   margin: 0;
@@ -15,7 +15,27 @@ body {
     Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow: hidden;
+  scrollbar-3dlight-color: transparent;
+  scrollbar-color: transparent;
+  scrollbar-face-color: transparent;
+  scrollbar-highlight-color: transparent;
+  scrollbar-shadow-color: transparent;
+  scrollbar-track-color: transparent;
+  scrollbar-width: 0;
+  &::-webkit-scrollbar-track {
+    box-shadow: none;
+    border-radius: 0;
+    background-color: transparent;
+  }
+  &::-webkit-scrollbar {
+    width: 0;
+    background-color: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 0;
+    box-shadow: transparent;
+    background-color: transparent;
+  }
 }
 a[data-disabled='true'] {
   cursor: not-allowed;
@@ -33,16 +53,48 @@ p {
     }
   }
 }
-a {
-  color: rgba(255, 255, 255, 0.9);
-}
-// a:hover {
-// color: @HOVERCOLOR !important;
-// }
+
 a[data-line] {
   text-decoration: underline;
   color: inherit;
   &:hover {
-    text-decoration: underline;
+    color: inherit;
   }
+}
+a[data-default] {
+  color: inherit;
+  &:hover {
+    color: inherit;
+  }
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+h1 {
+  font-size: 16px;
+  margin: 10px 0;
+  color: @FONTCOLOR;
+}
+p {
+  font-size: 12px;
+  color: #979797;
+  margin: 0;
+}
+div[data-btn] {
+  color: white;
+  background-color: @FONTCOLOR;
+  text-align: center;
+  line-height: 40px;
+  cursor: pointer;
+  height: 40px;
+  padding: 0 10px;
+  font-size: 14px;
+}
+button {
+  border-radius: 0;
 }

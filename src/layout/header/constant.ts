@@ -5,7 +5,7 @@ export interface Route {
   desc?: string;
   bgColor?: string;
   iconfont?: string;
-  childRoutes?: [Route];
+  childRoutes?: Route[];
   hidden?: boolean;
   permission?: boolean;
   needLogin?: boolean;
@@ -21,9 +21,36 @@ export const routes: Array<Route> = [
     bgColor: '#b5f1e8',
     iconfont: 'iconhome-line',
   },
+  // {
+  //   path: '/sites/*',
+  //   iconfont: 'iconweb',
+  // },
   {
-    path: '/sites/technology',
+    path: '/sites',
+    type: 'more',
     iconfont: 'iconweb',
+    childRoutes: [
+      {
+        path: '/sites/technology',
+        title: 'Technology',
+      },
+      {
+        path: '/sites/life',
+        title: 'Life',
+      },
+      {
+        path: '/sites/info',
+        title: 'Info',
+      },
+      {
+        path: '/sites/others',
+        title: 'Others',
+      },
+      {
+        path: '/sites/submit-site',
+        title: 'Join us',
+      },
+    ],
   },
   // {
   //   path: '/technology',
@@ -68,12 +95,12 @@ export const routes: Array<Route> = [
     bgColor: '#eadfc8',
     iconfont: 'icon-search1',
   },
-  {
-    path: '/user-center',
-    title: '个人中心',
-    iconfont: 'iconuser1',
-    needLogin: true,
-  },
+  // {
+  //   path: '/user-center',
+  //   title: '个人中心',
+  //   iconfont: 'iconuser1',
+  //   needLogin: true,
+  // },
   {
     path: '/more',
     type: 'more',
@@ -102,3 +129,5 @@ export const routes: Array<Route> = [
   //   icon: 'icon-weixin',
   // },
 ];
+
+export const MAX_TOP_HEIGHT = 400;

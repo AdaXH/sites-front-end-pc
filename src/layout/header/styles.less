@@ -11,7 +11,8 @@
 }
 
 .header {
-  width: 100%;
+  width: 100vw;
+  max-width: 1200px;
   height: 80px;
   display: flex;
   z-index: 99;
@@ -19,10 +20,12 @@
   align-items: center;
   position: fixed;
   top: 0;
-  left: 0;
   padding: 0 40px;
   display: flex;
   justify-content: space-between;
+  background-color: transparent;
+  left: 50%;
+  transform: translateX(-50%);
   .search {
     line-height: 80px;
     float: left;
@@ -52,7 +55,6 @@
   }
   ul {
     height: 80px;
-    color: white;
     position: relative;
     margin: 0;
     display: flex;
@@ -81,7 +83,7 @@
       margin-top: -30px;
       a {
         display: block;
-        color: @FONTCOLOR;
+        color: white;
         transition: all 0.4s;
         letter-spacing: 2px;
         white-space: nowrap;
@@ -95,11 +97,7 @@
           }
         }
       }
-      a:hover {
-        color: @HOVERCOLOR;
-      }
       a[data-current='true'] {
-        color: @FONTCOLOR;
         border-bottom: 1px solid white;
       }
     }
@@ -111,7 +109,17 @@
     }
   }
 }
-
+.dark {
+  background-color: #212121;
+}
+.wrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 80px;
+  transition: all 0.3s;
+}
 @keyframes bgWhite {
   from {
     background: transparent;
@@ -128,5 +136,18 @@
   to {
     opacity: 1;
     transform: translate3d(0, 0px, 0);
+  }
+}
+.toTop {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  z-index: 999;
+  cursor: pointer;
+  transform-origin: center;
+  transform: rotate(-90deg);
+  i {
+    font-size: 50px;
+    // color: ;
   }
 }
