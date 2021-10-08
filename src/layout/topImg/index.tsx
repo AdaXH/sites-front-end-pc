@@ -8,6 +8,11 @@ export const TopImg = connect(({ user }: RootState) => ({
   user,
 }))(({ user }: { user: User }) => {
   const image = user?.pageConfig?.image;
-  if (!image) return <div className={styles.default} />;
+  // const [loaded, setLoad] = useState<boolean>(false);
+  // useEffect(() => {
+  //   setLoad(false);
+  //   simpleLoadImg(image).then(() => setLoad(true));
+  // }, [image]);
+  // if (!image || !loaded) return <div className={styles.default} />;
   return <img key={image} alt="image" className={styles.layoutBg} src={image} />;
 });

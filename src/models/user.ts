@@ -1,6 +1,7 @@
 // @ts-nocheck
 
-import { getSrcConfig } from '@/utils/functions';
+import { getSrcConfig, simpleLoadImg } from '@/utils/functions';
+
 import Api from '@/utils/request';
 import Cookies from 'js-cookie';
 
@@ -85,6 +86,7 @@ export default {
           });
           confgis = data;
         }
+        Promise.all(data.map((item) => simpleLoadImg(item.image)));
       }
       yield put({
         type: 'setData',
