@@ -1,27 +1,31 @@
 @COLOR: #ef8c81;
 @BORDER: white;
 .moreBox {
-  // width: 60px;
   height: 100%;
+  position: relative;
   .con {
     position: absolute;
     opacity: 0;
-    top: 34px;
+    top: 0;
+    left: -7px;
     padding-top: 30px;
     float: left;
-    // animation: slidDown 0.3s forwards;
     display: none;
     .moreItem {
       height: 32px;
       line-height: 32px;
-      padding: 0;
+      padding: 0 10px;
     }
     a {
       white-space: nowrap;
     }
   }
 }
-
+.bg {
+  .moreItem {
+    background: #212121;
+  }
+}
 .a[data-current='true'] {
   color: @BORDER;
 }

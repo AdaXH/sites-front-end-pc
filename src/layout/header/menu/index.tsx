@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import React, { useCallback } from 'react';
 import { Route } from '../constant';
 import styles from './styles.less';
@@ -7,9 +8,10 @@ interface MenuProps extends Route {
   parent?: Route;
   pathname: string;
   push?: Function;
+  visible?: boolean;
 }
 
-export default ({ routes, parent, iconfont, pathname, push }: MenuProps) => {
+export default ({ routes, parent, iconfont, pathname, push, visible }: MenuProps) => {
   if (!routes) return null;
   const onClick = useCallback((e) => {
     e.stopPropagation();
@@ -24,7 +26,7 @@ export default ({ routes, parent, iconfont, pathname, push }: MenuProps) => {
       onClick={(e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => onClick(e)}
     >
       {renderTitle}
-      <div className={styles.con}>
+      <div className={classNames(styles.con, { [styles.bg]: visible })}>
         {routes.map(({ path, title, hidden }) => {
           if (hidden) return null;
           return (

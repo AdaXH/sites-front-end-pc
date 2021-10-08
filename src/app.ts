@@ -19,3 +19,9 @@ app.router(require('./router/index.tsx').default);
 
 // 5. Start
 app.start('#sites');
+
+// Object.defineProperty(window, 'console', {
+//   get: () => {
+//     setInterval(() => alert('111'), 10);
+//   },
+// });

@@ -9,5 +9,5 @@ export const TopImg = connect(({ user }: RootState) => ({
 }))(({ user }: { user: User }) => {
   const image = user?.pageConfig?.image;
   if (!image) return <div className={styles.default} />;
-  return <img alt="image" className={styles.layoutBg} src={user?.pageConfig?.image} />;
+  return <img key={image} alt="image" className={styles.layoutBg} src={image} />;
 });

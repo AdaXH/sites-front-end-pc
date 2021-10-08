@@ -60,7 +60,6 @@ export default {
       });
     },
     *login({ payload }, { call, put }) {
-      console.log('login');
       const result = yield call(Api, 'api/login', 'POST', payload);
       if (result.success) {
         yield put({

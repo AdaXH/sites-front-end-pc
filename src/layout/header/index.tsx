@@ -42,6 +42,8 @@ export const Header: React.FC<Props> = connect(({ user }) => ({ user }))((props)
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }, [user.isLogin]);
+  const [visible, setVisible] = useState<boolean>(false);
+
   function renderLinks(links: Array<Route>) {
     return links.map((item, index) => {
       const { hidden, permission, type, childRoutes, path, title, iconfont, needLogin } = item;
@@ -62,6 +64,7 @@ export const Header: React.FC<Props> = connect(({ user }) => ({ user }))((props)
             routes={childRoutes}
             parent={item}
             key={path}
+            visible={visible}
           />
         );
       }
@@ -77,7 +80,6 @@ export const Header: React.FC<Props> = connect(({ user }) => ({ user }))((props)
     });
   }
 
-  const [visible, setVisible] = useState<boolean>(false);
   useEffect(() => {
     function listenScroll(e: Event) {
       const top = document.scrollingElement.scrollTop;

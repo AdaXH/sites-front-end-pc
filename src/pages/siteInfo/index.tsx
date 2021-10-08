@@ -199,7 +199,7 @@ export default connect(({ user: userModel }: RootState) => ({ userModel }))(
               <div className={styles.btn}>
                 <div onClick={onUpvote} data-btn>
                   <i className={`${hasUpvote ? 'icondianzan2' : 'icondianzan1'} iconfont`} />
-                  <span>{siteUpvotes?.length}</span>
+                  <span>{hot + (siteUpvotes?.length || 0)}</span>
                 </div>
                 <div onClick={onCollect} data-btn>
                   <i className={`${hasCollect ? 'iconshoucangshixin' : 'iconshoucang'} iconfont`} />
