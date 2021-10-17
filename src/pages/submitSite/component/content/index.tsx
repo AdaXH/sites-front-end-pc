@@ -12,7 +12,7 @@ import { SITE_TYPE } from '@/utils/constant';
 import { SITETYPE } from 'site-type';
 import SitesImg from './siteImgs';
 import SiteIcon from './siteIcon';
-import { reDesignData } from './util';
+// import { reDesignData } from './util';
 import { QUICK_SUBMIT_STYPE } from '../../constant';
 
 import styles from './styles.less';
@@ -29,7 +29,7 @@ export default forwardRef(({ value, siteType: preType, isEdit, submitType }: Sit
   const isQuickSubmit = useMemo(() => submitType === QUICK_SUBMIT_STYPE, [submitType]);
   useEffect(() => {
     if (value) {
-      setState(reDesignData(value));
+      setState(value);
     }
   }, [value]);
   useEffect(() => {

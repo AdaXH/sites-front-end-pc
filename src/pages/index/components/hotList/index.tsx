@@ -5,7 +5,7 @@ import { queryRandom } from './service';
 
 import styles from './styles.less';
 
-export default () => {
+export default ({ history }) => {
   const [state, setState] = useState<{
     loading: boolean;
     list?: Record<string, number>[];
@@ -68,7 +68,9 @@ export default () => {
                       <h1 className={styles.siteName}>{siteName}</h1>
                       <a
                         className={styles.btn}
-                        href={`/site-info?${stringify({ siteType, siteId })}`}
+                        onClick={() =>
+                          history.push(`/site-info?${stringify({ siteType, siteId })}`)
+                        }
                       >
                         Link
                       </a>

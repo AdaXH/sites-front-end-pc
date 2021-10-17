@@ -43,6 +43,7 @@ export default ({ history }) => {
     {
       dataIndex: 'image',
       title: '头图',
+      width: '30%',
     },
     {
       dataIndex: 'mainTitle',
@@ -51,16 +52,17 @@ export default ({ history }) => {
     {
       dataIndex: 'desc',
       title: '描述',
+      width: '30%',
     },
     {
       title: '操作',
       render: (row) => (
-        <>
+        <div className={styles.operation}>
           <a onClick={() => onEdit(row)}>编辑</a>
           <Popconfirm title="确认删除？" onConfirm={() => onDelete(row._id)}>
             <a>删除</a>
           </Popconfirm>
-        </>
+        </div>
       ),
     },
   ];

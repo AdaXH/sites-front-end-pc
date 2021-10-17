@@ -24,6 +24,10 @@ interface Props {
   duration?: number;
 }
 
+message.config({
+  top: 400,
+});
+
 const Component = (props: Props, _type_: ITypes) => {
   const { msg = '通知' } = props;
   message[_type_ === 'fail' ? 'error' : _type_](msg);

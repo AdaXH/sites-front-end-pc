@@ -59,9 +59,15 @@ export default function Api(
             resolve(result);
           } else {
             reject(result);
+            console.log('result', result);
             if (noError) {
               return;
             }
+            console.log(
+              'parseError((result && result.errorMsg) || result)',
+              parseError((result && result.errorMsg) || result),
+            );
+
             Notification.fail({
               msg: parseError((result && result.errorMsg) || result),
             });
