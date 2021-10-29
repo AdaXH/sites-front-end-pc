@@ -1,5 +1,5 @@
 import { connect } from 'dva';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { RootState, User } from 'state-typings';
 
 import styles from './styles.less';
@@ -7,7 +7,10 @@ import styles from './styles.less';
 export const TopImg = connect(({ user }: RootState) => ({
   user,
 }))(({ user }: { user: User }) => {
-  const image = user?.pageConfig?.image;
+  const { image, bgColor } = user?.pageConfig || {};
+  useEffect(() => {
+    document.body.style.backgroundColor = `${bgColor}`;
+  }, [bgColor]);
   // const [loaded, setLoad] = useState<boolean>(false);
   // useEffect(() => {
   //   setLoad(false);

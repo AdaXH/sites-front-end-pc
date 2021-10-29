@@ -5,6 +5,9 @@ import './global.less';
 // 1. Initialize
 const app = dva({
   history: createHistory(),
+  onError: (err) => {
+    console.log('err', err);
+  },
 });
 
 // 2. Plugins

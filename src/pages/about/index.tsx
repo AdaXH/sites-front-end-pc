@@ -26,37 +26,33 @@ export default connect(({ user }: RootState) => ({
       <div className={styles.content}>
         <h1>简介</h1>
         <p>
-          <div>
-            <a>“站点聚合平台”，</a>
-            {desc}
-          </div>
+          <a>“站点聚合平台”，</a>
+          {desc}
         </p>
         <h1>联系本站</h1>
-        <p>
-          <div>
-            1.{' '}
-            <a
-              href="http://wpa.qq.com/msgrd?v=3&uin=3532371088&site=qq&menu=yes"
-              target="_blank"
-              rel="noreferrer"
-              data-line
-            >
-              QQ
-            </a>
-          </div>
-          <div>
-            2.{' '}
-            <a data-line href="mailto:adaxh@qq.com">
-              邮箱发送
-            </a>
-          </div>
-          <div>
-            3.{' '}
-            <a data-line href="https://github.com/Sites-Groups" target="_blank">
-              GitHub
-            </a>
-          </div>
-        </p>
+        <div>
+          1.{' '}
+          <a
+            href="http://wpa.qq.com/msgrd?v=3&uin=3532371088&site=qq&menu=yes"
+            target="_blank"
+            rel="noreferrer"
+            data-line
+          >
+            QQ
+          </a>
+        </div>
+        <div>
+          2.{' '}
+          <a data-line href="mailto:adaxh@qq.com">
+            邮箱发送
+          </a>
+        </div>
+        <div>
+          3.{' '}
+          <a data-line href="https://github.com/Sites-Groups" target="_blank">
+            GitHub
+          </a>
+        </div>
         {/* <h1>About</h1>
       <p>
         <div>

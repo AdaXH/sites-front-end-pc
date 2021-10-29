@@ -16,6 +16,7 @@ export interface SrcConfig {
   desc?: string;
   image?: string;
   smallImg?: string;
+  bgColor?: string;
 }
 
 export interface User {
@@ -71,11 +72,6 @@ export default {
     },
     *load(_, { select, put, call }) {
       const user: User = yield select((state) => state.user);
-      if (!user.isLogin) {
-        yield put({
-          type: 'getUserInfo',
-        });
-      }
       let confgis = user.globalCfg;
       if (!user.globalCfg) {
         const { success, data } = yield call(Api, 'api/querySrc', 'get');
@@ -94,6 +90,11 @@ export default {
           pageConfig: getSrcConfig(confgis),
         },
       });
+      if (!user.isLogin) {
+        yield put({
+          type: 'getUserInfo',
+        });
+      }
     },
   },
   reducers: {
@@ -114,7 +115,8 @@ export default {
     setup({ dispatch, history }) {
       return history.listen(() => {
         dispatch({
-          type: `${NAMESPACE}/load`,
+          // type: `${NAMESPACE}/load`,
+          type: 'load',
         });
       });
     },

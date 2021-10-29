@@ -12,6 +12,10 @@ export const SRC_MODELS = [
     title: 'banner小图',
   },
   {
+    code: 'bgColor',
+    title: '背景颜色',
+  },
+  {
     code: 'mainTitle',
     title: '主标题',
   },
