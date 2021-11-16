@@ -23,16 +23,18 @@ export default ({ children, history }: Props) => {
   return (
     <div className={styles.body}>
       <Header history={history} />
-      <TopImg />
-      {/* <div className={styles.bg}>
+      <span>
+        <TopImg />
+        {/* <div className={styles.bg}>
         <Wave />
       </div> */}
-      {/* <Shake> */}
-      <div className={styles.animate} key={keyPath}>
-        {children}
-      </div>
-      {/* </Shake> */}
-      <Design />
+        {/* <Shake> */}
+        <div className={styles.animate} key={keyPath}>
+          {children}
+        </div>
+        {/* </Shake> */}
+        <Design />
+      </span>
     </div>
   );
 };
