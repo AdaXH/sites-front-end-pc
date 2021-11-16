@@ -57,7 +57,7 @@ export default connect(({ user }: RootState) => ({ user }))((props: SubmitProps)
         });
       }
     } catch (error) {
-      Notification.warning({ msg: error });
+      if (error?.message) Notification.warning({ msg: error?.message });
     }
   };
 

@@ -25,7 +25,7 @@ interface Props {
 }
 
 message.config({
-  top: window.innerHeight / 2,
+  top: window.innerHeight / 3,
 });
 
 const Component = (props: Props, _type_: ITypes) => {
