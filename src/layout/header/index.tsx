@@ -100,8 +100,8 @@ export const Header: React.FC<Props> = connect(({ user }) => ({ user }))((props)
 
   return (
     <>
-      <div className={classNames(styles.wrap, { [styles.dark]: visible })}></div>
-      <header className={classNames(styles.header, { [styles.dark]: visible })}>
+      <div data-hidden={visible} className={classNames(styles.wrap, { [styles.dark]: visible })}></div>
+      <header data-hidden={visible} className={classNames(styles.header, { [styles.dark]: visible })}>
         <h1 className={styles.logo} onClick={() => history.push('/')}>
           <span>site|ink</span>
           <span className={styles.bottom}>sites.link</span>

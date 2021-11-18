@@ -47,12 +47,17 @@
           justify-content: space-between;
           .btn {
             cursor: pointer;
-            background-color: @FONTCOLOR;
-            color: white;
+            background-color: transparent;
+            color: @FONTCOLOR;
             height: 40px;
             width: 250px;
             line-height: 40px;
             text-align: center;
+            transition: all .3s;
+            border: 1px solid @FONTCOLOR;
+            &:hover {
+              font-weight: bold;
+            }
           }
         }
         h1 {
