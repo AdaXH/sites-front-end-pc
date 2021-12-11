@@ -52,7 +52,7 @@ export default ({
   };
   useEffect(() => {
     function listenScoll() {
-      if (!data.length || data.length === total || total === 1) return;
+      if (!data.length || data.length === total || total === 1 || !total) return;
       const scrollTop = document.scrollingElement.scrollTop;
       const clientHeight = window.innerHeight;
       const scrollHeight = document.scrollingElement.scrollHeight;

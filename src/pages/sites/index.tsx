@@ -3,14 +3,12 @@ import { Switch, Redirect } from 'dva/router';
 import { mapRouteMethod } from '@/router/util';
 import { PageSlide } from '@/component/pageSlide';
 import BasicTop from '@/component/basicTop';
-import { SITES_ROUTES, HIDDEN_HREF_URLS } from './constant';
-
-import styles from './styles.less';
 import { getParam } from '@/utils/functions';
 import { connect } from 'dva';
 import { RootState, User } from 'state-typings';
+import { SITES_ROUTES, HIDDEN_HREF_URLS, menus } from './constant';
 
-const menus = SITES_ROUTES.map(({ title, path, mainTitle }) => ({ title, mainTitle, path }));
+import styles from './styles.less';
 
 export default connect(({ user }: RootState) => ({
   user,

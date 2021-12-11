@@ -42,3 +42,5 @@ export const SITES_ROUTES = [
 ];
 
 export const HIDDEN_HREF_URLS = ['/sites/submit-site'];
+
+export const menus = SITES_ROUTES.map(({ title, path, mainTitle }) => ({ title, mainTitle, path }));
