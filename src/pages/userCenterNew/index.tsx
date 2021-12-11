@@ -18,9 +18,9 @@ export default connect(({ user }: RootState) => ({
   const reLoad = useCallback(() => {
     dispatch({ type: 'user/getUserInfo' });
   }, []);
-  const { avatar, name, gender, myDesc } = user;
+  const { avatar, name, gender, myDesc, isLogin } = user;
   return (
-    <div className={styles.indexContainer}>
+    <div className={styles.indexContainer} style={{ display: isLogin ? 'block' : 'none' }}>
       <BasicTop
         needMargin
         leftContent={

@@ -1,4 +1,4 @@
-import React, { useMemo, ReactNode } from 'react';
+import React, { useMemo, ReactNode, useEffect } from 'react';
 import { formatTime, sliceNumber, stringify } from '@/utils/functions';
 import { Pagenation } from '../pagination';
 import { Filter, SortType } from './filter';
@@ -50,6 +50,19 @@ export default ({
     if (userId === 'qucikSubmitUser') return;
     push(`/site-userInfo?userId=${userId}`);
   };
+  useEffect(() => {
+    function listenScoll() {
+      if (!data.length || data.length === total || total === 1) return;
+      const scrollTop = document.scrollingElement.scrollTop;
+      const clientHeight = window.innerHeight;
+      const scrollHeight = document.scrollingElement.scrollHeight;
+      if (scrollTop + clientHeight === scrollHeight) {
+        onChange(current + 1);
+      }
+    }
+    window.addEventListener('scroll', listenScoll);
+    return () => window.removeEventListener('scroll', listenScoll);
+  }, [current, total, data.length]);
   return (
     <>
       {data.length === 0 && (
@@ -129,30 +142,21 @@ export default ({
                       : '网站类型为快速提交，没有站长信息'}
                   </p>
                 </div>
-                {
-                  extraTitle && (
-                    <div className={styles.user} onClick={() => extracFn(item._id, item.siteType)}>
-                      <h1>
-                        <a>
-                          {extraTitle}
-                          <i className="iconqianjin iconfont" />
-                        </a>
-                      </h1>
-                      <p>{extraDesc}</p>
-                    </div>
-                  )
-                  // extraDesc,
-                  // extracFn,
-                }
+                {extraTitle && (
+                  <div className={styles.user} onClick={() => extracFn(item._id, item.siteType)}>
+                    <h1>
+                      <a>
+                        {extraTitle}
+                        <i className="iconqianjin iconfont" />
+                      </a>
+                    </h1>
+                    <p>{extraDesc}</p>
+                  </div>
+                )}
               </div>
             </div>
           );
         })}
-        {data.length < total && (
-          <div className={styles.more} onClick={() => onChange(current + 1)}>
-            - 查看更多 -
-          </div>
-        )}
       </div>
     </>
   );

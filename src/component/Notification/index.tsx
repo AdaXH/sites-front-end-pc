@@ -30,6 +30,7 @@ message.config({
 
 const Component = (props: Props, _type_: ITypes) => {
   const { msg = '通知' } = props;
+  message.destroy();
   message[_type_ === 'fail' ? 'error' : _type_](msg);
 };
 
