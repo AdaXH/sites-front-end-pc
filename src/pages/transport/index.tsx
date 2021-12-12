@@ -17,9 +17,9 @@ const App: React.FC<{ historty: History }> = ({ historty }) => {
         if (res.success && res.data) setData(res.data[0]);
         setTimeout(() => {
           window.location.href = res.data[0].siteLink;
-        }, 5000);
+        }, 1500);
       });
-    }, 3000);
+    }, 1000);
   });
   return (
     <>
@@ -27,13 +27,11 @@ const App: React.FC<{ historty: History }> = ({ historty }) => {
       <div className={styles.viewport}>
         <div className={styles.p1}>星河渺渺 唯你闪耀.</div>
         <div className={styles.p2} data-finish={Boolean(data)} key={JSON.stringify(data)}>
-          {data ? (
+          {data && (
             <div>
               发现：
               <span>{data.siteName}</span>
             </div>
-          ) : (
-            '正在寻找闪耀的星星......'
           )}
           {data && <div className={styles.p3}>“{data.siteDesc}”</div>}
         </div>

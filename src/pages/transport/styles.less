@@ -4,7 +4,7 @@ canvas {
   height: 100%;
 }
 .viewport {
-  width: 80%;
+  width: 50%;
   height: 50vh;
   position: absolute;
   top: 50%;
@@ -21,17 +21,17 @@ canvas {
     font-weight: bold;
     font-size: 20px;
     letter-spacing: 2px;
-    animation: opacity 3s;
+    animation: opacity 2s;
   }
   .p2,
   .p3 {
     opacity: 0;
-    animation-delay: 1s;
+    animation-delay: 0, 3s;
     animation-fill-mode: forwards;
     font-size: 15px;
     margin-top: 20px;
     &[data-finish='true'] {
-      animation: opacityScale 2s;
+      animation: opacityScale 1s;
       animation-fill-mode: forwards;
       // color: black;
       padding: 20px;
@@ -47,7 +47,7 @@ canvas {
     }
   }
   .p3 {
-    animation-delay: 1.5s;
+    animation-delay: 0.5s;
     color: #b19956;
   }
 }
