@@ -5,6 +5,7 @@ import Loading from '@/component/loading';
 import Notification from '@/component/Notification';
 import { NO_LOADING_API, NOERROR_API } from './constant';
 import LoginModal from '@/component/loginModal';
+import { stringify } from './functions';
 
 /**
  * Requests a URL, returning a promise.
@@ -47,9 +48,13 @@ export default function Api(
     if (isBuild) {
       senceKey = '';
     }
+    let queryString = '';
+    if (method === 'GET' && data) {
+      queryString = `?${stringify(data)}`;
+    }
     return new Promise((resolve, reject) => {
       !needLoading && Loading.show({});
-      fetch(`${origin}${senceKey}${_url_}`, options)
+      fetch(`${origin}${senceKey}${_url_}${queryString}`, options)
         .then((response) => {
           if (response.status >= 200 && response.status < 300) return response.json();
           return response.status;

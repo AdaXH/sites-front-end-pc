@@ -34,6 +34,9 @@ export default connect(({ user }: RootState) => ({
             <i className="iconqianjin2 iconfont" />
           </div>
         </div>
+        <div className={styles.transport}>
+          <i className="iconfeidie iconfont" onClick={() => window.open('/transport')} />
+        </div>
         <div className={styles.userEntry}>
           <i className="iconuser2 iconfont" onClick={loginEntry} />
 

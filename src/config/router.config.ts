@@ -52,4 +52,8 @@ export default [
     path: '/site-info',
     component: () => import('@/pages/siteInfo/index'),
   },
+  {
+    path: '/transport',
+    component: () => import('@/pages/transport/index'),
+  },
 ];

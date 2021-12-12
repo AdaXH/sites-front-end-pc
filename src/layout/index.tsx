@@ -16,6 +16,7 @@ export default ({ children, history }: Props) => {
     location: { pathname },
   } = history;
   if (/super-admin/.test(pathname)) return <Admin history={history}>{children}</Admin>;
+  if (pathname === '/transport') return <>{children}</>;
   const [keyPath, setPath] = useState<string>(pathname);
   useDidMount(() => {
     history.listen(({ pathname: path }) => setPath(path));
