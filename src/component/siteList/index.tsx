@@ -50,19 +50,31 @@ export default ({
     if (userId === 'qucikSubmitUser') return;
     push(`/site-userInfo?userId=${userId}`);
   };
+  const scrollHeight = document.scrollingElement.scrollHeight + 17;
   useEffect(() => {
     function listenScoll() {
+      console.log('data', data.length);
+      console.log('total', total);
       if (!data.length || data.length === total || total === 1 || !total) return;
       const scrollTop = document.scrollingElement.scrollTop;
       const clientHeight = window.innerHeight;
-      const scrollHeight = document.scrollingElement.scrollHeight;
-      if (scrollTop + clientHeight === scrollHeight) {
+      console.log(
+        'scrollTop + clientHeight === scrollHeight',
+        scrollTop + clientHeight === scrollHeight,
+      );
+      console.log('scrollTop', scrollTop);
+      console.log('clientHeight', clientHeight);
+      console.log('scrollHeight', scrollHeight);
+      if (
+        Math.floor(scrollTop) + clientHeight === scrollHeight ||
+        Math.ceil(scrollTop) + clientHeight === scrollHeight
+      ) {
         onChange(current + 1);
       }
     }
     window.addEventListener('scroll', listenScoll);
     return () => window.removeEventListener('scroll', listenScoll);
-  }, [current, total, data.length]);
+  }, [current, total, data.length, scrollHeight]);
   return (
     <>
       {data.length === 0 && (

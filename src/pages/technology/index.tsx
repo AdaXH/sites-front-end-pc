@@ -34,6 +34,7 @@ export default ({ history }: { history?: any }) => {
       query(1);
     }
   }, [filterType]);
+  console.log('pagination', pagination);
   return (
     <SiteList
       pagination={{
