@@ -1,58 +1,89 @@
-import React, { useCallback, useState } from 'react';
-import { useDidMount } from '@/utils/hooks';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import { useBoolean, useDidMount } from '@/utils/hooks';
 import { formatTime, stringify } from '@/utils/functions';
-import { queryRandom } from './service';
+import { getData } from './service';
 
 import styles from './styles.less';
 
 export default ({ history }) => {
   const [state, setState] = useState<{
     loading: boolean;
-    list?: Record<string, number>[];
+    list?: SiteModel[];
   }>({
     loading: false,
     list: [],
   });
 
-  const query = useCallback(async () => {
-    setState({
-      ...state,
-      loading: true,
-    });
-    let data = [];
-    try {
-      const { data: resData } = await queryRandom();
-      data = resData;
-    } finally {
-      setState({
-        loading: false,
-        list: data,
-      });
-    }
-  }, []);
+  const [isHot, { setTrue, setFalse }] = useBoolean(false);
+  const [cacheHotData, setCache] = useState<SiteModel[]>([]);
 
-  useDidMount(query);
+  const api = useMemo(() => (isHot ? 'queryRandom' : 'getHotList'), [isHot]);
+
+  const query = useCallback(
+    async (url?: string) => {
+      let data = [];
+      const extra: any = {};
+      const isHotApi = api === 'getHotList';
+      if (isHotApi) {
+        extra.list = [...cacheHotData];
+      }
+      console.log('extra', extra.list);
+      setState({
+        // ...state,
+        loading: true,
+        ...extra,
+      });
+      try {
+        const { data: resData } = await getData(url || api);
+        data = resData;
+        if (isHotApi) {
+          setCache(resData);
+        }
+      } finally {
+        console.log('extra', extra.list);
+
+        setState({
+          loading: false,
+          list: data,
+        });
+      }
+    },
+    [api, cacheHotData],
+  );
+
+  // useDidMount(query);
 
   const onFresh = useCallback(() => {
-    query();
+    query('queryRandom');
   }, []);
 
+  useEffect(() => {
+    query();
+  }, [api]);
+
   const { loading, list = [] } = state;
+
+  const loadingVisible = useMemo(() => loading && api === 'queryRandom', [api, loading]);
+
   return (
     <div className={styles.listBox}>
       <div className={styles.aminWrap}>
-        {loading && (
-          <div className={styles.loadingWrap}>
-            <div className={styles.loadinDot} />
+        <div className={styles.dataType}>
+          <div className={styles.dataTypeItem} data-current={!isHot} onClick={setFalse}>
+            最近活跃
           </div>
-        )}
-        <h1 className={styles.title}>
-          随机推荐：
-          <span className={styles.updIcon} onClick={onFresh}>
-            <i className="iconfont iconshuaxin" />
-          </span>
-        </h1>
-        {list.length !== 0 && (
+          <div className={styles.dot} />
+          <div className={styles.dataTypeItem} data-current={isHot} onClick={setTrue}>
+            随机推荐
+            {isHot && (
+              <span className={styles.updIcon} onClick={onFresh}>
+                <i className="iconfont iconshuaxin" />
+              </span>
+            )}
+          </div>
+          <div data-right={isHot} className={styles.dataTypeLine} />
+        </div>
+        {!loadingVisible && list.length !== 0 && (
           <div className={styles.list} key={loading.toString()}>
             {list.map(
               ({ siteIcon, siteName, _id: siteId, siteType, siteImgs, siteDesc, submitDate }) => (
@@ -83,6 +114,11 @@ export default ({ history }) => {
                 </div>
               ),
             )}
+          </div>
+        )}
+        {loadingVisible && (
+          <div className={styles.loadingWrap}>
+            <div className={styles.loadinDot} />
           </div>
         )}
       </div>

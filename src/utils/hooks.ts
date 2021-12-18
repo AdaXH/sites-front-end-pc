@@ -87,3 +87,12 @@ export function useLoading<T extends (...args: any[]) => any>(cb: T): any {
     },
   ];
 }
+
+export function useBoolean(
+  initBool?: boolean,
+): [boolean, { setTrue: () => any; setFalse: () => any }] {
+  const [bool, setBool] = useState<boolean>(initBool);
+  const setTrue = () => setBool(true);
+  const setFalse = () => setBool(false);
+  return [bool, { setTrue, setFalse }];
+}

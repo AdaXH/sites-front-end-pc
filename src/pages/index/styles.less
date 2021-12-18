@@ -1,4 +1,5 @@
 @import '../../common/styles/constant.less';
+@import '../../common/styles/animation.less';
 .pageBox {
   position: fixed;
   top: calc(50% - 80px);
@@ -76,8 +77,9 @@
 .transport {
   display: flex;
   align-items: center;
+  .shake();
   i {
-    font-size: 40px;
+    font-size: 25px;
     color: white;
     cursor: pointer;
   }

@@ -50,3 +50,43 @@
     background: rgba(255, 255, 255, 0);
   }
 }
+
+.shake() {
+  animation: shake 10s infinite;
+  transform: translate3d(0, -20px, 0);
+  animation-fill-mode: forwards;
+}
+
+@keyframes shake {
+  0% {
+    transform: translate3d(0, -10px, 0);
+  }
+  20% {
+    transform: translate3d(0, 0, 0);
+  }
+  40% {
+    transform: translate3d(0, 10px, 0);
+  }
+  60% {
+    transform: translate3d(0, 0, 0);
+  }
+  80%,
+  100% {
+    transform: translate3d(0, -10px, 0);
+  }
+}
+
+.rotate() {
+  animation: rotate 1s infinite linear;
+  transform-origin: center;
+  animation-fill-mode: forwards;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
