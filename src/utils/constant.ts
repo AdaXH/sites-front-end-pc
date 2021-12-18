@@ -9,7 +9,18 @@ export const NO_LOADING_API = [
   '/parseRss',
 ];
 
-export const NOERROR_API = ['/getUserInfo', '/login', '/register', '/parseRss'];
+/**
+ * 不需要展示error的接口
+ */
+export const NOERROR_API = [
+  '/getUserInfo',
+  '/login',
+  '/register',
+  '/parseRss',
+  '/queryMyBasicInfo',
+  '/queryMySites',
+  '/queryMyFavorite',
+];
 
 export const EMOJI_CACHE_KEY = '__emoji__list';
 

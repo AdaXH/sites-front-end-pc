@@ -166,6 +166,7 @@ export default memo(
     );
   },
   (pre, next) => {
+    if ('extraTitle' in next) return false;
     if (next.pagination?.total === 1 || !next.pagination?.total) return true;
     return false;
   },
