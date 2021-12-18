@@ -30,7 +30,7 @@ module.exports = {
     },
     proxy: {
       '/api': {
-        target: 'http://sites.link',
+        target: 'http://localhost:5050',
         changeOrigin: true,
         pathRewrite: { api: '/' },
       },
