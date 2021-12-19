@@ -1,0 +1,36 @@
+.rss {
+  position: relative;
+  top: -188px;
+  letter-spacing: 2px;
+  .content {
+    margin-top: 48px;
+    background: white;
+    padding: 20px 40px;
+    .page {
+      margin-top: 10px;
+      :global {
+        ul {
+          display: flex;
+          align-content: center;
+          justify-content: center;
+        }
+      }
+    }
+  }
+  &Item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px dashed #e7e7e7;
+    a {
+      color: #6a6868;
+      display: flex;
+      flex-direction: column;
+    }
+    &Date {
+      font-size: 13px;
+      color: #b7b7b7;
+    }
+  }
+}

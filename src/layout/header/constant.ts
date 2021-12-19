@@ -101,6 +101,11 @@ export const routes: Array<Route> = [
     iconfont: 'iconuser2',
   },
   {
+    path: '/rss',
+    iconfont: 'iconrss1',
+    title: '文章rss',
+  },
+  {
     path: '/more',
     type: 'more',
     title: '更多',

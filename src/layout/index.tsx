@@ -34,8 +34,8 @@ export default ({ children, history }: Props) => {
           {children}
         </div>
         {/* </Shake> */}
-        <Design />
       </span>
+      <Design />
     </div>
   );
 };

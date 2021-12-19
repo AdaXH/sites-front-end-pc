@@ -45,6 +45,10 @@ export default [
     component: () => import('@/pages/about/index'),
   },
   {
+    path: '/rss',
+    component: () => import('@/pages/rss/index'),
+  },
+  {
     path: '/qq-login',
     component: () => import('@/pages/qqLogin/index'),
   },
