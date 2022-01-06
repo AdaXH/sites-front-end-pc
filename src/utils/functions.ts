@@ -81,7 +81,9 @@ export function qqSign() {
       appId: '101946967',
       redirectURI: 'https://sites.link/qq-login',
     });
-  } catch (error) {}
+  } catch (error) {
+    // ignore
+  }
 }
 
 export function getValueByRef(ref: Ref) {
@@ -147,7 +149,7 @@ export function getURL2Base64(url: string) {
 
 const { TITLE, DESC } = SITE_BASIC_INFO;
 
-export function updTitleDesc(title: string = '', desc: string) {
+export function updTitleDesc(title = '', desc: string) {
   document.title = `${title} ${TITLE}`;
   const {
     location: { pathname },
@@ -188,7 +190,7 @@ export function loadImgSize(
   img.src = src;
   return new Promise((resolve, reject) => {
     img.onload = (e) => {
-      // @ts-ignore
+      // @ts-ignore"
       const { path } = e;
       const [{ naturalHeight, naturalWidth }] = path;
       resolve({
@@ -201,7 +203,7 @@ export function loadImgSize(
   });
 }
 
-export function simpleThrole<T extends (...arg: any[]) => any>(fn: T, delay: number = 100) {
+export function simpleThrole<T extends (...arg: any[]) => any>(fn: T, delay = 100) {
   let preTime = Date.now();
   return (...arg) => {
     if (Date.now() - preTime >= delay) {

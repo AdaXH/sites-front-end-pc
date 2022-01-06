@@ -1,6 +1,5 @@
-import { connect } from 'dva';
 import React, { useState, useMemo, CSSProperties, useEffect } from 'react';
-import { RootState, User } from 'state-typings';
+import { User } from 'state-typings';
 import { COMPONENT_LIST } from './constant';
 
 import styles from './styles.less';

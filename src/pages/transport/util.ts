@@ -1,4 +1,5 @@
 //@ts-nocheck
+/* eslint-disable */
 function $i(t) {
   return document.getElementById(t);
 }
@@ -21,12 +22,12 @@ function _h(t) {
   return hires ? Math.round(t / 2) : t;
 }
 function get_screen_size() {
-  var t = document.documentElement.clientWidth,
+  const t = document.documentElement.clientWidth,
     r = document.documentElement.clientHeight;
-  return Array(t, r);
+  return [t, r];
 }
 function init(r) {
-  for (var t = 0; n > t; t++)
+  for (let t = 0; n > t; t++)
     (star[t] = new Array(5)),
       (star[t][0] = Math.random() * w * 2 - 2 * x),
       (star[t][1] = Math.random() * h * 2 - 2 * y),
@@ -42,7 +43,7 @@ function init(r) {
 }
 function anim() {
   (mouse_x = cursor_x - x), (mouse_y = cursor_y - y), context.fillRect(0, 0, w, h);
-  for (var t = 0; n > t; t++)
+  for (let t = 0; n > t; t++)
     (test = !0),
       (star_x_save = star[t][3]),
       (star_y_save = star[t][4]),
@@ -70,8 +71,8 @@ function anim() {
         context.closePath());
   timeout = setTimeout(anim, fps);
 }
-var url = document.location.href;
-var flag,
+const url = document.location.href;
+let flag,
   test,
   n,
   w,

@@ -10,7 +10,8 @@ export const COMPONENT_LIST = [
   {
     title: 'WELCOME BACK',
     Element: Login,
-  },  {
+  },
+  {
     title: 'JOIN US',
     Element: Registry,
   },

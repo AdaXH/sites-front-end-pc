@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React from 'react';
 import BasicTop from '@/component/basicTop';
 
 import styles from './styles.less';
@@ -7,7 +7,7 @@ import { RootState, User } from 'state-typings';
 
 export default connect(({ user }: RootState) => ({
   user,
-}))(({ user, history }: { user: User; history: History }) => {
+}))(({ user }: { user: User; history: History }) => {
   const { pageConfig } = user;
   const { desc } = pageConfig || {};
   return (
@@ -49,7 +49,7 @@ export default connect(({ user }: RootState) => ({
         </div>
         <div>
           3.{' '}
-          <a data-line href="https://github.com/Sites-Groups" target="_blank">
+          <a data-line href="https://github.com/Sites-Groups" target="_blank" rel="noreferrer">
             GitHub
           </a>
         </div>

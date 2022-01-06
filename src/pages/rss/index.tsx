@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Pagination } from 'antd';
 import { useDidMount, useLoading } from '@/utils/hooks';
 import BasicTop from '@/component/basicTop';
@@ -30,7 +30,7 @@ export default connect(({ user }: RootState) => ({
   const { pageConfig } = user;
   const { desc, mainTitle } = pageConfig || {};
   const [state, setData] = useState<State>();
-  const [loading, queryData] = useLoading(async (page: number = 1) => {
+  const [loading, queryData] = useLoading(async (page = 1) => {
     const res = await queryList(page);
     setData(res);
   });
@@ -51,7 +51,7 @@ export default connect(({ user }: RootState) => ({
       <div className={styles.content}>
         {data?.map((item) => (
           <div key={item.link} className={styles.rssItem}>
-            <a href={item.link} target="_blank">
+            <a href={item.link} target="_blank" rel="noreferrer">
               <span>{item.title}</span>
               <span className={styles.rssItemDate}>{formatTime(item.date)}</span>
             </a>

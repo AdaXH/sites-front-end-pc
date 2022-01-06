@@ -5,7 +5,7 @@ import { queryRandom } from './service';
 
 import styles from './styles.less';
 
-const App: React.FC<{ historty: History }> = ({ historty }) => {
+const App: React.FC<{ historty: History }> = () => {
   const ref = createRef<HTMLCanvasElement>();
   const [data, setData] = useState<SiteModel>(null);
   useEffect(() => {

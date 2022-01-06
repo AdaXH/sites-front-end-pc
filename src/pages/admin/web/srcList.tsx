@@ -7,7 +7,7 @@ import Src from './src';
 
 import styles from './styles.less';
 
-export default ({ history }) => {
+export default () => {
   const [data, setData] = useState<any[]>();
   async function query() {
     const { data: res } = await querySrc();

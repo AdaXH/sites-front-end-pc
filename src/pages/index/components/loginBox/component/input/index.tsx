@@ -10,6 +10,7 @@ interface Props {
 }
 
 const Component: React.FC<Props> = ({ value, name, onChange, type = 'text', onEnter }) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_, setFoucus] = useState(!!value);
 
   const onInsert = (e: ChangeEvent<HTMLInputElement>) => {

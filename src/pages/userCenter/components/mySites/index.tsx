@@ -23,8 +23,17 @@ export default ({ reLoad, history }) => {
     }
   };
   const renderOperation = ({ _id: siteId, siteType, userId }) => [
-    <a onClick={() => window.open(`/submit-site?siteId=${siteId}&siteType=${siteType}`)}>编辑</a>,
-    <Popconfirm title="确认删除？" onConfirm={() => onDelete(siteId, userId, siteType)}>
+    <a
+      key={siteId}
+      onClick={() => window.open(`/submit-site?siteId=${siteId}&siteType=${siteType}`)}
+    >
+      编辑
+    </a>,
+    <Popconfirm
+      key={siteId}
+      title="确认删除？"
+      onConfirm={() => onDelete(siteId, userId, siteType)}
+    >
       <a>删除</a>
     </Popconfirm>,
   ];

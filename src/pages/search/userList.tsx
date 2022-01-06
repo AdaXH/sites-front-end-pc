@@ -10,7 +10,8 @@ export default ({ data }: { data: Array<User>; history?: any }) => (
           className={styles.item}
           key={item._id}
           href={'/site-userInfo?userId=' + item._id}
-          target="_blank" rel="noreferrer"
+          target="_blank"
+          rel="noreferrer"
         >
           <div className={styles.left}>
             <div

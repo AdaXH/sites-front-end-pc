@@ -53,12 +53,12 @@ export default memo(() => {
         // This function is called whenver the window is resized
         resizeEvent: function () {
           // Here is an example on how to create a gradient stroke
-          var gradient = this.ctx.createLinearGradient(0, 0, this.width, 0);
+          const gradient = this.ctx.createLinearGradient(0, 0, this.width, 0);
           gradient.addColorStop(0, 'rgba(255, 255, 255, 0.2');
           gradient.addColorStop(0.5, 'rgba(255, 255, 255, 0.2)');
           gradient.addColorStop(1, 'rgba(255, 255, 255, 0.2');
-          var index = -1;
-          var length = this.waves.length;
+          let index = -1;
+          const length = this.waves.length;
           while (++index < length) {
             this.waves[index].strokeStyle = gradient;
           }

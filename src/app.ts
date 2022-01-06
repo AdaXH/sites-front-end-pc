@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 import dva from 'dva';
 import createHistory from 'history/createBrowserHistory';
 import './global.less';

@@ -21,7 +21,7 @@ export const Header: React.FC<Props> = connect(({ user }) => ({ user }))((props)
     location: { pathname },
     push,
   } = history;
-  const [activePath, setPath] = useState<String>(pathname);
+  const [activePath, setPath] = useState<string>(pathname);
 
   useEffect(() => {
     history.listen(() => {
@@ -81,18 +81,18 @@ export const Header: React.FC<Props> = connect(({ user }) => ({ user }))((props)
   }
 
   useEffect(() => {
-    function listenScroll(e: Event) {
+    function listenScroll() {
       const top = document.scrollingElement.scrollTop;
       setVisible(top >= MAX_TOP_HEIGHT);
     }
     window.addEventListener(
       'scroll',
-      simpleThrole((e: Event) => listenScroll(e)),
+      simpleThrole(() => listenScroll()),
     );
     return () =>
       window.removeEventListener(
         'scroll',
-        simpleThrole((e: Event) => listenScroll(e)),
+        simpleThrole(() => listenScroll()),
       );
   }, []);
 

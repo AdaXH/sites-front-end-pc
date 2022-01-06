@@ -16,8 +16,7 @@ export default {
       siteImgs: [
         {
           _id: '6140be1bbc02f600a9fef7cd',
-          src:
-            'http://bucker-for-sae.oss-cn-hangzhou.aliyuncs.com/siteImagesBucket/ec98a1b0-6638-457e-90b3-c40171a112711631632922873.png',
+          src: 'http://bucker-for-sae.oss-cn-hangzhou.aliyuncs.com/siteImagesBucket/ec98a1b0-6638-457e-90b3-c40171a112711631632922873.png',
         },
       ],
     },
@@ -37,8 +36,7 @@ export default {
       siteImgs: [
         {
           _id: '613b2db8bc02f600a9fef4bc',
-          src:
-            'http://bucker-for-sae.oss-cn-hangzhou.aliyuncs.com/siteImagesBucket/04d6f599-be32-4f3c-a57b-ac6cdd97e89a1631268280668.png',
+          src: 'http://bucker-for-sae.oss-cn-hangzhou.aliyuncs.com/siteImagesBucket/04d6f599-be32-4f3c-a57b-ac6cdd97e89a1631268280668.png',
         },
       ],
     },
@@ -58,8 +56,7 @@ export default {
       siteImgs: [
         {
           _id: '61307c89bc02f600a9fee91d',
-          src:
-            'http://bucker-for-sae.oss-cn-hangzhou.aliyuncs.com/siteImagesBucket/f76f3f96-ce80-4059-b0f3-88ed91caedc81630567560919.png',
+          src: 'http://bucker-for-sae.oss-cn-hangzhou.aliyuncs.com/siteImagesBucket/f76f3f96-ce80-4059-b0f3-88ed91caedc81630567560919.png',
         },
       ],
     },
@@ -78,8 +75,7 @@ export default {
       siteImgs: [
         {
           _id: '612e245abc02f600a9fee7aa',
-          src:
-            'http://bucker-for-sae.oss-cn-hangzhou.aliyuncs.com/siteImagesBucket/4af09bae-854a-4463-8747-edde525d68ab1630413914106.jpg',
+          src: 'http://bucker-for-sae.oss-cn-hangzhou.aliyuncs.com/siteImagesBucket/4af09bae-854a-4463-8747-edde525d68ab1630413914106.jpg',
         },
       ],
     },
@@ -98,8 +94,7 @@ export default {
       siteImgs: [
         {
           _id: '612a44b8bc02f600a9fee6c6',
-          src:
-            'http://bucker-for-sae.oss-cn-hangzhou.aliyuncs.com/siteImagesBucket/7f2065ee-58ed-4cf5-8837-9a0cab9912c01630160055638.png',
+          src: 'http://bucker-for-sae.oss-cn-hangzhou.aliyuncs.com/siteImagesBucket/7f2065ee-58ed-4cf5-8837-9a0cab9912c01630160055638.png',
         },
       ],
     },
@@ -118,8 +113,7 @@ export default {
       siteImgs: [
         {
           _id: '6149b98bbc02f600a9fefd27',
-          src:
-            'http://bucker-for-sae.oss-cn-hangzhou.aliyuncs.com/siteImagesBucket/44e01031-9879-4ee4-b0a4-3c016a2dc7b21632221579310.png',
+          src: 'http://bucker-for-sae.oss-cn-hangzhou.aliyuncs.com/siteImagesBucket/44e01031-9879-4ee4-b0a4-3c016a2dc7b21632221579310.png',
         },
       ],
     },
@@ -138,8 +132,7 @@ export default {
       siteImgs: [
         {
           _id: '611f0963bc02f600a9fedbf6',
-          src:
-            'http://bucker-for-sae.oss-cn-hangzhou.aliyuncs.com/siteImagesBucket/a6f491ca-a740-45c5-b9ff-aedc3674c66b1629423971251.jpg',
+          src: 'http://bucker-for-sae.oss-cn-hangzhou.aliyuncs.com/siteImagesBucket/a6f491ca-a740-45c5-b9ff-aedc3674c66b1629423971251.jpg',
         },
       ],
     },
@@ -159,8 +152,7 @@ export default {
       siteImgs: [
         {
           _id: '611e23c4bc02f600a9fedb50',
-          src:
-            'http://bucker-for-sae.oss-cn-hangzhou.aliyuncs.com/siteImagesBucket/40efbbe6-ae12-4b05-936f-3a0246005bef1629365188678.jpg',
+          src: 'http://bucker-for-sae.oss-cn-hangzhou.aliyuncs.com/siteImagesBucket/40efbbe6-ae12-4b05-936f-3a0246005bef1629365188678.jpg',
         },
       ],
     },
@@ -180,8 +172,7 @@ export default {
       siteImgs: [
         {
           _id: '6112290d05d39f00a819a5c2',
-          src:
-            'http://bucker-for-sae.oss-cn-hangzhou.aliyuncs.com/siteImagesBucket/da38f43f-191b-4682-8660-484b30ede5231628580109465.png',
+          src: 'http://bucker-for-sae.oss-cn-hangzhou.aliyuncs.com/siteImagesBucket/da38f43f-191b-4682-8660-484b30ede5231628580109465.png',
         },
       ],
     },
@@ -201,8 +192,7 @@ export default {
       siteImgs: [
         {
           _id: '61069e7505d39f00a8199f98',
-          src:
-            'http://bucker-for-sae.oss-cn-hangzhou.aliyuncs.com/siteImagesBucket/654f5c4a-5ffa-45a7-a9b6-29a2716a01ef1627823732902.png',
+          src: 'http://bucker-for-sae.oss-cn-hangzhou.aliyuncs.com/siteImagesBucket/654f5c4a-5ffa-45a7-a9b6-29a2716a01ef1627823732902.png',
         },
       ],
     },
@@ -223,8 +213,7 @@ export default {
       siteImgs: [
         {
           _id: '6100def305d39f00a8199c40',
-          src:
-            'http://bucker-for-sae.oss-cn-hangzhou.aliyuncs.com/siteImagesBucket/6db42e80-1f44-413e-814b-87df2f3e8c151627447026373.png',
+          src: 'http://bucker-for-sae.oss-cn-hangzhou.aliyuncs.com/siteImagesBucket/6db42e80-1f44-413e-814b-87df2f3e8c151627447026373.png',
         },
       ],
     },

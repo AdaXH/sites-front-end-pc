@@ -5,7 +5,7 @@ import { queryMyFavorite, togglCollectSite } from './service';
 
 import styles from './styles.less';
 
-export default ({ history }) => {
+export default () => {
   const [data, setData] = useState([]);
   useDidMount(async () => {
     const { data: resData } = await queryMyFavorite();

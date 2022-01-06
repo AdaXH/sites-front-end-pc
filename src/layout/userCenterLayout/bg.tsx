@@ -13,6 +13,7 @@ export default memo(() => {
     }
   });
   const [config, setCfg] = useState<{ bgList?: Array<string> }>({});
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_, setBg] = useState(getCache(CACHE_BG_KEY) || DEFAULT_BG);
   const { bgList } = config;
   const onChangeBg = useCallback((newBgUrl) => {
@@ -20,9 +21,7 @@ export default memo(() => {
   }, []);
   return (
     <React.Fragment>
-      {/* <div className={styles.bg} style={{ backgroundImage: `url(${curBg})` }} /> */}
       <ViewBox onChangeBg={onChangeBg} data={{ bgList }} />
-      {/* <div className={styles.bgWrap}></div> */}
     </React.Fragment>
   );
 });

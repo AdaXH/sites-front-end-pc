@@ -10,13 +10,11 @@ export default {
   siteImgs: [
     {
       _id: '4543534',
-      src:
-        'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1621422756,3544979022&fm=26&gp=0.jpg',
+      src: 'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1621422756,3544979022&fm=26&gp=0.jpg',
     },
     {
       _id: '43434343',
-      src:
-        'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2757094696,3170772873&fm=26&gp=0.jpg',
+      src: 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2757094696,3170772873&fm=26&gp=0.jpg',
     },
   ],
   user: {

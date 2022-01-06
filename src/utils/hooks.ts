@@ -29,7 +29,7 @@ export function useInterval(callback: Function, delay: number) {
       const id = setInterval(tick, delay);
       return () => clearInterval(id);
     }
-    return () => {};
+    return () => void 0;
   }, [delay]);
 }
 
@@ -63,7 +63,7 @@ export function useDebounce(value, delay: number) {
 }
 
 export function useLoading<T extends (...args: any[]) => any>(cb: T): any {
-  const [loading, setLoading] = useState<Boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
   const arg = useRef<any[]>();
   useEffect(() => {
     async function work() {

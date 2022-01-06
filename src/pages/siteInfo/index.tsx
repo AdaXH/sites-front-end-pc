@@ -127,7 +127,7 @@ export default connect(({ user: userModel }: RootState) => ({ userModel }))(
     const turn2Link = useCallback(async () => {
       await forceHot({ siteId, siteType });
     }, [siteId, siteType]);
-    const [newMsgNode, setNewMsgEntry] = useState<Boolean>(false);
+    const [newMsgNode, setNewMsgEntry] = useState<boolean>(false);
     const [imgStyles, setImg] = useState<Partial<CSSProperties>>({});
     useEffect(() => {
       if (siteImgs?.length) {

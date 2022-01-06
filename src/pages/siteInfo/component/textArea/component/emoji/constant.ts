@@ -1,7 +1,7 @@
 import Emoji from './component/emoji';
 import TextEmoji from './component/textEmoji';
 
-export const EMOJI_PREFIX: string = '::';
+export const EMOJI_PREFIX = '::';
 
 export const EMOJI_TYPE = [
   {

@@ -144,8 +144,7 @@ export default {
     siteImgs: [
       {
         _id: '608374d6d4fffb00a74ede95',
-        src:
-          'http://bucker-for-sae.oss-cn-hangzhou.aliyuncs.com/siteImagesBucket/e7f6c2c8-4331-4854-ad35-066bfac50a7a1619168848477.png',
+        src: 'http://bucker-for-sae.oss-cn-hangzhou.aliyuncs.com/siteImagesBucket/e7f6c2c8-4331-4854-ad35-066bfac50a7a1619168848477.png',
       },
     ],
     isQuickSubmit: false,
