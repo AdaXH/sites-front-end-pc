@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDidMount } from '@/utils/hooks';
+import { sliceNumber } from '@/utils/functions';
 import { parseRss } from './service';
 
 import styles from './styles.less';
@@ -14,26 +15,24 @@ export default ({ data }: { data: string }) => {
       }
     }
   });
+  if (!list?.length) return null;
   return (
-    <div className={styles.extractBox}>
-      <div className={styles.title}>最近10篇文章（基于RSS）</div>
-      {data && (
-        <div className={styles.list}>
-          {list.length !== 0 &&
-            list.map((item, index) => (
-              <a
-                rel="noreferrer"
-                style={{ animationDuration: `${index * 0.3}s` }}
-                href={item.link}
-                key={item.link}
-                target="_blank"
-              >
-                <span className={styles.index}>{index + 1}</span>
-                {item.title}
-              </a>
-            ))}
-        </div>
-      )}
+    <div className={styles.list}>
+      {list.length !== 0 &&
+        list.map((item, index) => (
+          <a
+            rel="noreferrer"
+            style={{ animationDuration: `${index * 0.3}s` }}
+            href={item.link}
+            key={item.link}
+            className={styles.item}
+            target="_blank"
+            data-default
+          >
+            <span className={styles.index}>{sliceNumber(index + 1)}</span>
+            {item.title}
+          </a>
+        ))}
     </div>
   );
 };

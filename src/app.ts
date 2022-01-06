@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 import dva from 'dva';
 import createHistory from 'history/createBrowserHistory';
 import './global.less';
@@ -5,6 +6,9 @@ import './global.less';
 // 1. Initialize
 const app = dva({
   history: createHistory(),
+  onError: (err) => {
+    console.log('err', err);
+  },
 });
 
 // 2. Plugins
@@ -19,3 +23,9 @@ app.router(require('./router/index.tsx').default);
 
 // 5. Start
 app.start('#sites');
+
+// Object.defineProperty(window, 'console', {
+//   get: () => {
+//     setInterval(() => alert('111'), 10);
+//   },
+// });

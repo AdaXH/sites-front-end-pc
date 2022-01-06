@@ -1,5 +1,6 @@
 @COLOR: #ef8c81;
-@BORDER: white;
+@BORDER: @FONTCOLOR;
+@import url('../../common/styles/constant.less');
 .defaultPag {
   display: inline-block;
   // width: 30px;
@@ -15,12 +16,9 @@
   transition: all 0.3s;
 }
 .pageCon {
-  opacity: 0;
-  transform: translate3d(-100px, 0, 0);
-  animation: fromLeft 0.6s;
-  animation-fill-mode: forwards;
   position: relative;
-  // left: -50px;
+  display: flex;
+  justify-content: center;
   :global {
     .ant-pagination-jump-prev .ant-pagination-item-container .ant-pagination-item-link-icon,
     .ant-pagination-jump-next .ant-pagination-item-container .ant-pagination-item-link-icon {
@@ -28,6 +26,7 @@
       left: 5px;
       transform-origin: center;
       transform: rotate(90deg);
+      color: @BORDER;
     }
     .ant-pagination-item {
       span {
@@ -66,13 +65,16 @@
     .ant-pagination-prev,
     .ant-pagination-next {
       transform-origin: center;
-      transform: rotate(90deg);
+      // transform: rotate(90deg);
     }
     .ant-pagination-next a,
     .ant-pagination-prev a {
       background: transparent;
       color: @BORDER;
       font-size: 15px;
+    }
+    .ant-pagination-item-ellipsis {
+      color: @BORDER !important;
     }
   }
 }

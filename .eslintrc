@@ -1,9 +1,40 @@
 {
-  "extends": "eslint-config-umi",
+  "plugins": ["prettier"],
+  "extends": [
+    "eslint:recommended",
+    "prettier",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
   "rules": {
     "no-throw-literal": "off",
     "no-unused-expressions": "off",
-    // hack for ts eslint bug
-    "no-undef": "warn"
+    "no-undef": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/display-name": "off",
+    "react/prop-types": "off",
+    "@typescript-eslint/no-unused-vars": "error",
+    "prettier/prettier": [
+      "warn",
+      {
+        "endOfLine": "auto"
+      }
+    ],
+    "@typescript-eslint/ban-types": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/ban-ts-comment": "off"
+  },
+  "parser": "@typescript-eslint/parser",
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 12,
+    "sourceType": "module"
   }
 }

@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
-import { Popconfirm, Modal } from 'antd';
-import { formatTime } from '@/utils/functions';
+import React, { useEffect, useState } from 'react';
+import { formatTime, sliceNumber } from '@/utils/functions';
 import Notification from '@/component/Notification';
 import showdown from 'showdown';
 import { MsgItemData } from '../../';
@@ -9,10 +8,19 @@ import { MsgProps } from '../../';
 import { leaveMsg, deleteMsg } from '../../service';
 import { replaceEmoji } from '../textArea/component/preview/util';
 import styles from './styles.less';
+import { Modal } from 'antd';
 
 const converter = new showdown.Converter();
 
-export default ({ data, setMsgList, siteUserId, isLogin }: MsgProps) => {
+export default ({
+  data,
+  setMsgList,
+  siteUserId,
+  isLogin,
+  newMsgNode,
+  setNewMsgEntry,
+  superAdmin,
+}: MsgProps) => {
   const { message, siteType, siteId } = data || {};
   if (!message) return null;
   const [visible, setVisible] = useState(false);
@@ -25,6 +33,15 @@ export default ({ data, setMsgList, siteUserId, isLogin }: MsgProps) => {
     await setInfo(siteUserId);
     setVisible(true);
   };
+  useEffect(() => {
+    try {
+      if (newMsgNode) {
+        onNewMsg();
+      }
+    } finally {
+      setNewMsgEntry(false);
+    }
+  }, [newMsgNode]);
   const getValue = async (value: string) => {
     if (!value || (value.trim && !value.trim())) {
       Notification.error({ msg: '输入不规范' });
@@ -70,54 +87,76 @@ export default ({ data, setMsgList, siteUserId, isLogin }: MsgProps) => {
         destroyOnClose
         footer={null}
         title={null}
+        className={styles.modal}
+        width={650}
       >
         <MsgModal visible={visible} onClose={() => setVisible(false)} getValue={getValue} />
       </Modal>
-      <a className={styles.newMsg} onClick={onNewMsg}>
-        新增留言
-      </a>
-      {message.map((msgItem) => (
+      {message.map((msgItem, index) => (
         <div className={styles.msgItem} key={msgItem._id}>
-          <a className={styles.reply} onClick={() => toRepeat(msgItem.fromUserId)}>
-            回复
-          </a>
-          <div className={styles.info}>
-            <div
-              className={styles.avatar}
-              style={{ backgroundImage: `url(${msgItem?.fromUser?.avatar})` }}
-            />
-            <div className={styles.infos}>
+          <div className={styles.left}>{sliceNumber(index + 1)}</div>
+          <div className={styles.right}>
+            <div className={styles.top}>
               <div className={styles.msgName}>
-                <a href={`/site-userInfo/${msgItem.fromUserId}`} target="_blank" rel="noreferrer">
-                  {msgItem?.fromUser?.name}
-                </a>
-                {msgItem.toUserId && msgItem.fromUserId !== msgItem.toUserId && (
-                  <div>
-                    {' '}
-                    <span className={styles.aite}>@</span>{' '}
-                    <a href={`/site-userInfo/${msgItem.toUserId}`} target="_blank" rel="noreferrer">
-                      {msgItem?.toUser?.name}
-                    </a>
-                  </div>
-                )}
-                <Popconfirm
-                  title="确定删除？"
-                  onConfirm={() => onDelete(msgItem._id, msgItem.fromUserId)}
-                >
-                  <a>
-                    <i className="iconfont icondelete" />
+                <h1>
+                  <a
+                    data-default
+                    href={`/site-userInfo?userId=${msgItem.fromUserId}`}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {msgItem?.fromUser?.name}
                   </a>
-                </Popconfirm>
+                  {msgItem.toUserId && msgItem.fromUserId !== msgItem.toUserId && (
+                    <>
+                      {' '}
+                      <a data-default>@</a>{' '}
+                      <a
+                        data-default
+                        href={`/site-userInfo?userId=${msgItem.toUserId}`}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        {msgItem?.toUser?.name}
+                      </a>
+                    </>
+                  )}
+                </h1>
+                <div className={styles.operation}>
+                  <a
+                    className={styles.reply}
+                    data-default
+                    onClick={() => toRepeat(msgItem.fromUserId)}
+                  >
+                    <i className="iconqianjin iconfont" />
+                  </a>
+                </div>
               </div>
-              <div className={styles.msgDate}>{formatTime(msgItem.date)}</div>
+              <p className={styles.msgDate}>{formatTime(msgItem.date)}</p>
+            </div>
+            <div className={styles.info}>
+              <div
+                className={styles.avatar}
+                style={{ backgroundImage: `url(${msgItem?.fromUser?.avatar})` }}
+              />
+            </div>
+            <div className={styles.msgBoxWrap}>
+              <p
+                className={styles.msgContent}
+                dangerouslySetInnerHTML={{
+                  __html: converter.makeHtml(replaceEmoji(msgItem.content) || ''),
+                }}
+              ></p>
+              {superAdmin && (
+                <a
+                  className={styles.delete}
+                  onClick={() => onDelete(msgItem._id, msgItem.fromUserId)}
+                >
+                  <i className="iconfont icondelete" />
+                </a>
+              )}
             </div>
           </div>
-          <div
-            className={styles.msgContent}
-            dangerouslySetInnerHTML={{
-              __html: converter.makeHtml(replaceEmoji(msgItem.content) || ''),
-            }}
-          ></div>
         </div>
       ))}
     </div>

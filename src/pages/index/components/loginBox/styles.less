@@ -1,0 +1,38 @@
+@import '../../../../common/styles/constant.less';
+@import '../../../../common/styles/base.less';
+
+.loginBox {
+  width: 500px;
+  height: 340px;
+  margin: 20vh auto;
+  display: flex;
+  flex-direction: column;
+  // justify-content: center;
+  align-items: center;
+  color: @FONTCOLOR;
+  padding: 30px;
+  // background-color: @COMMONBG;
+  overflow: hidden;
+  .transform {
+    will-change: transform;
+    transform-style: preserve-3d;
+    transition: all 0.4s;
+  }
+}
+
+.item {
+  .flex(column);
+  justify-content: flex-start;
+  height: 340px;
+  width: 90%;
+  margin: 0 auto;
+  section {
+    width: 100%;
+  }
+  .title {
+    letter-spacing: 5px;
+    font-size: 18px;
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+}

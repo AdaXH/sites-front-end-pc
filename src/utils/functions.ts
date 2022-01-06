@@ -1,3 +1,4 @@
+import { SrcConfig } from '@/models/user';
 import moment from 'moment';
 import { SITE_BASIC_INFO } from './constant';
 // import { createElement } from 'react';
@@ -17,7 +18,7 @@ export function delay(time: number) {
   });
 }
 
-export const getParam = (search: string, key: string) => {
+export function getParam(search: string, key: string) {
   try {
     if (!search || !key) return null;
     const url = search.slice(1);
@@ -28,10 +29,9 @@ export const getParam = (search: string, key: string) => {
     }
     return '';
   } catch (error) {
-    console.log('error', error);
     return '';
   }
-};
+}
 
 export function setCache(key: string, data: AnyCommonObj) {
   try {
@@ -81,7 +81,9 @@ export function qqSign() {
       appId: '101946967',
       redirectURI: 'https://sites.link/qq-login',
     });
-  } catch (error) {}
+  } catch (error) {
+    // ignore
+  }
 }
 
 export function getValueByRef(ref: Ref) {
@@ -147,7 +149,7 @@ export function getURL2Base64(url: string) {
 
 const { TITLE, DESC } = SITE_BASIC_INFO;
 
-export function updTitleDesc(title: string = '', desc: string) {
+export function updTitleDesc(title = '', desc: string) {
   document.title = `${title} ${TITLE}`;
   const {
     location: { pathname },
@@ -169,4 +171,71 @@ export function push2Baidu() {
   }
   const s = document.getElementsByTagName('script')[0];
   s?.parentNode?.insertBefore(bp, s);
+}
+
+export function sliceNumber(num: number): string | number {
+  if (num.toString().length > 1) return num;
+  return `0${num}`;
+}
+
+/**
+ * @description 加载图片宽高，比例
+ * @param {string} src
+ * @returns { width: number; height: number; ratio: number }
+ */
+export function loadImgSize(
+  src: string,
+): Promise<{ width: number; height: number; ratio: number }> {
+  const img = new Image();
+  img.src = src;
+  return new Promise((resolve, reject) => {
+    img.onload = (e) => {
+      // @ts-ignore"
+      const { path } = e;
+      const [{ naturalHeight, naturalWidth }] = path;
+      resolve({
+        width: naturalWidth,
+        height: naturalWidth,
+        ratio: naturalWidth / naturalHeight,
+      });
+    };
+    img.onerror = reject;
+  });
+}
+
+export function simpleThrole<T extends (...arg: any[]) => any>(fn: T, delay = 100) {
+  let preTime = Date.now();
+  return (...arg) => {
+    if (Date.now() - preTime >= delay) {
+      fn.call(this, ...arg);
+      preTime = Date.now();
+    }
+  };
+}
+
+export function randomNum(length: number): number {
+  return Math.floor(Math.random() * length);
+}
+
+/**
+ * 查询页面素材
+ * @param configs
+ */
+export function getSrcConfig(configs: SrcConfig[]): Partial<SrcConfig> {
+  const { pathname } = location;
+  const config = configs.find((item) => item.pathname === pathname) || {};
+  return config;
+}
+
+export function simpleLoadImg(src: string): Promise<boolean> {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.src = src;
+    img.onload = () => {
+      resolve(true);
+    };
+    img.onerror = () => {
+      reject(false);
+    };
+  });
 }

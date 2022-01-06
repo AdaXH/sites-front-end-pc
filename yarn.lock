@@ -9973,6 +9973,11 @@ simple-swizzle@^0.2.2:
   dependencies:
     is-arrayish "^0.3.1"
 
+sine-waves@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.nlark.com/sine-waves/download/sine-waves-0.3.0.tgz#17aa07befc513e4b9f581e3911093f3e06bdccb4"
+  integrity sha1-F6oHvvxRPkufWB45EQk/Pga9zLQ=
+
 slash@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npm.taobao.org/slash/download/slash-1.0.0.tgz#c41f2f6c39fc16d1cd17ad4b5d896114ae470d55"
@@ -11290,10 +11295,8 @@ watchpack@^1.7.4:
   resolved "https://registry.npm.taobao.org/watchpack/download/watchpack-1.7.5.tgz?cache=0&sync_timestamp=1612715822561&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fwatchpack%2Fdownload%2Fwatchpack-1.7.5.tgz#1267e6c55e0b9b5be44c2023aed5437a2c26c453"
   integrity sha1-EmfmxV4Lm1vkTCAjrtVDeiwmxFM=
   dependencies:
-    chokidar "^3.4.1"
     graceful-fs "^4.1.2"
     neo-async "^2.5.0"
-    watchpack-chokidar2 "^2.0.1"
   optionalDependencies:
     chokidar "^3.4.1"
     watchpack-chokidar2 "^2.0.1"

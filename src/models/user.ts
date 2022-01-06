@@ -1,9 +1,23 @@
 // @ts-nocheck
 
+import { getSrcConfig, simpleLoadImg } from '@/utils/functions';
+
 import Api from '@/utils/request';
 import Cookies from 'js-cookie';
 
 const NAMESPACE = 'user';
+
+/**
+ * 素材model
+ */
+export interface SrcConfig {
+  pathname?: string;
+  mainTitle?: string;
+  desc?: string;
+  image?: string;
+  smallImg?: string;
+  bgColor?: string;
+}
 
 export interface User {
   name: string;
@@ -16,6 +30,9 @@ export interface User {
   myDesc?: string;
   gender?: string;
   mySites?: Array<SiteModel>;
+  superAdmin?: boolean;
+  globalCfg?: SrcConfig[];
+  pageConfig?: SrcConfig;
 }
 
 export default {
@@ -24,7 +41,7 @@ export default {
     name: '',
     isLogin: false,
     avatar: 'https://bucker-for-sae.oss-cn-hangzhou.aliyuncs.com/sitesImages/82486042.jpg',
-  },
+  } as User,
   effects: {
     *register({ payload }, { call, put }) {
       const result = yield call(Api, 'api/register', 'POST', payload);
@@ -51,13 +68,28 @@ export default {
           type: 'setData',
           payload: result.data,
         });
-      } else {
-        return result.errorMsg;
       }
-      // return result;
     },
-    *load(_, { select, put }) {
-      const user = yield select((state) => state.user);
+    *load(_, { select, put, call }) {
+      const user: User = yield select((state) => state.user);
+      let confgis = user.globalCfg;
+      if (!user.globalCfg) {
+        const { success, data } = yield call(Api, 'api/querySrc', 'get');
+        if (success && data?.length) {
+          yield put({
+            type: 'setData',
+            payload: { globalCfg: data },
+          });
+          confgis = data;
+        }
+        Promise.all(data.map((item) => simpleLoadImg(item.image)));
+      }
+      yield put({
+        type: 'setData',
+        payload: {
+          pageConfig: getSrcConfig(confgis),
+        },
+      });
       if (!user.isLogin) {
         yield put({
           type: 'getUserInfo',
@@ -83,7 +115,8 @@ export default {
     setup({ dispatch, history }) {
       return history.listen(() => {
         dispatch({
-          type: `${NAMESPACE}/load`,
+          // type: `${NAMESPACE}/load`,
+          type: 'load',
         });
       });
     },

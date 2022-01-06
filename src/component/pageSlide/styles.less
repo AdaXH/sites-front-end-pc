@@ -1,0 +1,40 @@
+.pageSlide {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  align-items: center;
+  .top,
+  .bottom {
+    width: 10px;
+    height: 10px;
+    border: 2px solid white;
+    transform-origin: center;
+    transform: rotate(45deg);
+    border-bottom-color: transparent;
+    border-right-color: transparent;
+    cursor: pointer;
+  }
+  .disabled {
+    cursor: not-allowed;
+  }
+  .bottom {
+    border: 2px solid white;
+    border-top-color: transparent;
+    border-left-color: transparent;
+  }
+  .box {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+    font-size: 12px;
+    font-weight: bold;
+    .line {
+      width: 1.5px;
+      height: 14px;
+      background-color: white;
+      transform-origin: center;
+      transform: rotate(20deg);
+      margin: 0 6px;
+    }
+  }
+}

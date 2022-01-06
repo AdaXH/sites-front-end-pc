@@ -1,0 +1,50 @@
+@COLOR: #ef8c81;
+@BORDER: white;
+.moreBox {
+  height: 100%;
+  position: relative;
+  .con {
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    left: -7px;
+    padding-top: 30px;
+    float: left;
+    display: none;
+    box-shadow: 0px 10px 20px -5px rgb(139, 139, 139);
+    .moreItem {
+      height: 32px;
+      line-height: 32px;
+      padding: 0 10px;
+      background-color: white;
+    }
+    a {
+      white-space: nowrap;
+    }
+  }
+}
+// .bg {
+//   .moreItem {
+//     // background: #212121;
+//   }
+// }
+.a[data-current='true'] {
+  color: @BORDER;
+}
+.moreBox:hover {
+  .con {
+    display: block;
+    animation: slidDown 0.3s forwards;
+  }
+}
+
+@keyframes slidDown {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -20px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}

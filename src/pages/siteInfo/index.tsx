@@ -1,19 +1,16 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState, useMemo, ReactNode, useEffect, CSSProperties } from 'react';
 import { connect } from 'dva';
-import Content from '@/layout/content';
 import { RootState, User } from 'state-typings';
 import ImgView from '@/component/imgModal';
+import BasicTop from '@/component/basicTop';
 import { useDidMount } from '@/utils/hooks';
-import { getParam, formatTime, updTitleDesc } from '@/utils/functions';
+import { getParam, formatTime, updTitleDesc, loadImgSize } from '@/utils/functions';
 import { querySite } from '@/utils/service';
 import MsgItem from './component/msgItem';
 import RssList from './component/rssList';
 import { toggltUpvoteSite, togglCollectSite, forceHot } from './service';
-import { TYPES } from './constant';
-// import mock from './mock.json';
 
 import styles from './styles.less';
-import { useMemo } from 'react';
 
 interface SiteModel {
   siteId?: string;
@@ -40,13 +37,16 @@ export interface MsgProps extends SiteModel {
   setMsgList: (arr?: Array<MsgItemData> | []) => void;
   siteUserId: string;
   isLogin: boolean;
+  newMsgNode?: ReactNode;
+  setNewMsgEntry?: (arg: boolean) => void;
+  superAdmin?: boolean;
 }
 
 interface SiteData {
   siteName?: string;
   siteDesc?: string;
   userId?: string;
-  siteImgs?: string;
+  siteImgs?: Array<{ src: string }>;
   user?: {};
   siteLink?: string;
   submitDate?: Date;
@@ -66,34 +66,7 @@ interface BaseProps {
 export default connect(({ user: userModel }: RootState) => ({ userModel }))(
   ({ userModel, history, dispatch }: BaseProps) => {
     const [data, setData] = useState<SiteData>({});
-    const [curType, setType] = useState(TYPES[0].key);
-    const isBasic = useMemo(() => curType === 'basic', [curType]);
     const isLogin = useMemo(() => userModel.isLogin, [userModel]);
-    const renderSiteImgs = useCallback((imgs) => {
-      if (!imgs || !imgs.length) return null;
-      if (imgs.length === 1) {
-        const { src } = imgs[0];
-        return (
-          <div className={styles.blogImgs}>
-            <div onClick={() => ImgView(src)} className={styles.img}>
-              <img src={src} alt="" />
-            </div>
-          </div>
-        );
-      }
-      const [first, second] = imgs;
-      return (
-        <div className={styles.twoImgs}>
-          <div onClick={() => ImgView(first.src)} className={styles.imgOne}>
-            <img src={first.src} alt="" />
-          </div>
-          <div onClick={() => ImgView(second.src)} className={styles.imgTwo}>
-            <img src={second.src} alt="" />
-          </div>
-        </div>
-      );
-    }, []);
-
     const {
       siteName,
       siteDesc,
@@ -108,7 +81,7 @@ export default connect(({ user: userModel }: RootState) => ({ userModel }))(
       rss,
       hot = 0,
     } = data;
-    const { myFavorite, _id: userId } = userModel;
+    const { myFavorite, _id: userId, superAdmin } = userModel;
     const {
       location: { search },
     } = history;
@@ -152,88 +125,129 @@ export default connect(({ user: userModel }: RootState) => ({ userModel }))(
     };
     const hasCollect = myFavorite && myFavorite.find((item: SiteModel) => item.siteId === siteId);
     const turn2Link = useCallback(async () => {
-      window.open(siteLink);
       await forceHot({ siteId, siteType });
-    }, [siteLink]);
+    }, [siteId, siteType]);
+    const [newMsgNode, setNewMsgEntry] = useState<boolean>(false);
+    const [imgStyles, setImg] = useState<Partial<CSSProperties>>({});
+    useEffect(() => {
+      if (siteImgs?.length) {
+        const [{ src }] = siteImgs;
+        loadImgSize(src).then(({ ratio }) => {
+          if (ratio < 1) {
+            setImg({
+              backgroundSize: 'auto 390px',
+              backgroundPosition: 'center',
+            });
+          }
+        });
+      }
+    }, [siteImgs]);
     if (!data.siteLink) return null;
     return (
-      <Content>
-        <div className={styles.quickOpen}>
-          <div style={{ backgroundImage: `url(${siteIcon})` }} className={styles.siteIcon} />
-          <a onClick={turn2Link} className={styles.siteName}>
-            {siteName}（{siteLink}）
-            <i className="iconfont iconlink" />
-          </a>
-          <div className={styles.hot}>
-            <i className="iconfont iconfire" />
-            <span>{hot}</span>
-          </div>
-        </div>
+      <div className={styles.siteInfoWrap}>
+        <BasicTop
+          mainTitle={siteName}
+          desc={siteDesc}
+          topText="访问源站"
+          leftContent={
+            <div className={styles.siteIconWrap}>
+              <div style={{ backgroundImage: `url(${siteIcon})` }} className={styles.siteIcon} />
+            </div>
+          }
+          topHref={siteLink}
+          topFn={turn2Link}
+          newWindow
+        />
         <div className={styles.contentWrap}>
-          <div className={styles.typeBox}>
-            {TYPES.map(({ title, key, iconfont }) => (
-              <div
-                onClick={() => setType(key)}
-                data-current={curType === key}
-                className={styles.typeItem}
-                key={key}
-              >
-                <i className={iconfont} />
-                <span className={styles.selectTitle}>{title}</span>
-              </div>
-            ))}
+          <div className={styles.basic}>
+            <div className={styles.siteName}>
+              <h1>{siteName}</h1>
+            </div>
+            <div className={styles.link}>
+              <h1>Link</h1>
+              <p>
+                <a data-default href={siteLink} target="_blank" rel="noreferrer">
+                  {siteLink}
+                </a>
+              </p>
+            </div>
+            <div className={styles.date}>
+              <h1>User</h1>
+              <p>
+                {user && (
+                  <a
+                    data-default
+                    href={`/site-userInfo?userId=${siteUserId}`}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {user}
+                    <i className="iconlink iconfont" />
+                  </a>
+                )}
+                于{formatTime(submitDate)}提交，热度飙升至{hot}
+              </p>
+            </div>
           </div>
-          <div className={styles.content} style={{ display: !isBasic && 'none' }}>
-            {renderSiteImgs(siteImgs)}
-            <div className={styles.item}>
-              {/* <span className={styles.name}>站点介绍：</span> */}
-              <span className={styles.con}>{siteDesc}</span>
-            </div>
-            <div className={styles.item}>
-              <span className={styles.name}>点赞：</span>
-              <a className={styles.con} style={{ cursor: hasUpvote && 'not-allowed' }}>
-                {siteUpvotes.length}
-                <a className={styles.like} data-disabled={hasUpvote} onClick={onUpvote}>
-                  <i
-                    className="iconfont icondianzan"
-                    style={{ color: hasUpvote ? '#fb7272' : 'rgba(255, 255, 255, 0.78)' }}
-                  />
-                </a>
-              </a>
-            </div>
-            <div className={styles.item}>
-              <span className={styles.name}>收藏：</span>
-              <a className={styles.coll} onClick={onCollect}>
-                <i className={`iconfont ${hasCollect ? 'iconshoucangshixin' : 'iconshoucang'}`} />
-              </a>
-            </div>
-            <div className={styles.item}>
-              <span className={styles.name}>站长：</span>
-              <div className={styles.con}>
-                <a
-                  className={styles.con}
-                  // @ts-ignore
-                  disabled={!user}
-                  href={`/site-userInfo/${siteUserId}`}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  {user || '该站点为快速提交站点，没有站长信息'}
-                  <i className="iconfont iconlink" />
-                </a>
-                <span className={styles.submitDate}>于{formatTime(submitDate)}提交</span>
+          <div className={styles.desc}>
+            <div className={styles.left}>
+              <div>
+                <h1>Desciption</h1>
+                <p>{siteDesc}</p>
+              </div>
+
+              <div className={styles.btn}>
+                <div onClick={onUpvote} data-btn>
+                  <i className={`${hasUpvote ? 'icondianzan2' : 'icondianzan1'} iconfont`} />
+                  <span>{hot + (siteUpvotes?.length || 0)}</span>
+                </div>
+                <div onClick={onCollect} data-btn>
+                  <i className={`${hasCollect ? 'iconshoucangshixin' : 'iconshoucang'} iconfont`} />
+                </div>
               </div>
             </div>
-            <MsgItem
-              setMsgList={setMsgList}
-              data={{ message, siteType, siteId }}
-              siteUserId={siteUserId}
-              isLogin={isLogin}
-            />
+            <div className={styles.right}>
+              <div className={styles.blogImgs}>
+                <div
+                  style={{ backgroundImage: `url(${siteImgs?.[0]?.src})`, ...imgStyles }}
+                  onClick={() => ImgView(siteImgs?.[0]?.src)}
+                  className={styles.img}
+                ></div>
+              </div>
+            </div>
           </div>
-          {!isBasic && <RssList data={rss} />}
+          <div className={styles.msgList}>
+            <div className={styles.left}>
+              <h1>Message</h1>
+              <div className={styles.siteIcon}>
+                <div className={styles.img} style={{ backgroundImage: `url(${siteIcon})` }} />
+              </div>
+              <p>
+                截至{formatTime(Date.now())}，共有{message.length}条留言
+              </p>
+              <div data-btn onClick={() => setNewMsgEntry(true)}>
+                留个言
+              </div>
+            </div>
+            <div className={styles.right}>
+              <MsgItem
+                setMsgList={setMsgList}
+                data={{ message, siteType, siteId }}
+                siteUserId={siteUserId}
+                isLogin={isLogin}
+                newMsgNode={newMsgNode}
+                setNewMsgEntry={setNewMsgEntry}
+                superAdmin={superAdmin}
+              />
+            </div>
+          </div>
+          <div className={styles.rss}>
+            <h1>RSS</h1>
+            <p>最近发布的10篇文章</p>
+            <RssList data={rss} />
+          </div>
         </div>
-      </Content>
+      </div>
     );
   },
 );

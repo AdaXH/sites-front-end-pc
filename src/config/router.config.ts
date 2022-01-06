@@ -8,40 +8,33 @@ export default [
     component: () => import('@/pages/index/index'),
   },
   {
-    path: '/technology',
-    component: () => import('@/pages/technology'),
+    path: '/sites',
+    component: () => import('@/pages/sites/index'),
+    exact: false,
   },
   {
-    path: '/info',
-    component: () => import('@/pages/info/index'),
-  },
-  {
-    path: '/life',
-    component: () => import('@/pages/life/index'),
-  },
-  {
-    path: '/others',
-    component: () => import('@/pages/others/index'),
-  },
-  {
-    path: '/site-info',
-    component: () => import('@/pages/siteInfo/index'),
-  },
-  {
-    path: '/submit-site',
-    component: () => import('@/pages/submitSite/index'),
-  },
-  {
-    path: '/site-userInfo/*',
+    path: '/site-userInfo',
     component: () => import('@/pages/siteUser/index'),
   },
   {
     path: '/user-center/',
-    component: () => import('@/pages/userCenter/index'),
+    component: () => import('@/pages/userCenterNew/index'),
   },
   {
-    path: '/super-admin',
-    component: () => import('@/pages/admin/index'),
+    path: '/super-admin/user-list',
+    component: () => import('@/pages/admin/userList'),
+  },
+  {
+    path: '/super-admin/web/page-src/create',
+    component: () => import('@/pages/admin/web/createSrc'),
+  },
+  {
+    path: '/super-admin/web/page-src/list',
+    component: () => import('@/pages/admin/web/srcList'),
+  },
+  {
+    path: '/super-admin/siteslist/:siteType',
+    component: () => import('@/pages/admin/siteList'),
   },
   {
     path: '/search',
@@ -52,7 +45,19 @@ export default [
     component: () => import('@/pages/about/index'),
   },
   {
+    path: '/rss',
+    component: () => import('@/pages/rss/index'),
+  },
+  {
     path: '/qq-login',
     component: () => import('@/pages/qqLogin/index'),
+  },
+  {
+    path: '/site-info',
+    component: () => import('@/pages/siteInfo/index'),
+  },
+  {
+    path: '/transport',
+    component: () => import('@/pages/transport/index'),
   },
 ];

@@ -1,46 +1,19 @@
-@IMG_BG: rgba(255, 255, 255, 0.2);
-@COLOR: #ef8c81;
-@BORDER: white;
-.extractBox {
-  // width: 400px;
-  // background: @IMG_BG;
-  overflow: hidden;
-  margin-top: 10px;
-  // position: absolute;
-  // margin-top: -20px;
-  // height: 100%;
-  letter-spacing: 1px;
-  animation: show 0.3s;
-  .title {
-    color: @BORDER;
-  }
-  .list {
-    a {
-      margin-top: 10px;
-      display: block;
-      animation-name: show;
-    }
+@import '../../../../common/styles/constant.less';
+.list {
+  .item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
     .index {
-      display: inline-block;
-      margin-right: 5px;
-      width: 20px;
-      height: 20px;
-      border-radius: 10px;
-      background: @BORDER;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: @FONTCOLOR;
       color: white;
-      line-height: 20px;
+      display: block;
       text-align: center;
+      line-height: 30px;
+      margin-right: 10px;
     }
-  }
-}
-
-@keyframes show {
-  from {
-    opacity: 0;
-    transform: translate3d(20px, 0, 0);
-  }
-  to {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
   }
 }

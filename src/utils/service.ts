@@ -1,4 +1,3 @@
-// @ts-nocheck
 import Api from './request';
 import { stringify } from './functions';
 

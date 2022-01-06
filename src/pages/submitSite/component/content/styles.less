@@ -1,71 +1,54 @@
-@COLOR: #ef8c81;
-@BORDER: white;
+@import url('../../../../common/styles/constant.less');
 .item {
-  display: flex;
-  margin-top: 10px;
-  align-items: center;
+  margin: 40px 0;
   position: relative;
-  .name {
-    width: 60px;
-    text-align: right;
-    font-size: 15px;
-    color: @BORDER;
-    background: @BORDER;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    border-radius: 5px 0 0 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  padding: 0 50px;
+  .label {
+    width: 200px;
+  }
+  h1 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
     i {
-      color: white;
-      font-size: 20px;
+      font-weight: normal;
+      display: none;
     }
   }
-  .name::before {
-    display: inline-block;
-    margin-right: 4px;
-    color: @COLOR;
-    font-size: 14px;
-    font-family: SimSun, sans-serif;
-    line-height: 1;
-    // content: '*';
-  }
-  .name[data-required='true']::before {
-    opacity: 0;
-    display: none;
+  p {
+    margin: 0;
+    margin-top: 10px;
   }
   .con {
-    flex: 1;
-    max-width: 500px;
     font-size: 18px;
-    margin-left: 50px;
-    padding-left: 7px;
-    .textarea {
+    width: 400px;
+    margin-top: 20px;
+    textarea {
       height: 100px;
     }
     :global {
       .ant-radio-group {
         span {
-          color: @COLOR;
+          color: @FONTCOLOR;
         }
       }
       .ant-input-group-addon,
       .ant-select,
       .ant-select-selection,
-      textarea,
+      .ant-select-selection__rendered,
       .ant-select-selection--single {
         background: transparent;
-        color: @COLOR;
+        color: @FONTCOLOR;
+        border-radius: 0;
+        width: 404px;
+        height: 40px;
+        line-height: 40px;
         i {
-          color: @BORDER;
+          color: @FONTCOLOR;
         }
       }
       .ant-input-group-addon {
-        border: 1px solid @BORDER;
+        border: 1px solid #e2dede;
         border-right: none;
       }
       .ant-select-selection__rendered {
@@ -81,19 +64,28 @@
       .ant-select-selection:hover,
       .ant-select-selection:focus {
         box-shadow: none;
-        border-color: @BORDER;
+        border-color: #e2dede;
       }
     }
-    input {
+    input,
+    textarea {
       background: none;
       outline: none;
+      width: 404px;
+      display: block;
       // border: none;
-      border: 1px solid @BORDER;
-      color: @COLOR;
+      border: 1px solid #e2dede;
+      color: @FONTCOLOR;
+      border-radius: 0;
+      padding: 5px 10px;
+      font-size: 14px;
     }
+
     input:focus,
-    textarea:focus {
+    textarea:focus,
+    textarea:focus-visible {
       box-shadow: none;
+      border: 1px solid #e2dede;
     }
   }
   :global {
@@ -110,13 +102,5 @@
   img {
     display: block;
     max-width: 400px;
-  }
-}
-.radio {
-  margin-top: 5px;
-  :global {
-    .ant-radio-wrapper {
-      color: @COLOR;
-    }
   }
 }

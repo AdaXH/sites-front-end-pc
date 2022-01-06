@@ -21,7 +21,7 @@ interface DataState {
 
 export default ({ reLoad }) => {
   const [data, setData] = useState<DataState>({});
-  const iconRef: BasicRef = createRef();
+  const iconRef = createRef<{ getValue: any }>();
   useDidMount(async () => {
     const { success, data: resData } = await queryMyBasicInfo();
     if (success && resData) {

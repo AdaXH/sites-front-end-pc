@@ -1,0 +1,89 @@
+@import url(../../../../common/styles/constant.less);
+.box {
+  // border: 1px solid #839daa;
+}
+.basic {
+  overflow: hidden;
+  display: flex;
+  .avatarBox {
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    .emailText {
+      margin-top: 10px;
+      letter-spacing: 1px;
+      color: @FONTCOLOR;
+      white-space: pre-wrap;
+      text-align: center;
+      a {
+        text-decoration: underline;
+      }
+    }
+    .avatar {
+      width: 100px;
+      height: 100px;
+      background-color: #efefef;
+      border-radius: 50%;
+      overflow: hidden;
+      background-size: cover;
+    }
+  }
+  .info {
+    flex: 1;
+    margin-left: 20px;
+  }
+}
+.item {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  .label {
+    width: 80px;
+    color: #979797;
+    text-align: right;
+  }
+  .con {
+    display: block;
+    flex: 1;
+    button {
+      margin-top: 5px;
+    }
+    :global {
+      .ant-radio-wrapper {
+        color: @FONTCOLOR;
+      }
+      textarea {
+        resize: none;
+        color: @FONTCOLOR;
+        border-color: #b1b1b1;
+        background: transparent;
+      }
+    }
+    input {
+      height: 30px;
+      padding-left: 10px;
+      color: @FONTCOLOR;
+      background: transparent;
+      border-color: #b1b1b1;
+    }
+    input,
+    textarea {
+      border-radius: 0;
+      &:focus {
+        box-shadow: none;
+      }
+    }
+  }
+}
+.updBtn {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+  .button {
+    width: 124px;
+    cursor: pointer;
+    margin-left: 31px;
+  }
+}

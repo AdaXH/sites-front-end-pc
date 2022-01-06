@@ -1,0 +1,54 @@
+@import '../../../common/styles/constant.less';
+@import '../../../common/styles/base.less';
+@import '../../../common/styles/animation.less';
+
+.mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.loginBox {
+  width: 500px;
+  height: 360px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: @FONTCOLOR;
+  padding: 30px;
+  background-color: white;
+  overflow: hidden;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-left: -250px;
+  margin-top: -170px;
+  animation: scale 0.3s;
+
+  .transform {
+    will-change: transform;
+    transform-style: preserve-3d;
+    transition: all 0.4s;
+    width: 360px;
+  }
+}
+
+.item {
+  .flex(column);
+  justify-content: flex-start;
+  height: 340px;
+  width: 90%;
+  margin: 0 auto;
+  section {
+    width: 100%;
+  }
+  .title {
+    letter-spacing: 5px;
+    font-size: 18px;
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+}

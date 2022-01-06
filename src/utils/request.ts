@@ -1,9 +1,10 @@
-// @ts-nocheck
-import fetch from 'dva/fetch';
+/* eslint-disable */
 import Cookies from 'js-cookie';
 import Loading from '@/component/loading';
 import Notification from '@/component/Notification';
 import { NO_LOADING_API, NOERROR_API } from './constant';
+import LoginModal from '@/component/loginModal';
+import { stringify } from './functions';
 
 /**
  * Requests a URL, returning a promise.
@@ -17,13 +18,19 @@ function parseError(error) {
   return error instanceof Object ? JSON.stringify(error) : error.toString() || '出错啦：' + error;
 }
 
-const isBuild = /5050+|sites/.test(window.location.href);
+interface Response {
+  success: boolean;
+  data: any;
+  totalCount?: number;
+}
+
+const isBuild = /5050+|link+|applinzi/.test(window.location.href);
 export default function Api(
   url,
-  method?: string = 'GET',
+  method: string = 'GET',
   data?: AnyCommonObj,
   isSvg = false,
-): { success: boolean; data: any; totalCount?: number; [x: string]: any } {
+): Promise<Response> {
   const _url_ = (isBuild ? url.replace(/api/, '') : url).replace(/\/more/, '');
   const { origin } = window.location;
   const needLoading = NO_LOADING_API.includes(
@@ -32,13 +39,13 @@ export default function Api(
   // 不需要提示错误的接口
   const noError = NOERROR_API.includes(/api/.test(_url_) ? _url_.replace(/api/g, '') : _url_);
   if (!isSvg) {
-    const options = {
+    const options: RequestInit & Record<string, any> = {
       method,
       headers: {
         'content-type': 'application/json',
         accept: 'application/json',
         authorization: Cookies.get('siteToken') || 'null',
-        withCredentials: true,
+        withCredentials: 'true',
       },
     };
     method === 'POST' && (options.body = JSON.stringify(data));
@@ -46,9 +53,13 @@ export default function Api(
     if (isBuild) {
       senceKey = '';
     }
+    let queryString = '';
+    if (method === 'GET' && data) {
+      queryString = `?${stringify(data)}`;
+    }
     return new Promise((resolve, reject) => {
-      !needLoading && Loading.show({});
-      fetch(`${origin}${senceKey}${_url_}`, options)
+      !needLoading && Loading.show();
+      fetch(`${origin}${senceKey}${_url_}${queryString}`, options)
         .then((response) => {
           if (response.status >= 200 && response.status < 300) return response.json();
           return response.status;
@@ -57,6 +68,10 @@ export default function Api(
           if ((typeof result === 'boolean' && result) || result.success) {
             resolve(result);
           } else {
+            reject(result);
+            if (result?.openLogin) {
+              LoginModal.show({}, true);
+            }
             if (noError) {
               return;
             }
@@ -65,30 +80,31 @@ export default function Api(
             });
           }
         })
-        .catch((err) => {})
+        .catch((err) => reject(err))
         .finally(() => {
           Loading.hide();
         });
     });
-  } else {
-    const options = {
-      method,
-      headers: {
-        'content-type': 'image/svg+xml',
-        accept: 'image/svg+xml',
-        withCredentials: true,
-      },
-    };
-    const { origin } = window.location;
-    return new Promise((resolve, reject) => {
-      fetch(`${origin}${_url_}`, options)
-        .then((response) => {
-          if (response.status >= 200 && response.status < 300) return response.text();
-          return response.status;
-        })
-        .then((response) => {
-          resolve(response);
-        });
-    });
   }
+  // else {
+  //   const options = {
+  //     method,
+  //     headers: {
+  //       'content-type': 'image/svg+xml',
+  //       accept: 'image/svg+xml',
+  //       withCredentials: true,
+  //     },
+  //   };
+  //   const { origin } = window.location;
+  //   return new Promise((resolve) => {
+  //     fetch(`${origin}${_url_}`, options)
+  //       .then((response) => {
+  //         if (response.status >= 200 && response.status < 300) return response.text();
+  //         return response.status;
+  //       })
+  //       .then((response) => {
+  //         resolve(response);
+  //       });
+  //   });
+  // }
 }

@@ -1,104 +1,60 @@
-@COLOR: #ef8c81;
-@BORDER: white;
-.seachBox {
-  max-width: 600px;
-  margin-right: 10px;
-  :global {
-    input {
-      background: none;
-      outline: none;
-      border: 1px solid @BORDER;
-      color: @COLOR;
-    }
-    input:focus {
-      box-shadow: none;
+.wrap {
+  position: relative;
+  top: -188px;
+  .tips {
+    padding: 20px;
+  }
+  .searchContainer {
+    margin-top: 48px;
+    background: #efefef;
+    // padding: 0 40px;
+  }
+  .searchBox {
+    width: 740px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    :global {
+      .ant-input-search {
+        width: 600px;
+      }
+      input,
+      button {
+        border-radius: 0;
+        &:focus {
+          box-shadow: none;
+          // color: initial;
+          border: 1px solid #d9d9d9;
+        }
+        &:hover {
+          border: 1px solid #d9d9d9;
+        }
+      }
     }
   }
-}
-.resBox {
-  max-width: 1200px;
-  margin-top: 15px;
-  color: @BORDER;
-  letter-spacing: 1px;
-  .seachTitle {
-    margin-top: 15px;
-    font-weight: bold;
-    margin-bottom: 5px;
-  }
-}
-.list {
-  display: flex;
-  flex-wrap: wrap;
-  // width: 800px;
-  margin: 0px auto;
-  justify-content: flex-start;
-  .item {
-    position: relative;
-    width: 300px;
-    padding: 10px;
-    min-height: 130px;
-    cursor: pointer;
-    border-top: 1px solid @BORDER;
-    // margin-bottom: 10px;
-    margin-right: 10px;
-    overflow: hidden;
-    .top {
+  .listCon {
+    .item {
+      margin-bottom: 20px;
       display: flex;
-      .imgBox {
-        // display: inline-block;
-        width: 85px;
-        height: 85px;
-        border-radius: 50%;
-        overflow: hidden;
-        position: relative;
-        border: 1px dashed @BORDER;
+      background-color: white;
+      height: 140px;
+      .left {
+        width: 140px;
+        background-color: #f5f5f5;
+        padding: 5px;
+        .img {
+          width: 100%;
+          height: 100%;
+          background-size: cover;
+        }
       }
-      .img {
-        margin-top: 1px;
-        margin-left: 1px;
-        width: 80px;
-        height: 80px;
-        border-radius: 40px;
-        overflow: hidden;
-        background-size: cover !important;
-        // opacity: 0.3;
-        transition: all 0.3s;
-      }
-      .siteName {
-        width: 200px;
-        margin-left: 10px;
-        font-size: 18px;
+      .right {
+        padding: 0 50px;
         display: flex;
-        justify-content: center;
         flex-direction: column;
-        .mainName {
-          color: @BORDER;
-        }
-        a {
-          // color: white;
-          color: @COLOR;
-        }
-        .siteOpe {
-          display: flex;
-          align-items: center;
-          a {
-            font-size: 13px;
-            margin-right: 5px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: rgba(109, 110, 111, 0.58);
-          }
-          a:hover {
-            color: @COLOR;
-          }
-        }
+        justify-content: center;
       }
-    }
-    .siteDesc {
-      font-size: 13px;
-      line-height: 20px;
-      color: #fcbbb1;
     }
   }
 }

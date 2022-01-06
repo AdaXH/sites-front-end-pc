@@ -1,59 +1,41 @@
-import React, { useCallback, useState, useEffect, Fragment } from 'react';
-// import UserCenterLayout from './userCenterLayout';
-import { useDidMount } from '../utils/hooks';
-import { setCache, getCache } from '../utils/functions';
-import { DEFAULT_BG } from './constant';
-import { Header } from './menu';
-import ViewBox from './viewBox';
-import { CACHE_BG_KEY } from './constant';
-import { getConfig } from './service';
-import bg from '../assetes/gray.png';
-// import bg from './asset/bg.jpg';
-
+import React, { useState } from 'react';
+import Design from './design';
+import { Header } from './header';
+import { TopImg } from './topImg';
 import styles from './styles.less';
+import { useDidMount } from '@/utils/hooks';
+import { Admin } from './admin';
 
 interface Props {
   children: React.ReactNode | Element;
-  history: any;
+  history: History;
 }
 
 export default ({ children, history }: Props) => {
   const {
     location: { pathname },
   } = history;
-  const [curBg, setBg] = useState(getCache(CACHE_BG_KEY) || DEFAULT_BG);
-  useEffect(() => {
-    if (curBg) {
-      setCache(CACHE_BG_KEY, curBg);
-    }
-  }, [curBg]);
-  const [config, setCfg] = useState<{ bgList?: Array<string> }>({});
-  useDidMount(async () => {
-    const { success, data } = await getConfig();
-    if (success && data) {
-      setCfg(data);
-    }
+  if (/super-admin/.test(pathname)) return <Admin history={history}>{children}</Admin>;
+  if (pathname === '/transport') return <>{children}</>;
+  const [keyPath, setPath] = useState<string>(pathname);
+  useDidMount(() => {
+    history.listen(({ pathname: path }) => setPath(path));
   });
-  const onChangeBg = useCallback((newBgUrl) => {
-    setBg(newBgUrl === 'default' ? DEFAULT_BG : newBgUrl);
-  }, []);
-  const { bgList } = config;
-  if (pathname === '/super-admin') return <Fragment>{children}</Fragment>;
-  // if (/user\//.test(pathname)) {
-  //   return <UserCenterLayout history={history}>{children}</UserCenterLayout>;
-  // }
   return (
     <div className={styles.body}>
       <Header history={history} />
-      <div className={styles.bg} />
-      <div className={styles.childrenBox}>
-        <div className={styles.viewBox}>
-          <ViewBox onChangeBg={onChangeBg} data={{ bgList }} />
-          <div className={styles.animate} key={/user/.test(pathname) ? 'default' : pathname}>
-            {children}
-          </div>
+      <span>
+        <TopImg />
+        {/* <div className={styles.bg}>
+        <Wave />
+      </div> */}
+        {/* <Shake> */}
+        <div className={styles.animate} key={keyPath}>
+          {children}
         </div>
-      </div>
+        {/* </Shake> */}
+      </span>
+      <Design />
     </div>
   );
 };

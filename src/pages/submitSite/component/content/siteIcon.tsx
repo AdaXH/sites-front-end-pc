@@ -29,23 +29,24 @@ export default forwardRef(({ value: oldVal }: SiteIcon, ref) => {
   }));
   return (
     <React.Fragment>
-      <Radio.Group
-        className={styles.radio}
-        value={iconType}
-        onChange={(e) => setType(e.target.value)}
-      >
-        <Radio value="url">站点图标链接</Radio>
-        <Radio value="upload">上传站点图标</Radio>
-      </Radio.Group>
       <div className={styles.item}>
-        <div className={styles.name}>
+        <h1>
+          Icon
           <i className="icontupian2 iconfont" />
-        </div>
+        </h1>
+        <p>站点图标，类似favicon.ico, 建议100x100</p>
+        <Radio.Group
+          className={styles.radio}
+          value={iconType}
+          onChange={(e) => setType(e.target.value)}
+        >
+          <Radio value="url">链接</Radio>
+          <Radio value="upload">上传</Radio>
+        </Radio.Group>
         <div className={styles.con}>
           <div className={styles.innerBox}>
             {iconType === 'url' ? (
               <Input
-                placeholder="图标链接 *"
                 value={String(value || '')}
                 onChange={(e) => setValue(e.target.value)}
                 maxLength={150}

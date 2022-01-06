@@ -29,7 +29,7 @@ export function useInterval(callback: Function, delay: number) {
       const id = setInterval(tick, delay);
       return () => clearInterval(id);
     }
-    return () => {};
+    return () => void 0;
   }, [delay]);
 }
 
@@ -60,4 +60,39 @@ export function useDebounce(value, delay: number) {
     };
   }, [value, delay]);
   return debouncedValue;
+}
+
+export function useLoading<T extends (...args: any[]) => any>(cb: T): any {
+  const [loading, setLoading] = useState<boolean>(false);
+  const arg = useRef<any[]>();
+  useEffect(() => {
+    async function work() {
+      try {
+        await cb(...arg.current);
+      } catch (error) {
+        // ingore
+      } finally {
+        setLoading(false);
+      }
+    }
+    if (loading) {
+      work();
+    }
+  }, [loading]);
+  return [
+    loading,
+    (...args) => {
+      arg.current = args;
+      setLoading(true);
+    },
+  ];
+}
+
+export function useBoolean(
+  initBool?: boolean,
+): [boolean, { setTrue: () => any; setFalse: () => any }] {
+  const [bool, setBool] = useState<boolean>(initBool);
+  const setTrue = () => setBool(true);
+  const setFalse = () => setBool(false);
+  return [bool, { setTrue, setFalse }];
 }

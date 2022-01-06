@@ -1,6 +1,8 @@
 declare module '*.css';
 declare module '*.less';
 declare module '*.png';
+declare module '*.jpg';
+declare module '*.tsx';
 declare module '*.svg' {
   export function ReactComponent(props: React.SVGProps<SVGSVGElement>): React.ReactElement;
   const url: string;
@@ -27,6 +29,8 @@ interface BasicRef extends RefAttributes {
 
 interface HistoryLocation {
   pathname?: string;
+  query: Record<string, any>;
+  search: string;
 }
 
 interface History {
