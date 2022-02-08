@@ -11,6 +11,7 @@ on:
 
 jobs:
   build:
+  environment: production
     runs-on: ubuntu-latest
 
     strategy:
@@ -30,4 +31,4 @@ jobs:
         run: npm run build
       - name: deploy
         if: ${{ github.ref == 'refs/heads/main' }}
-        run: npm run oss-push --accessKeyId=${{env.production.ACCESSKEYID}} --accessKeySecret=${{env.production.ACCESSKEYSECRET}}
+        run: npm run oss-push --accessKeyId=${{env.ACCESSKEYID}} --accessKeySecret=${{env.ACCESSKEYSECRET}}
