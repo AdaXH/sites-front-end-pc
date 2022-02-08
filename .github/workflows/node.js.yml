@@ -18,10 +18,7 @@ jobs:
         node-version: [14.17.x]
     environment: production
     steps:
-      - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
-        shell: cmd
+      - shell: cmd
         env:
           ACCESSKEYID: ${{ secrets.ACCESSKEYID }}
           ACCESSKEYSECRET: ${{ secrets.ACCESSKEYSECRET }}
