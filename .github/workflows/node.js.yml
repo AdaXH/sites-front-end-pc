@@ -25,10 +25,9 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
       - run: npm run init
-      - run: npm run lint
+      - run: npm run ci
       - name: build
-      - run: npm run build
-      - run: npm run deploy
+        run: npm run build
       - name: deploy
         if: ${{ github.ref == 'refs/heads/main' }}
-      - run: npm run deploy
+        run: npm run deploy
