@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --config=webpack.config.dev.js",
-    "build": "cross-env webpack --config=webpack.config.prod.js --mode=production",
+    "build": "cross-env webpack --config=webpack.config.prod.js",
     "lint": "eslint {src,mock,tests}/**/*.{ts,tsx}",
     "lint-fix": "eslint {src,mock,tests}/**/*.{ts,tsx} --fix",
     "format": "prettier --write \"./**/*.{ts,jsx,json,less,css}\" --ignore-path /dist",
