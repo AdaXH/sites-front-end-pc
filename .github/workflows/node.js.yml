@@ -18,6 +18,7 @@ jobs:
         node-version: [14.17.x]
     environment: production
     steps:
+      - shell: cmd
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
