@@ -33,4 +33,5 @@ jobs:
         run: npm run build
       - name: deploy
         if: ${{ github.ref == 'refs/heads/main' }}
-        run: npm run oss-push
+        run: |
+          npm run oss-push accessKeyId=$ACCESSKEYID accessKeySecret=$ACCESSKEYSECRET

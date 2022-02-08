@@ -5,7 +5,6 @@ const bucketName = 'bucker-for-sae';
 const accessKeyId = process.env.ACCESSKEYID;
 const accessKeySecret = process.env.ACCESSKEYSECRET;
 console.log(process.env)
-console.log(process.argv0)
 const client = new OSS({
   region: 'oss-cn-hangzhou',
   accessKeyId,
