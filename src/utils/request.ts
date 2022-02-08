@@ -18,19 +18,20 @@ function parseError(error) {
   return error instanceof Object ? JSON.stringify(error) : error.toString() || '出错啦：' + error;
 }
 
-interface Response {
+interface Response<T> {
   success: boolean;
-  data: any;
+  data: T;
   totalCount?: number;
+  redirect?: boolean;
 }
 
 const isBuild = /5050+|link+|applinzi/.test(window.location.href);
-export default function Api(
+export default function Api<T extends Record<string, any>>(
   url,
   method: string = 'GET',
   data?: AnyCommonObj,
   isSvg = false,
-): Promise<Response> {
+): Promise<Response<T>> {
   const _url_ = (isBuild ? url.replace(/api/, '') : url).replace(/\/more/, '');
   const { origin } = window.location;
   const needLoading = NO_LOADING_API.includes(

@@ -16,7 +16,7 @@ export default ({ history }: { history: History }) => {
     } = history;
     const userId = getParam(search, 'userId');
     if (userId) {
-      const { data: resData, redirect } = await querySiteUser({ userId });
+      const { data: resData, redirect } = await querySiteUser<Partial<User>>({ userId });
       if (redirect) {
         history.push('/user-center');
         return;
