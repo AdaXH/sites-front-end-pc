@@ -9,8 +9,7 @@
     "tsc": "tsc -p tsconfig.json --noEmit",
     "deploy": "node push",
     "oss-push": "node pushFileToOss",
-    "init":"npm install",
-    "ci": "npm run lint"
+    "init": "npm install"
   },
   "pre-commit": [
     "lint-fix"
