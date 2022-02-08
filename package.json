@@ -92,7 +92,7 @@
     "three-work-ui": "^0.1.4",
     "transform-runtime": "^0.0.0",
     "typesafe-actions": "^5.1.0",
-    "typescript": "^4.2.3",
+    "typescript": "4.2.3",
     "url-loader": "^4.1.0",
     "webpack": "^4.8.1",
     "webpack-cli": "^3.1.1",
