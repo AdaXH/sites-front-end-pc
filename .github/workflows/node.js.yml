@@ -26,9 +26,8 @@ jobs:
           cache: 'npm'
       - run: npm run init
       - run: npm run ci
-      # - name: build & deploy
-      #   if: ${{ github.ref == 'refs/heads/main' }}
-      #   - run: npm run build
-      #   - run: npm run deploy
       - name: build
-      - run: npm run build
+        run: npm run build
+      - name: deploy
+        if: ${{ github.ref == 'refs/heads/main' }}
+        run: npm run deploy
