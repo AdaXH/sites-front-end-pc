@@ -2,8 +2,8 @@ const { getParam } = require('./util');
 const fs = require('fs');
 const OSS = require('ali-oss');
 const bucketName = 'bucker-for-sae';
-const accessKeyId = getParam('accessKeyId');
-const accessKeySecret = getParam('accessKeySecret');
+const accessKeyId = process.env.ACCESSKEYID;
+const accessKeySecret = process.env.ACCESSKEYSECRET;
 
 const client = new OSS({
   region: 'oss-cn-hangzhou',
