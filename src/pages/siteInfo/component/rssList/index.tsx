@@ -6,7 +6,7 @@ import { parseRss } from './service';
 import styles from './styles.less';
 
 export default ({ data }: { data: string }) => {
-  const [list, setList] = useState([]);
+  const [list, setList] = useState<RssModel[]>([]);
   useDidMount(async () => {
     if (data) {
       const { success, data: resData } = await parseRss({ rss: data });

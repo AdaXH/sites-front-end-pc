@@ -1,7 +1,7 @@
 import Api from '@/utils/request';
 
 export async function queryMyFavorite() {
-  return Api('api/queryMyFavorite');
+  return Api<SiteModel[]>('api/queryMyFavorite');
 }
 
 export async function togglCollectSite(body) {

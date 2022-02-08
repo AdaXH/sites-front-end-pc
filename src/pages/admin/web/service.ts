@@ -1,3 +1,4 @@
+import { SrcConfig } from '@/models/user';
 import Api from '@/utils/request';
 
 export async function createSrc(body: AnyCommonObj) {
@@ -5,7 +6,7 @@ export async function createSrc(body: AnyCommonObj) {
 }
 
 export async function querySrc() {
-  return Api('api/querySrc');
+  return Api<SrcConfig[]>('api/querySrc');
 }
 
 export async function deleteSrc(body: AnyCommonObj) {

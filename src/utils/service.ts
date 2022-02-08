@@ -18,13 +18,13 @@ export async function queryFriends() {
 }
 
 export function querySite(param) {
-  return Api(`api/querySite?${stringify(param)}`);
+  return Api<any>(`api/querySite?${stringify(param)}`);
 }
 
 export function querySites(body) {
-  return Api('api/querySites', 'POST', body);
+  return Api<SiteModel[]>('api/querySites', 'POST', body);
 }
 
 export function querySitesv2(body) {
-  return Api('api/querySitesv2', 'POST', body);
+  return Api<SiteModel[]>('api/querySitesv2', 'POST', body);
 }

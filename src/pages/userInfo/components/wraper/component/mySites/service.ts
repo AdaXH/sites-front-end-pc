@@ -1,7 +1,7 @@
 import Api from '@/utils/request';
 
 export async function queryMySites() {
-  return Api('api/queryMySites');
+  return Api<MySiteMode[]>('api/queryMySites');
 }
 
 export async function deleteSite(body) {

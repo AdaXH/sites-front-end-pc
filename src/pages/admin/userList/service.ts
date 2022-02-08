@@ -1,7 +1,8 @@
+import { User } from '@/models/user';
 import Api from '@/utils/request';
 
 export async function queryUsers(body) {
-  return Api('api/queryUsers', 'POST', body);
+  return Api<User[]>('api/queryUsers', 'POST', body);
 }
 
 export async function deleteUser(body) {

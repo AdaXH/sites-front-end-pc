@@ -1,4 +1,5 @@
 import Api from '@/utils/request';
+import { MsgData } from '.';
 
 export async function toggltUpvoteSite(body: {}) {
   return Api('api/toggltUpvoteSite', 'POST', body);
@@ -9,7 +10,7 @@ export async function togglCollectSite(body: {}) {
 }
 
 export async function leaveMsg(body: {}) {
-  return Api('api/leaveMsg', 'POST', body);
+  return Api<MsgData>('api/leaveMsg', 'POST', body);
 }
 
 export async function deleteMsg(body: {}) {

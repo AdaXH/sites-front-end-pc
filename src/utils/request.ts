@@ -26,7 +26,7 @@ interface Response<T> {
 }
 
 const isBuild = /5050+|link+|applinzi/.test(window.location.href);
-export default function Api<T extends Record<string, any>>(
+export default function Api<T extends Record<string, any> | any[] | any>(
   url,
   method: string = 'GET',
   data?: AnyCommonObj,

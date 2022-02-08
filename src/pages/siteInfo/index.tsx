@@ -27,7 +27,7 @@ export interface MsgItemData {
   date?: Date | string | number;
 }
 
-interface MsgData extends SiteModel {
+export interface MsgData extends SiteModel {
   [x: string]: any;
   message?: Array<MsgItemData>;
 }

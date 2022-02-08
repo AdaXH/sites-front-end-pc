@@ -7,7 +7,7 @@ import { queryMySites, deleteSite } from './service';
 import styles from './styles.less';
 
 export default ({ reLoad }) => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<MySiteMode[]>([]);
   useDidMount(async () => {
     const { data: resData } = await queryMySites();
     if (resData) {
