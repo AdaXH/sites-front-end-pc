@@ -6,6 +6,7 @@ const HappyPack = require('happypack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const theme = require('./src/config/theme');
 const os = require('os');
 const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length });
@@ -153,5 +154,6 @@ module.exports = {
       loaders: ['babel-loader?cacheDirectory'],
       threadPool: happyThreadPool,
     }),
+    new ForkTsCheckerWebpackPlugin(),
   ],
 };
