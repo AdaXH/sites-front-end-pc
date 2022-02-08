@@ -28,4 +28,5 @@ jobs:
       - run: npm run ci
       - name: build & deploy
         if: ${{ github.ref == 'refs/heads/main' }}
-        run: 'npm run build'
+        - run: npm run build
+        - run: npm run deploy

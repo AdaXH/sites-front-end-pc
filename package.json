@@ -2,12 +2,12 @@
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --config=webpack.config.dev.js",
-    "build": "cross-env ESLINT=none webpack --config=webpack.config.prod.js --mode production && npm run oss-push",
+    "build": "cross-env ESLINT=none webpack --config=webpack.config.prod.js --mode production",
     "lint": "eslint {src,mock,tests}/**/*.{ts,tsx}",
     "lint-fix": "eslint {src,mock,tests}/**/*.{ts,tsx} --fix",
     "format": "prettier --write \"./**/*.{ts,jsx,json,less,css}\" --ignore-path /dist",
     "tsc": "tsc -p tsconfig.json --noEmit",
-    "push": "node push",
+    "deploy": "node push",
     "oss-push": "node pushFileToOss",
     "init":"npm install",
     "ci": "npm run lint"
@@ -15,7 +15,6 @@
   "pre-commit": [
     "lint-fix"
   ],
-  "type": "module",
   "dependencies": {
     "antd": "^3.19.5",
     "classnames": "^2.2.6",
