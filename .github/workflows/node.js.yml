@@ -8,11 +8,13 @@ on:
     branches: [main, dev_ada]
   pull_request:
     branches: [main]
+env:
+  ACCESSKEYID: ${{ secrets.ACCESSKEYID }}
+  ACCESSKEYSECRET: ${{ secrets.ACCESSKEYSECRET }}
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
         node-version: [14.17.x]
@@ -21,9 +23,6 @@ jobs:
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
-        env:
-          ACCESSKEYID: ${{ secrets.ACCESSKEYID }}
-          ACCESSKEYSECRET: ${{ secrets.ACCESSKEYSECRET }}
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
