@@ -19,8 +19,8 @@ async function putsList() {
       client
         .putStream(`/siteslib/pclib/${item}`, fs.createReadStream(`./dist/${item}`))
         .then((res, err) => {
-          console.log('err', err);
-          console.log('res', res);
+          if (err) console.log('err', err);
+          console.log(`deploy file: ${item}`);
         });
     }
   } catch (error) {}
