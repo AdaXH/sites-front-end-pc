@@ -11,7 +11,7 @@
 > or send it to my email address: adaxh@qq.com
 > Participate, and you will appear in the developer list
 
-[![DeepScan grade](https://deepscan.io/api/teams/13594/projects/16596/branches/359188/badge/grade.svg?token=a1fa0980263b30233c0ddf1e9c3ed778290db2ee)](https://deepscan.io/dashboard#view=project&tid=13594&pid=16596&bid=359188)
+[![DeepScan grade](https://deepscan.io/api/teams/16855/projects/20159/branches/541645/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=16855&pid=20159&bid=541645)
 [![Node.js CI](https://github.com/AdaXH/sites-front-end-pc/actions/workflows/node.js.yml/badge.svg)](https://github.com/AdaXH/sites-front-end-pc/actions/workflows/node.js.yml)
 
 ## 这是什么仓库
