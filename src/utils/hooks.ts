@@ -103,7 +103,7 @@ export function useBoolean(initBool?: boolean): [boolean, UseBoolFn] {
 type MergeStateType<T> = T | (() => T);
 
 export function useSetState<T extends Record<string, any>>(initState: MergeStateType<T>) {
-  const [state, setState] = useState<MergeStateType<T>>(() => {
+  const [state, setState] = useState<T>(() => {
     if (typeof initState === 'function') return initState();
     return initState;
   });
