@@ -1,5 +1,5 @@
 # sites-front-end-pc
-![截图](https://bucker-for-sae.oss-cn-hangzhou.aliyuncs.com/githubimg/QQ%E6%88%AA%E5%9B%BE20210407215111.jpg)
+![截图](http://bucker-for-sae.oss-cn-hangzhou.aliyuncs.com/siteImagesBucket/776fa9bb-0639-4312-a1f5-36b09d626e7c1633585830671.png)
 
 ## 简介
 “<a target="_blank" href="https://sites.link">站点聚合平台</a>，让更多的人知道您的网站”，小站正在处于初期阶，功能正在一步步完善中
