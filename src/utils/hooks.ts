@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useCallback } from 'react';
 
 export function useDidMount(callback: Function) {
   useEffect(() => {
@@ -88,11 +88,38 @@ export function useLoading<T extends (...args: any[]) => any>(cb: T): any {
   ];
 }
 
-export function useBoolean(
-  initBool?: boolean,
-): [boolean, { setTrue: () => any; setFalse: () => any }] {
+interface UseBoolFn {
+  setTrue: () => void;
+  setFalse: () => void;
+}
+
+export function useBoolean(initBool?: boolean): [boolean, UseBoolFn] {
   const [bool, setBool] = useState<boolean>(initBool);
   const setTrue = () => setBool(true);
   const setFalse = () => setBool(false);
   return [bool, { setTrue, setFalse }];
+}
+
+type MergeStateType<T> = T | (() => T);
+
+type SetStateType<T extends Record<string, any>> = <K extends keyof T>(
+  state: Pick<T, K> | null | ((prevState: Readonly<T>) => Pick<T, K> | T | null),
+) => void;
+
+export function useSetState<T extends Record<string, any>>(
+  initState: MergeStateType<T>,
+): [T, SetStateType<T>] {
+  const [state, setState] = useState<T>(initState);
+
+  const mergeState = useCallback((newStateArg) => {
+    setState((preState) => {
+      const newState = typeof newStateArg === 'function' ? newStateArg(preState) : newStateArg;
+      return {
+        ...preState,
+        ...newState,
+      };
+    });
+  }, []);
+
+  return [state, mergeState];
 }

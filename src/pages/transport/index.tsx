@@ -38,8 +38,8 @@ const App: React.FC<{ historty: History }> = () => {
       </div>
 
       <h1 className={styles.logo} onClick={() => window.open('/')}>
-        <span>site|ink</span>
-        <span className={styles.bottom}>sites.link</span>
+        <span className={styles.power}>Powered by</span>
+        <a>site|ink</a>
       </h1>
     </>
   );
