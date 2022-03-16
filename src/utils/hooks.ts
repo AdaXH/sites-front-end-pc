@@ -102,15 +102,18 @@ export function useBoolean(initBool?: boolean): [boolean, UseBoolFn] {
 
 type MergeStateType<T> = T | (() => T);
 
-export function useSetState<T extends Record<string, any>>(initState: MergeStateType<T>) {
-  const [state, setState] = useState<T>(() => {
-    if (typeof initState === 'function') return initState();
-    return initState;
-  });
+type SetStateType<T extends Record<string, any>> = <K extends keyof T>(
+  state: Pick<T, K> | null | ((prevState: Readonly<T>) => Pick<T, K> | T | null),
+) => void;
 
-  const mergeState = useCallback((newStateArg: Partial<MergeStateType<T>>) => {
-    const newState = typeof newStateArg === 'function' ? newStateArg() : newStateArg;
+export function useSetState<T extends Record<string, any>>(
+  initState: MergeStateType<T>,
+): [T, SetStateType<T>] {
+  const [state, setState] = useState<T>(initState);
+
+  const mergeState = useCallback((newStateArg) => {
     setState((preState) => {
+      const newState = typeof newStateArg === 'function' ? newStateArg(preState) : newStateArg;
       return {
         ...preState,
         ...newState,

@@ -52,20 +52,15 @@ canvas {
   }
 }
 .logo {
-  width: 138px;
-  float: left;
-  color: #2e2e2e;
-  text-align: left;
+  color: white;
   letter-spacing: 3px;
-  font-size: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  font-size: 16px;
   position: fixed;
-  left: 20px;
-  bottom: 20px;
+  left: 50%;
+  bottom: 10px;
   cursor: pointer;
   z-index: 10;
+  transform: translateX(-50%);
   .bottom {
     font-size: 12px;
     position: absolute;
@@ -73,6 +68,12 @@ canvas {
   }
   .blogTitle {
     display: inline-block;
-    animation: fadeIn 1s forwards;
+    // animation: fadeIn 1s forwards;
+  }
+  a {
+    font-weight: bold;
+    color: white;
+    text-decoration: underline;
+    margin-left: 5px;
   }
 }
