@@ -36,6 +36,7 @@ export const SITE_TYPE = [
   {
     code: 'info',
     name: '资讯类',
+    disabled: true,
   },
   {
     code: 'others',
