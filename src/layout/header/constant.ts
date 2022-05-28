@@ -38,10 +38,10 @@ export const routes: Array<Route> = [
         path: '/sites/life',
         title: 'Life',
       },
-      {
-        path: '/sites/info',
-        title: 'Info',
-      },
+      // {
+      //   path: '/sites/info',
+      //   title: 'Info',
+      // },
       {
         path: '/sites/others',
         title: 'Others',

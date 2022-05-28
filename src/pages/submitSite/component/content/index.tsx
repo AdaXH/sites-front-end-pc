@@ -115,8 +115,8 @@ export default forwardRef(({ value, siteType: preType, isEdit, submitType }: Sit
             style={{ width: 190 }}
             disabled={isEdit}
           >
-            {SITE_TYPE.map(({ code, name }) => (
-              <Select.Option key={code} value={code}>
+            {SITE_TYPE.map(({ code, name, disabled }) => (
+              <Select.Option disabled={disabled} key={code} value={code}>
                 {name}
               </Select.Option>
             ))}
