@@ -12,11 +12,11 @@ export default memo(() => {
       >
         NO : 33010602011734
       </a>
-      .
-      <a data-line href="/global-feed.xml" target="_blank">
+      {/* . */}
+      {/* <a data-line href="/global-feed.xml" target="_blank">
         <i className="iconrss1 iconfont" />
         rss
-      </a>
+      </a> */}
     </footer>
   );
 });

@@ -134,4 +134,4 @@ export const routes: Array<Route> = [
   // },
 ];
 
-export const MAX_TOP_HEIGHT = 200;
+export const MAX_TOP_HEIGHT = 600;

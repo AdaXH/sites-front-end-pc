@@ -10,7 +10,8 @@
     "deploy": "node pushFileToOss",
     "oss-push": "node pushFileToOss",
     "init": "npm install",
-    "ci": "npm run lint"
+    "ci": "npm run lint",
+    "quick-deploy": "npm run build && node local-push.js"
   },
   "pre-commit": [
     "lint-fix"
