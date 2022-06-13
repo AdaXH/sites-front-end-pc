@@ -4,6 +4,7 @@ import BasicTop from '@/component/basicTop';
 import styles from './styles.less';
 import { connect } from 'dva';
 import { RootState, User } from 'state-typings';
+import { QQ_GROUP_URL } from '../index/components/joinQQ/constant';
 
 export default connect(({ user }: RootState) => ({
   user,
@@ -32,13 +33,8 @@ export default connect(({ user }: RootState) => ({
         <h1>联系本站</h1>
         <div>
           1.{' '}
-          <a
-            href="http://wpa.qq.com/msgrd?v=3&uin=3532371088&site=qq&menu=yes"
-            target="_blank"
-            rel="noreferrer"
-            data-line
-          >
-            QQ
+          <a href={QQ_GROUP_URL} target="_blank" rel="noreferrer" data-line>
+            QQ群
           </a>
         </div>
         <div>
