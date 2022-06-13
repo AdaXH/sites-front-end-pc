@@ -6,7 +6,7 @@ import styles from './styles.less';
 
 export const JoinQQ: React.FC<{}> = () => {
   return (
-    <a className={styles.qqPng} href={QQ_GROUP_URL} target="_blank">
+    <a className={styles.qqPng} href={QQ_GROUP_URL} target="_blank" rel="noreferrer">
       加入QQ群
       <img src={qqPng} />
     </a>
