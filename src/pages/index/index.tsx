@@ -55,7 +55,7 @@ export default connect(({ user }: RootState) => ({
         </div>
       </div>
       <div className={styles.view}>
-        <HotList history={history} />
+        <HotList />
       </div>
     </div>
   );

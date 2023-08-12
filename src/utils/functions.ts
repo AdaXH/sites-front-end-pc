@@ -1,8 +1,8 @@
 import { SrcConfig } from '@/models/user';
-import moment from 'moment';
+// import moment from 'moment';
 import { SITE_BASIC_INFO } from './constant';
 // import { createElement } from 'react';
-moment.lang('zh-cn');
+// moment.lang('zh-cn');
 
 interface Ref {
   current?: {
@@ -57,14 +57,14 @@ export function hasChange(data1: AnyCommonObj, data2: AnyCommonObj) {
   return JSON.stringify(data1) !== JSON.stringify(data2);
 }
 
-export function relativeTime(time: number) {
-  if (isNaN(time)) {
-    return moment(time).startOf('minute').fromNow();
-  }
-  return moment(new Date(Number(time)))
-    .startOf('minute')
-    .fromNow();
-}
+// export function relativeTime(time: number) {
+//   if (isNaN(time)) {
+//     return moment(time).startOf('minute').fromNow();
+//   }
+//   return moment(new Date(Number(time)))
+//     .startOf('minute')
+//     .fromNow();
+// }
 
 // export function formatTime(time) {
 //   return moment(new Date(Number(time))).format('YYYY-MM-DD HH:mm:ss');
