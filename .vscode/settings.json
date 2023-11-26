@@ -27,7 +27,6 @@
   "[vue]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "timeline.excludeSources": [],
   "git.ignoreRebaseWarning": true,
   "author-generator.updateOnSave": true,
   "typescript.updateImportsOnFileMove.enabled": "always",
