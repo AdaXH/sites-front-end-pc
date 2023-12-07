@@ -49,6 +49,17 @@ export default connect(({ user }: RootState) => ({
             GitHub
           </a>
         </div>
+        <div className={styles.surport}>
+          <h1>赞助</h1>
+          <p>
+            <a>“如果您喜欢这个网站，或者本网站对您有用，您可以请我喝一杯咖啡~”</a>
+            {desc}
+          </p>
+          <div>
+            <img src="https://bucker-for-sae.oss-cn-hangzhou.aliyuncs.com/sitesImages/wechat.jpg" alt="" />
+            <img src="https://bucker-for-sae.oss-cn-hangzhou.aliyuncs.com/sitesImages/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20231207205154.jpg" alt="" />
+          </div>
+        </div>
         {/* <h1>About</h1>
       <p>
         <div>
