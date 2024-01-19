@@ -5,6 +5,7 @@ import Login from '@/component/loginModal';
 import HotList from './components/hotList';
 
 import styles from './styles.less';
+import { JoinQQ } from './components/joinQQ';
 
 export default connect(({ user }: RootState) => ({
   user,
@@ -33,6 +34,9 @@ export default connect(({ user }: RootState) => ({
             <a onClick={() => history.push('/sites/submit-site')}>提交您的网站，加入我们！</a>
             <i className="iconqianjin2 iconfont" />
           </div>
+          <div className={styles.qqJoin}>
+            <JoinQQ />
+          </div>
         </div>
         <a className={styles.transport} href="/transport" target="_blank">
           <i className="iconUFO iconfont" />
@@ -51,7 +55,7 @@ export default connect(({ user }: RootState) => ({
         </div>
       </div>
       <div className={styles.view}>
-        <HotList history={history} />
+        <HotList />
       </div>
     </div>
   );

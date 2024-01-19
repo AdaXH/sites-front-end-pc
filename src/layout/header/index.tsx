@@ -100,10 +100,10 @@ export const Header: React.FC<Props> = connect(({ user }) => ({ user }))((props)
 
   return (
     <>
-      <div
+      {/* <div
         data-hidden={visible}
         className={classNames(styles.wrap, { [styles.dark]: visible })}
-      ></div>
+      ></div> */}
       <header
         data-hidden={visible}
         className={classNames(styles.header, { [styles.dark]: visible })}

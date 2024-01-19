@@ -10,7 +10,7 @@
   },
   "git.enableSmartCommit": true,
   "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "vscode.typescript-language-features"
   },
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -27,7 +27,6 @@
   "[vue]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "timeline.excludeSources": [],
   "git.ignoreRebaseWarning": true,
   "author-generator.updateOnSave": true,
   "typescript.updateImportsOnFileMove.enabled": "always",
@@ -39,5 +38,6 @@
   "editor.formatOnSave": true,
   "appworks.materialSources": [],
   "eslint.alwaysShowStatus": true,
-  "eslint.validate": ["javascript", "typescript", "javascriptreact", "typescriptreact"]
+  "eslint.validate": ["javascript", "typescript", "javascriptreact", "typescriptreact"],
+  "typescript.tsdk": "node_modules\\typescript\\lib"
 }
