@@ -118,14 +118,12 @@ export default memo(
                   <div className={styles.link}>
                     <h1>
                       <a
-                        onClick={() =>
-                          push(
-                            `/site-info?${stringify({
-                              siteType: item.siteType,
-                              siteId: item._id,
-                            })}`,
-                          )
-                        }
+                        href={`/site-info?${stringify({
+                          siteType: item.siteType,
+                          siteId: item._id,
+                        })}`}
+                        target="_blank"
+                        rel="noreferrer"
                       >
                         Link
                         <i className="iconqianjin iconfont" />

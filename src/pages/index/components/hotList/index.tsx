@@ -5,7 +5,7 @@ import { getData } from './service';
 
 import styles from './styles.less';
 
-export default ({ history }) => {
+export default () => {
   const [state, setState] = useState<{
     loading: boolean;
     list?: SiteModel[];
@@ -99,9 +99,9 @@ export default ({ history }) => {
                       <h1 className={styles.siteName}>{siteName}</h1>
                       <a
                         className={styles.btn}
-                        onClick={() =>
-                          history.push(`/site-info?${stringify({ siteType, siteId })}`)
-                        }
+                        href={`/site-info?${stringify({ siteType, siteId })}`}
+                        target="_blank"
+                        rel="noreferrer"
                       >
                         Link
                       </a>

@@ -15,14 +15,14 @@ export const SITES_ROUTES = [
     title: '生活',
     desc: '生活类站点，记录生活，分享美好的瞬间。',
   },
-  {
-    path: '/sites/info',
-    component: () => import('@/pages/info/index'),
-    shouMenu: true,
-    mainTitle: 'Info',
-    title: '资讯',
-    desc: '资讯类站点，你想知道的，我这都有。',
-  },
+  // {
+  //   path: '/sites/info',
+  //   component: () => import('@/pages/info/index'),
+  //   shouMenu: true,
+  //   mainTitle: 'Info',
+  //   title: '资讯',
+  //   desc: '资讯类站点，你想知道的，我这都有。',
+  // },
   {
     path: '/sites/others',
     component: () => import('@/pages/others/index'),

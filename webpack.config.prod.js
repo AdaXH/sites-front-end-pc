@@ -30,6 +30,10 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /.png/,
+        use: ['url-loader'],
+      },
+      {
         test: /\.js|jsx$/,
         include: [path.resolve(__dirname, 'src')],
         use: ['happypack/loader?id=babel'],

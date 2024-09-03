@@ -23,7 +23,7 @@ export const MENUS = [
     path: '/',
     title: '返回主站',
     icon: 'iconfont iconshouye1',
-    onClick: () => (window.location.href = 'https://sites.link'),
+    onClick: () => (window.location.href = 'https://sites.applinzi.com'),
   },
   {
     path: 'logout',

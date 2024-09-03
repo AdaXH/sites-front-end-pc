@@ -24,7 +24,7 @@ export default ({ children, history }: Props) => {
   return (
     <div className={styles.body}>
       <Header history={history} />
-      <span>
+      <section>
         <TopImg />
         {/* <div className={styles.bg}>
         <Wave />
@@ -34,7 +34,7 @@ export default ({ children, history }: Props) => {
           {children}
         </div>
         {/* </Shake> */}
-      </span>
+      </section>
       <Design />
     </div>
   );
