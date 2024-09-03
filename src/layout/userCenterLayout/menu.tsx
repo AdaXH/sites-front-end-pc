@@ -18,7 +18,7 @@ export const MenuSide: React.FC<{ history?: any; defaultPath: string }> = ({
     }
     if (path === 'logout') {
       removeInfo();
-      window.location.href = 'https://sites.link';
+      window.location.href = 'https://sites.applinzi.com';
       return;
     }
     history.push(path);

@@ -79,7 +79,7 @@ export function qqSign() {
   try {
     window.QC.Login.showPopup({
       appId: '101946967',
-      redirectURI: 'https://sites.link/qq-login',
+      redirectURI: 'https://sites.applinzi.com/qq-login',
     });
   } catch (error) {
     // ignore
